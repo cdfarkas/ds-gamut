@@ -1,91 +1,167 @@
 import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { Localized } from '../../../lib/Localized';
 import * as ButtonStories from './Button.stories';
 
 <Meta of={ButtonStories} />
 
 # Button
 
-## English
-
-The **Button** atom is the primary interactive control. It consumes semantic
-`var(--…)` tokens only, so it reskins across the light/dark theme axis and the
-neutral/pixel skin axis without any change to its own CSS. Its label and its
-loading announcement are bilingual through the typed `t()` indirection.
-
-Use `intent` for meaning (`primary`, `neutral`, `danger`), `size` for scale, and
-`loading` to show a busy state — a loading button is disabled and exposes
-`aria-busy` plus a screen-reader-only status.
-
-On hover the button lifts and its offset shadow grows; on press it collapses onto
-the page (see ADR 0009). All motion respects `prefers-reduced-motion`, falling
-back to colour and shadow cues so states stay distinguishable without movement.
+<Localized
+  en={
+    <>
+      <p>
+        The <strong>Button</strong> atom is the primary interactive control. It consumes
+        semantic <code>var(--…)</code> tokens only, so it reskins across the light/dark
+        theme axis and the neutral/pixel skin axis without any change to its own CSS. Its
+        label and its loading announcement are bilingual through the typed{' '}
+        <code>t()</code> indirection.
+      </p>
+      <p>
+        Use <code>intent</code> for meaning (<code>primary</code>, <code>neutral</code>,{' '}
+        <code>danger</code>), <code>size</code> for scale, and <code>loading</code> to
+        show a busy state — a loading button is disabled and exposes{' '}
+        <code>aria-busy</code> plus a screen-reader-only status.
+      </p>
+      <p>
+        On hover the button lifts and its offset shadow grows; on press it collapses onto
+        the page (see ADR 0009). All motion respects <code>prefers-reduced-motion</code>,
+        falling back to colour and shadow cues so states stay distinguishable without
+        movement.
+      </p>
+    </>
+  }
+  fr={
+    <>
+      <p>
+        Le composant <strong>Button</strong> est le contrôle interactif principal. Il ne
+        consomme que des jetons sémantiques <code>var(--…)</code> : il change donc
+        d'apparence selon l'axe de thème clair/sombre et l'axe d'habillage neutre/pixel,
+        sans modifier son propre CSS. Son libellé et son annonce de chargement sont
+        bilingues grâce à l'indirection typée <code>t()</code>.
+      </p>
+      <p>
+        Utilisez <code>intent</code> pour le sens (<code>primary</code>,{' '}
+        <code>neutral</code>, <code>danger</code>), <code>size</code> pour la taille, et{' '}
+        <code>loading</code> pour l'état occupé — un bouton en chargement est désactivé et
+        expose <code>aria-busy</code> ainsi qu'un statut réservé aux lecteurs d'écran.
+      </p>
+      <p>
+        Au survol, le bouton se soulève et son ombre portée grandit ; à l'enfoncement, il
+        s'écrase sur la page (voir l'ADR 0009). Toute animation respecte{' '}
+        <code>prefers-reduced-motion</code> et se rabat sur des indices de couleur et
+        d'ombre.
+      </p>
+    </>
+  }
+/>
 
 <Canvas of={ButtonStories.Primary} />
 
-### Props
+### <Localized en="Props" fr="Propriétés" />
 
 <Controls />
 
-### Intents
+### <Localized en="Intents" fr="Intentions" />
 
 <Canvas of={ButtonStories.Neutral} />
 
 <Canvas of={ButtonStories.Danger} />
 
-### Overriding
-
-Button follows the system override contract (see `docs/overrides.md`). Restyle it through this public
-surface — never through the hashed CSS-Module class names.
-
-- **Component variables**: `--gamut-button-bg`, `--gamut-button-fg`, `--gamut-button-radius`,
-  `--gamut-button-border-color`, `--gamut-button-shadow`, `--gamut-button-padding-x`,
-  `--gamut-button-padding-y`. Each falls back to its semantic token.
-- **`data-scope`**: `button`, on every part.
-- **`data-part`**: `root` (wrapper), `button` (the control, where your `className` merges),
-  `spinner`, `label`.
-- **State attributes** on `data-part="button"`: `data-intent`, `data-size`, `data-loading` (present
-  when loading), `data-disabled` (present when disabled or loading).
-
-The `Overridden` story below re-points `--gamut-button-radius`/`--gamut-button-bg` and resizes the
-`[data-part="spinner"]` sub-part from `@layer overrides`, with no `!important`.
-
-<Canvas of={ButtonStories.Overridden} />
-
-## Français
-
-Le composant **Button** est le contrôle interactif principal. Il ne consomme que
-des jetons sémantiques `var(--…)` : il change donc d'apparence selon l'axe de
-thème clair/sombre et l'axe d'habillage neutre/pixel, sans modifier son propre
-CSS. Son libellé et son annonce de chargement sont bilingues grâce à
-l'indirection typée `t()`.
-
-Utilisez `intent` pour le sens (`primary`, `neutral`, `danger`), `size` pour la
-taille, et `loading` pour l'état occupé — un bouton en chargement est désactivé
-et expose `aria-busy` ainsi qu'un statut réservé aux lecteurs d'écran.
-
-Au survol, le bouton se soulève et son ombre portée grandit ; à l'enfoncement, il
-s'écrase sur la page (voir l'ADR 0009). Toute animation respecte
-`prefers-reduced-motion` et se rabat sur des indices de couleur et d'ombre.
-
-### États
+### <Localized en="States" fr="États" />
 
 <Canvas of={ButtonStories.Loading} />
 
 <Canvas of={ButtonStories.Disabled} />
 
-### Personnalisation
+<Localized
+  en={
+    <>
+      <h3>Overriding</h3>
+      <p>
+        Button follows the system override contract (see <code>docs/overrides.md</code>).
+        Restyle it through this public surface — never through the hashed CSS-Module class
+        names.
+      </p>
+      <ul>
+        <li>
+          <strong>Component variables</strong>: <code>--gamut-button-bg</code>,{' '}
+          <code>--gamut-button-fg</code>, <code>--gamut-button-radius</code>,{' '}
+          <code>--gamut-button-border-color</code>, <code>--gamut-button-shadow</code>,{' '}
+          <code>--gamut-button-padding-x</code>, <code>--gamut-button-padding-y</code>.
+          Each falls back to its semantic token.
+        </li>
+        <li>
+          <strong>
+            <code>data-scope</code>
+          </strong>
+          : <code>button</code>, on every part.
+        </li>
+        <li>
+          <strong>
+            <code>data-part</code>
+          </strong>
+          : <code>root</code> (wrapper), <code>button</code> (the control, where your{' '}
+          <code>className</code> merges), <code>spinner</code>, <code>label</code>.
+        </li>
+        <li>
+          <strong>State attributes</strong> on <code>data-part="button"</code>:{' '}
+          <code>data-intent</code>, <code>data-size</code>, <code>data-loading</code>{' '}
+          (present when loading), <code>data-disabled</code> (present when disabled or
+          loading).
+        </li>
+      </ul>
+      <p>
+        The <code>Overridden</code> story below re-points{' '}
+        <code>--gamut-button-radius</code>/<code>--gamut-button-bg</code> and resizes the{' '}
+        <code>[data-part="spinner"]</code> sub-part from <code>@layer overrides</code>,
+        with no <code>!important</code>.
+      </p>
+    </>
+  }
+  fr={
+    <>
+      <h3>Personnalisation</h3>
+      <p>
+        Button suit le contrat de personnalisation du système (voir{' '}
+        <code>docs/overrides.md</code>). Restylez-le via cette surface publique — jamais
+        via les noms de classes CSS-Module hachés.
+      </p>
+      <ul>
+        <li>
+          <strong>Variables de composant</strong> : <code>--gamut-button-bg</code>,{' '}
+          <code>--gamut-button-fg</code>, <code>--gamut-button-radius</code>,{' '}
+          <code>--gamut-button-border-color</code>, <code>--gamut-button-shadow</code>,{' '}
+          <code>--gamut-button-padding-x</code>, <code>--gamut-button-padding-y</code>.
+          Chacune se rabat sur son jeton sémantique.
+        </li>
+        <li>
+          <strong>
+            <code>data-scope</code>
+          </strong>{' '}
+          : <code>button</code>, sur chaque partie.
+        </li>
+        <li>
+          <strong>
+            <code>data-part</code>
+          </strong>{' '}
+          : <code>root</code> (conteneur), <code>button</code> (le contrôle, où votre{' '}
+          <code>className</code> fusionne), <code>spinner</code>, <code>label</code>.
+        </li>
+        <li>
+          <strong>Attributs d'état</strong> sur <code>data-part="button"</code> :{' '}
+          <code>data-intent</code>, <code>data-size</code>, <code>data-loading</code>{' '}
+          (présent en chargement), <code>data-disabled</code> (présent si désactivé ou en
+          chargement).
+        </li>
+      </ul>
+      <p>
+        L'histoire <code>Overridden</code> ci-dessus redirige{' '}
+        <code>--gamut-button-radius</code>/<code>--gamut-button-bg</code> et redimensionne
+        la sous-partie <code>[data-part="spinner"]</code> depuis{' '}
+        <code>@layer overrides</code>, sans <code>!important</code>.
+      </p>
+    </>
+  }
+/>
 
-Button suit le contrat de personnalisation du système (voir `docs/overrides.md`). Restylez-le via
-cette surface publique — jamais via les noms de classes CSS-Module hachés.
-
-- **Variables de composant** : `--gamut-button-bg`, `--gamut-button-fg`, `--gamut-button-radius`,
-  `--gamut-button-border-color`, `--gamut-button-shadow`, `--gamut-button-padding-x`,
-  `--gamut-button-padding-y`. Chacune se rabat sur son jeton sémantique.
-- **`data-scope`** : `button`, sur chaque partie.
-- **`data-part`** : `root` (conteneur), `button` (le contrôle, où votre `className` fusionne),
-  `spinner`, `label`.
-- **Attributs d'état** sur `data-part="button"` : `data-intent`, `data-size`, `data-loading`
-  (présent en chargement), `data-disabled` (présent si désactivé ou en chargement).
-
-L'histoire `Overridden` ci-dessus redirige `--gamut-button-radius`/`--gamut-button-bg` et
-redimensionne la sous-partie `[data-part="spinner"]` depuis `@layer overrides`, sans `!important`.
+<Canvas of={ButtonStories.Overridden} />

@@ -10,8 +10,8 @@ you touch anything, and treat the linked `docs/` files as the detail behind each
   templates), compound components, and Storybook 10 as the catalogue and test harness.
 - **Theming**: light/dark theme axis × neutral/pixel-art skin axis, driven entirely by a two-tier
   token contract. Two independent axes, not four hand-built themes.
-- **Bilingual FR/EN**: component labels and ARIA strings, plus authored MDX prose, in both French
-  and English.
+- **Bilingual FR/EN**: component labels and ARIA strings, plus authored MDX prose. One language is
+  shown at a time, driven by a `locale` toolbar global — never both at once.
 - **Full test pyramid**: unit (pure logic) + interaction (`play`) + accessibility, all run from a
   single Storybook-driven runner.
 
@@ -64,8 +64,11 @@ palette is chosen to meet 4.5:1 contrast. WCAG 2.2 rules run as `'warn'`. See AD
 
 - Labels and ARIA strings go through a typed `t()` indirection over a `Record<Locale, …>`, driven by
   a `locale` toolbar global. No i18n library.
-- MDX prose is authored by hand in **both FR and EN**. Autodocs auto-generated blocks (JSDoc
-  descriptions, arg tables) stay single-language — accepted. See ADR 0007.
+- MDX prose is authored once per component and wrapped in `<Localized fr={…} en={…}/>`
+  (`src/lib/Localized.tsx`), which renders only the active language and switches live with the
+  `locale` toolbar global — **never** stacked FR+EN blocks. Autodocs auto-generated blocks (JSDoc
+  descriptions, arg tables) stay single-language, as authored — they do not follow the `locale`
+  global — accepted. See ADR 0007.
 
 ## Governance rule
 
