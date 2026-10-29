@@ -109,8 +109,10 @@ the flat `--shadow-raised`; hover lifts the control `translate(-1px, -1px)` and 
 (equal to the rest offset) with the shadow flattened to `--shadow-pressed`. The pixel skin harmonises
 with its stepped `drop-shadow` stack growing and collapsing the same way.
 
-Motion is tokenised (`--dur-fast` 120ms, `--ease-out`) and transitions only `transform` / `box-shadow`
-/ `background-color` / `border-color`, so neighbours never reflow. All motion is wrapped in
+Motion is tokenised and asymmetric: hover and release settle over `--dur-fast` (200ms) with
+`--ease-out` (easeOutCubic), press-in is quicker at `--dur-press` (110ms). It transitions only
+`transform` / `box-shadow` / `background-color` / `border-color` (and `filter` for the pixel skin),
+so neighbours never reflow. All motion is wrapped in
 `@media (prefers-reduced-motion: reduce)`, which disables transitions and transforms while keeping the
 colour and shadow state cues, so states stay distinguishable without movement. Every state holds WCAG
 2.1 AA (ADR 0006).

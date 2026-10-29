@@ -32,12 +32,15 @@ tokens and the same rest → hover → press story.
 - **Loading** — the spinner is unchanged; a loading button is `disabled`, so every interaction rule
   (`:not(:disabled)`) already suppresses the press transform.
 
-Motion runs over two new tokens, `--dur-fast` (120ms) and `--ease-out`, transitioning only
-`transform` / `box-shadow` / `background-color` / `border-color` so neighbours never reflow. The
+Motion is asymmetric: hover and release settle smoothly over `--dur-fast` (200ms) with
+`--ease-out` (`cubic-bezier(.33, 1, .68, 1)`, easeOutCubic), while press-in runs faster over
+`--dur-press` (110ms, set on `:active`) so clicks stay immediate. It transitions only
+`transform` / `box-shadow` / `background-color` / `border-color` (plus `filter`, for the pixel
+skin's stepped shadow) so neighbours never reflow. The
 pixel skin harmonises: its stepped hard shadow (a `drop-shadow` stack) grows on hover and collapses
 to `none` on press, keeping zero radius and the notched silhouette.
 
-The interaction values live as tokens in `tokens.css` (`--dur-fast`, `--ease-out`, `--press-offset`,
+The interaction values live as tokens in `tokens.css` (`--dur-fast`, `--dur-press`, `--ease-out`, `--press-offset`,
 `--shadow-raised-hover`, `--shadow-pressed`); the `:hover` / `:active` / `:focus-visible` rules live in
 `Button.module.css`, because interaction is a component concern. No raw colour appears in component
 CSS — the token contract (ADR 0003) is unchanged.
