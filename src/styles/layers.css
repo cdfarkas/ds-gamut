@@ -1,0 +1,3 @@
+/* Single declaration of the cascade-layer order (ADR 0002).
+   `overrides` is last so consumer overrides win over `@layer components` without `!important` (ADR 0010). */
+@layer reset, tokens, base, components, utilities, overrides;

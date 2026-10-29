@@ -1,0 +1,43 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "font-family-name-quotes": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global", "local"] }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.module.css"],
+      "plugins": ["stylelint-declaration-strict-value"],
+      "rules": {
+        "selector-class-pattern": null,
+        "scale-unlimited/declaration-strict-value": [
+          [
+            "/color/",
+            "fill",
+            "stroke",
+            "background",
+            "background-color",
+            "box-shadow",
+            "outline-color"
+          ],
+          {
+            "ignoreValues": [
+              "/^var\\(--/",
+              "transparent",
+              "currentcolor",
+              "inherit",
+              "none"
+            ],
+            "ignoreFunctions": false
+          }
+        ]
+      }
+    }
+  ]
+}

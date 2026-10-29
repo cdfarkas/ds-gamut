@@ -1,0 +1,48 @@
+name: Chromatic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Chromatic's four theme×skin modes are declared on the Button story meta
+# (chromatic.modes). Keep PR runs for drift review; the push-to-main run
+# establishes and maintains the accepted baseline.
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    env:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+    steps:
+      - name: Check for Chromatic token
+        id: gate
+        run: |
+          if [ -n "$CHROMATIC_PROJECT_TOKEN" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "CHROMATIC_PROJECT_TOKEN is not set — skipping Chromatic. This is not a failure."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.enabled == 'true'
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        if: steps.gate.outputs.enabled == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.enabled == 'true'
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        if: steps.gate.outputs.enabled == 'true'
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Chromatic
+        if: steps.gate.outputs.enabled == 'true'
+        run: pnpm exec chromatic --project-token="$CHROMATIC_PROJECT_TOKEN" --build-script-name=build-storybook --only-changed --exit-zero-on-changes --auto-accept-changes=main

@@ -6,7 +6,7 @@ Proposed
 
 ## Context
 
-ds-neuter is a greenfield, portfolio-grade design system. It needs a current, well-supported
+gamut is a greenfield, portfolio-grade design system. It needs a current, well-supported
 component stack and a catalogue/test host that demonstrates recent best practice, without legacy
 baggage from the Stonal `lib-design-system-react` it is inspired by (which carried deprecated Sass
 and dual test runners).

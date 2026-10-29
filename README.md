@@ -1,4 +1,4 @@
-# ds-neuter
+# gamut
 
 A portfolio-grade design system built on **Storybook 10** and strict **Atomic Design**. The name is
 Latin *neuter* ("neither / neutral") — a neutral base that reskins cleanly.

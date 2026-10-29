@@ -1,0 +1,37 @@
+/* Pixel skin structural carve-out (ADR/ARCHITECTURE): not design tokens. */
+@font-face {
+  font-family: 'ds-pixel';
+  src:
+    local('Pixelify Sans'), local('Press Start 2P'), local('VT323'), local('Courier New');
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-family-base: var(--font-sans);
+  }
+
+  :root[data-skin='pixel'] {
+    --font-family-base: 'ds-pixel', 'Courier New', monospace;
+
+    image-rendering: pixelated;
+  }
+
+  body {
+    font-family: var(--font-family-base);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  :root[data-skin='pixel'] :is(h1, h2, h3, h4) {
+    font-family: var(--font-family-base);
+  }
+}

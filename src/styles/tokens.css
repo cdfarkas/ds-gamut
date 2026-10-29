@@ -1,0 +1,159 @@
+@layer tokens {
+  /* Tier 1 — primitive palette. Raw values live here and nowhere else. */
+  :root {
+    --palette-white: #fff;
+    --palette-black: #000;
+
+    /* Maximalist neutrals — warm cream paper and near-black ink. */
+    --palette-cream: #fbf7ee;
+    --palette-cream-deep: #f2e9d6;
+    --palette-cream-sunk: #e7dbc2;
+    --palette-ink: #140f1c;
+    --palette-ink-soft: #4a4458;
+    --palette-parchment: #f4ecd8;
+    --palette-night: #1a1026;
+    --palette-night-raised: #241a2e;
+    --palette-night-sunk: #2e2340;
+    --palette-lilac-muted: #b9b2c8;
+    --palette-lilac-border: #6e6482;
+
+    /* Hero accents — clashing electric cobalt / coral / violet. */
+    --palette-cobalt: #2419e8;
+    --palette-cobalt-hover: #1c12b8;
+    --palette-cobalt-active: #150d8c;
+    --palette-cobalt-bright: #4b3bff;
+    --palette-cobalt-bright-hover: #3a28d6;
+    --palette-cobalt-bright-active: #2a1bb0;
+    --palette-coral: #ff3d7f;
+    --palette-coral-hover: #ff2e74;
+    --palette-coral-active: #ff1f6b;
+    --palette-coral-bright: #ff5c92;
+    --palette-coral-bright-hover: #ff4382;
+    --palette-coral-bright-active: #ff2e74;
+    --palette-violet: #7a3bff;
+    --palette-violet-bright: #9a6bff;
+    --palette-lime: #d4ff2e;
+    --palette-cyan: #7fe0ff;
+
+    /* Pixel-skin accents — deep, saturated retro blocks. */
+    --palette-pixel-violet: #5b1fb8;
+    --palette-pixel-violet-deep: #45138f;
+    --palette-pixel-violet-dark: #330b6b;
+    --palette-pixel-blood: #a01e1e;
+    --palette-pixel-blood-deep: #7d1515;
+    --palette-pixel-night: #140f1c;
+    --palette-pixel-night-raised: #281c38;
+
+    --palette-space-1: 0.25rem;
+    --palette-space-2: 0.5rem;
+    --palette-space-3: 0.75rem;
+    --palette-space-4: 1rem;
+    --palette-space-5: 1.25rem;
+
+    --palette-radius-none: 0;
+    --palette-radius-sm: 0.375rem;
+    --palette-radius-md: 0.625rem;
+    --palette-radius-lg: 0.875rem;
+
+    --palette-border-thin: 1px;
+    --palette-border-thick: 3px;
+
+    /* Type primitives — expressive serif display + grotesk sans. */
+    --palette-font-display:
+      'Fraunces Variable', 'Fraunces', georgia, 'Times New Roman', serif;
+    --palette-font-sans:
+      'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, 'Segoe UI',
+      roboto, sans-serif;
+
+    /* Tier 2 — semantic aliases. Themes and skins reassign only this layer. */
+    --color-bg-surface: var(--palette-cream);
+    --color-bg-subtle: var(--palette-cream-deep);
+    --color-bg-disabled: var(--palette-cream-sunk);
+    --color-text-primary: var(--palette-ink);
+    --color-text-muted: var(--palette-ink-soft);
+    --color-text-on-accent: var(--palette-cream);
+    --color-text-on-danger: var(--palette-ink);
+    --color-accent: var(--palette-cobalt);
+    --color-accent-hover: var(--palette-cobalt-hover);
+    --color-accent-active: var(--palette-cobalt-active);
+    --color-danger: var(--palette-coral);
+    --color-danger-hover: var(--palette-coral-hover);
+    --color-danger-active: var(--palette-coral-active);
+    --color-border-default: var(--palette-ink-soft);
+    --color-border-strong: var(--palette-ink);
+    --color-border-focus: var(--palette-violet);
+
+    --font-display: var(--palette-font-display);
+    --font-sans: var(--palette-font-sans);
+
+    --radius-sm: var(--palette-radius-sm);
+    --radius-md: var(--palette-radius-md);
+    --radius-lg: var(--palette-radius-lg);
+
+    --border-width-regular: var(--palette-border-thin);
+    --border-width-thick: var(--palette-border-thick);
+
+    /* Flat, blur-free offset shadow — recolours per theme via border-strong. */
+    --shadow-raised: 4px 4px 0 var(--color-border-strong);
+    --shadow-focus: 0 0 0 3px
+      color-mix(in srgb, var(--color-border-focus) 55%, transparent);
+
+    /* Motion — smooth settle, quick press-in; the house interaction standard (ADR 0009). */
+    --dur-fast: 200ms;
+    --dur-press: 110ms;
+    --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --press-offset: 4px;
+    --shadow-raised-hover: 7px 7px 0 var(--color-border-strong);
+    --shadow-pressed: 0 0 0 var(--color-border-strong);
+  }
+
+  :root[data-theme='dark'] {
+    --color-bg-surface: var(--palette-night);
+    --color-bg-subtle: var(--palette-night-raised);
+    --color-bg-disabled: var(--palette-night-sunk);
+    --color-text-primary: var(--palette-cream);
+    --color-text-muted: var(--palette-lilac-muted);
+    --color-text-on-accent: var(--palette-cream);
+    --color-text-on-danger: var(--palette-ink);
+    --color-accent: var(--palette-cobalt-bright);
+    --color-accent-hover: var(--palette-cobalt-bright-hover);
+    --color-accent-active: var(--palette-cobalt-bright-active);
+    --color-danger: var(--palette-coral-bright);
+    --color-danger-hover: var(--palette-coral-bright-hover);
+    --color-danger-active: var(--palette-coral-bright-active);
+    --color-border-default: var(--palette-lilac-border);
+    --color-border-strong: var(--palette-parchment);
+    --color-border-focus: var(--palette-violet-bright);
+  }
+
+  :root[data-skin='pixel'] {
+    --color-bg-surface: var(--palette-cream);
+    --color-bg-subtle: var(--palette-cream-deep);
+    --color-bg-disabled: var(--palette-cream-sunk);
+    --color-text-primary: var(--palette-ink);
+    --color-text-muted: var(--palette-ink);
+    --color-text-on-accent: var(--palette-parchment);
+    --color-text-on-danger: var(--palette-parchment);
+    --color-accent: var(--palette-pixel-violet);
+    --color-accent-hover: var(--palette-pixel-violet-deep);
+    --color-accent-active: var(--palette-pixel-violet-dark);
+    --color-danger: var(--palette-pixel-blood);
+    --color-danger-hover: var(--palette-pixel-blood-deep);
+    --color-danger-active: var(--palette-pixel-blood-deep);
+    --color-border-default: var(--palette-ink);
+    --color-border-strong: var(--palette-ink);
+    --color-border-focus: var(--palette-pixel-violet-deep);
+  }
+
+  :root[data-theme='dark'][data-skin='pixel'] {
+    --color-bg-surface: var(--palette-pixel-night);
+    --color-bg-subtle: var(--palette-pixel-night-raised);
+    --color-bg-disabled: var(--palette-pixel-night-raised);
+    --color-text-primary: var(--palette-parchment);
+    --color-text-muted: var(--palette-parchment);
+    --color-accent: var(--palette-pixel-violet);
+    --color-border-default: var(--palette-parchment);
+    --color-border-strong: var(--palette-parchment);
+    --color-border-focus: var(--palette-violet-bright);
+  }
+}

@@ -52,7 +52,20 @@ same `theme` / `skin` / `locale` setup the Storybook preview applies.
   Linux CI — the gate is not render-flaky.
 - **WCAG 2.2 rules run as `'warn'`** — surfaced for awareness, not yet blocking.
 
+## Agent visual validation
+
+Automated tests prove behaviour and derive contrast from CSS, but they do not prove the
+design *looks* right, and axe does not cover WCAG 2.4.7 (focus visible). So a fourth,
+**agent-run** gate sits before human review: `pnpm build-storybook` then
+`pnpm visual-check` screenshots every state in all four theme×skin modes, and the agent
+reads the images and records a per-mode PASS / CONCERNS verdict. It never loosens a WCAG
+threshold to pass. See `docs/visual-validation.md`.
+
 ## Acceptance
 
-`pnpm test` runs all of the above and must exit 0, alongside `pnpm build-storybook` and
-`pnpm lint`. See `CLAUDE.md` for the full gate list.
+All four gates must be green, the last before the PR is handed to a human:
+
+- `pnpm lint` (ESLint + Prettier + stylelint, including the no-raw-color rule)
+- `pnpm test` (unit + interaction + a11y)
+- `pnpm build-storybook`
+- agent visual validation (`pnpm visual-check` + the agent's per-mode verdict)

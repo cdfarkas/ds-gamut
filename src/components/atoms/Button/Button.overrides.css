@@ -1,0 +1,13 @@
+/* Consumer override demo (see docs/overrides.md): lives in the public
+   @layer overrides and wins over @layer components without !important. */
+@layer overrides {
+  .gamut-demo-override {
+    --gamut-button-radius: 999px;
+    --gamut-button-bg: var(--color-accent-active);
+  }
+
+  .gamut-demo-override [data-scope='button'][data-part='spinner'] {
+    inline-size: 1.5em;
+    block-size: 1.5em;
+  }
+}
