@@ -76,11 +76,15 @@ flag it, pick a sane default, and note it for human review. See `docs/governance
 
 ## Acceptance gates
 
-Work is done only when all three are green:
+Work is done only when all four are green, the last before any human review:
 
+- `pnpm lint` (ESLint + Prettier + stylelint, including the no-raw-color rule)
 - `pnpm test` (unit + interaction + a11y)
 - `pnpm build-storybook`
-- `pnpm lint` (ESLint + Prettier + stylelint, including the no-raw-color rule)
+- **agent visual validation** — `pnpm visual-check` screenshots every state in all four
+  theme×skin modes; the agent reads the images and records a per-mode PASS/CONCERNS
+  verdict, fixing or flagging before handover. It never loosens a WCAG threshold to pass.
+  See `docs/visual-validation.md`.
 
 ## Where the detail lives
 
