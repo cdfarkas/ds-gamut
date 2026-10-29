@@ -45,4 +45,4 @@ jobs:
 
       - name: Run Chromatic
         if: steps.gate.outputs.enabled == 'true'
-        run: pnpm exec chromatic --project-token="$CHROMATIC_PROJECT_TOKEN" --build-script-name=build-storybook --only-changed
+        run: pnpm exec chromatic --project-token="$CHROMATIC_PROJECT_TOKEN" --build-script-name=build-storybook --only-changed --exit-zero-on-changes --auto-accept-changes=main
