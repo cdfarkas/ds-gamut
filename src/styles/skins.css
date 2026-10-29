@@ -8,7 +8,7 @@
 
 @layer base {
   :root {
-    --font-family-base: system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+    --font-family-base: var(--font-sans);
   }
 
   :root[data-skin='pixel'] {
@@ -21,5 +21,17 @@
     font-family: var(--font-family-base);
     background: var(--color-bg-surface);
     color: var(--color-text-primary);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  :root[data-skin='pixel'] :is(h1, h2, h3, h4) {
+    font-family: var(--font-family-base);
   }
 }

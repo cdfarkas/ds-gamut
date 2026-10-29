@@ -54,10 +54,14 @@ is ceremony; use dot-notation instead.
 
 All tokens live in one file, `src/styles/tokens.css`, in two tiers:
 
-1. **Primitive palette** — raw values, named by what they *are*: `--palette-blue-500`,
-   `--palette-gray-900`, `--palette-space-4`. The only place raw colour values exist.
+1. **Primitive palette** — raw values, named by what they *are*: `--palette-cobalt`,
+   `--palette-ink`, `--palette-space-4`, `--palette-radius-md`, `--palette-border-thick`,
+   `--palette-font-sans`. The only place raw colour values exist.
 2. **Semantic aliases** — named by what they *do*, referencing primitives: `--color-bg-surface`,
-   `--color-text-primary`, `--color-border-focus`, `--radius-md`, `--shadow-raised`.
+   `--color-text-primary`, `--color-border-focus`, `--radius-md`, `--shadow-raised`. The vocabulary
+   spans four families: colour (`--color-*`), shape (`--radius-sm/md/lg`, `--border-width-regular/
+   thick`, the flat `--shadow-raised`), and type (`--font-display` serif, `--font-sans` grotesk).
+   The maximalist base aesthetic that fills these is recorded in ADR 0008.
 
 **Components consume the semantic layer only.** No `*.module.css` may contain a raw `hex`, `rgb()`
 or `hsl()` literal — a stylelint rule bans it (see ADR 0003). This is the fitness function that keeps

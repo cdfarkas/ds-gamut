@@ -2,6 +2,8 @@ import type { Preview, Decorator } from '@storybook/react-vite';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { setLocale, type Locale } from '../src/lib/i18n';
 
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/space-grotesk';
 import '../src/styles/layers.css';
 import '../src/styles/reset.css';
 import '../src/styles/tokens.css';
