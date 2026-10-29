@@ -1,0 +1,2 @@
+/* Single declaration of the cascade-layer order (ADR 0002). */
+@layer reset, tokens, base, components, utilities;

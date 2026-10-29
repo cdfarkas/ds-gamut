@@ -1,0 +1,119 @@
+@layer tokens {
+  /* Tier 1 — primitive palette. Raw values live here and nowhere else. */
+  :root {
+    --palette-white: #fff;
+    --palette-black: #000;
+    --palette-gray-50: #f9fafb;
+    --palette-gray-100: #f3f4f6;
+    --palette-gray-200: #e5e7eb;
+    --palette-gray-300: #d1d5db;
+    --palette-gray-400: #9ca3af;
+    --palette-gray-500: #6b7280;
+    --palette-gray-600: #4b5563;
+    --palette-gray-700: #374151;
+    --palette-gray-800: #1f2937;
+    --palette-gray-900: #111827;
+    --palette-blue-400: #60a5fa;
+    --palette-blue-500: #3b82f6;
+    --palette-blue-600: #2563eb;
+    --palette-blue-700: #1d4ed8;
+    --palette-blue-800: #1e40af;
+    --palette-blue-900: #1e3a8a;
+    --palette-red-400: #f87171;
+    --palette-red-600: #dc2626;
+    --palette-red-700: #b91c1c;
+    --palette-red-800: #991b1b;
+
+    --palette-pixel-cream: #e9e0cc;
+    --palette-pixel-cream-deep: #d7cbab;
+    --palette-pixel-ink: #241a0f;
+    --palette-pixel-night: #1a1420;
+    --palette-pixel-night-raised: #2a2033;
+    --palette-pixel-parchment: #f4ecd8;
+    --palette-pixel-grape: #7b2d8e;
+    --palette-pixel-grape-deep: #5a1f6b;
+    --palette-pixel-grape-dark: #431551;
+    --palette-pixel-blood: #a01e1e;
+    --palette-pixel-blood-deep: #7d1515;
+
+    --palette-space-1: 0.25rem;
+    --palette-space-2: 0.5rem;
+    --palette-space-3: 0.75rem;
+    --palette-space-4: 1rem;
+    --palette-space-5: 1.25rem;
+    --palette-radius-none: 0;
+    --palette-radius-sm: 0.25rem;
+    --palette-radius-md: 0.5rem;
+
+    /* Tier 2 — semantic aliases. Themes and skins reassign only this layer. */
+    --color-bg-surface: var(--palette-white);
+    --color-bg-subtle: var(--palette-gray-100);
+    --color-bg-disabled: var(--palette-gray-200);
+    --color-text-primary: var(--palette-gray-900);
+    --color-text-muted: var(--palette-gray-600);
+    --color-text-on-accent: var(--palette-white);
+    --color-text-on-danger: var(--palette-white);
+    --color-accent: var(--palette-blue-700);
+    --color-accent-hover: var(--palette-blue-800);
+    --color-accent-active: var(--palette-blue-900);
+    --color-danger: var(--palette-red-700);
+    --color-danger-hover: var(--palette-red-800);
+    --color-danger-active: var(--palette-red-800);
+    --color-border-default: var(--palette-gray-300);
+    --color-border-strong: var(--palette-gray-900);
+    --color-border-focus: var(--palette-blue-600);
+
+    --radius-sm: var(--palette-radius-sm);
+    --radius-md: var(--palette-radius-md);
+
+    --shadow-raised: 0 1px 2px rgb(0 0 0 / 8%), 0 2px 4px rgb(0 0 0 / 6%);
+    --shadow-focus: 0 0 0 3px
+      color-mix(in srgb, var(--color-border-focus) 55%, transparent);
+  }
+
+  :root[data-theme='dark'] {
+    --color-bg-surface: var(--palette-gray-900);
+    --color-bg-subtle: var(--palette-gray-800);
+    --color-bg-disabled: var(--palette-gray-700);
+    --color-text-primary: var(--palette-gray-50);
+    --color-text-muted: var(--palette-gray-300);
+    --color-accent: var(--palette-blue-600);
+    --color-accent-hover: var(--palette-blue-700);
+    --color-accent-active: var(--palette-blue-800);
+    --color-border-default: var(--palette-gray-600);
+    --color-border-strong: var(--palette-black);
+    --color-border-focus: var(--palette-blue-400);
+    --shadow-raised: 0 1px 2px rgb(0 0 0 / 40%), 0 2px 6px rgb(0 0 0 / 35%);
+  }
+
+  :root[data-skin='pixel'] {
+    --color-bg-surface: var(--palette-pixel-cream);
+    --color-bg-subtle: var(--palette-pixel-cream-deep);
+    --color-bg-disabled: var(--palette-pixel-cream-deep);
+    --color-text-primary: var(--palette-pixel-ink);
+    --color-text-muted: var(--palette-pixel-ink);
+    --color-text-on-accent: var(--palette-pixel-parchment);
+    --color-text-on-danger: var(--palette-pixel-parchment);
+    --color-accent: var(--palette-pixel-grape);
+    --color-accent-hover: var(--palette-pixel-grape-deep);
+    --color-accent-active: var(--palette-pixel-grape-dark);
+    --color-danger: var(--palette-pixel-blood);
+    --color-danger-hover: var(--palette-pixel-blood-deep);
+    --color-danger-active: var(--palette-pixel-blood-deep);
+    --color-border-default: var(--palette-pixel-ink);
+    --color-border-strong: var(--palette-pixel-ink);
+    --color-border-focus: var(--palette-pixel-grape-deep);
+  }
+
+  :root[data-theme='dark'][data-skin='pixel'] {
+    --color-bg-surface: var(--palette-pixel-night);
+    --color-bg-subtle: var(--palette-pixel-night-raised);
+    --color-bg-disabled: var(--palette-pixel-night-raised);
+    --color-text-primary: var(--palette-pixel-parchment);
+    --color-text-muted: var(--palette-pixel-parchment);
+    --color-accent: var(--palette-pixel-grape);
+    --color-border-default: var(--palette-pixel-parchment);
+    --color-border-strong: var(--palette-black);
+    --color-border-focus: var(--palette-pixel-grape);
+  }
+}

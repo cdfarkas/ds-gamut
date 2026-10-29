@@ -1,0 +1,47 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+## English
+
+The **Button** atom is the primary interactive control. It consumes semantic
+`var(--…)` tokens only, so it reskins across the light/dark theme axis and the
+neutral/pixel skin axis without any change to its own CSS. Its label and its
+loading announcement are bilingual through the typed `t()` indirection.
+
+Use `intent` for meaning (`primary`, `neutral`, `danger`), `size` for scale, and
+`loading` to show a busy state — a loading button is disabled and exposes
+`aria-busy` plus a screen-reader-only status.
+
+<Canvas of={ButtonStories.Primary} />
+
+### Props
+
+<Controls />
+
+### Intents
+
+<Canvas of={ButtonStories.Neutral} />
+
+<Canvas of={ButtonStories.Danger} />
+
+## Français
+
+Le composant **Button** est le contrôle interactif principal. Il ne consomme que
+des jetons sémantiques `var(--…)` : il change donc d'apparence selon l'axe de
+thème clair/sombre et l'axe d'habillage neutre/pixel, sans modifier son propre
+CSS. Son libellé et son annonce de chargement sont bilingues grâce à
+l'indirection typée `t()`.
+
+Utilisez `intent` pour le sens (`primary`, `neutral`, `danger`), `size` pour la
+taille, et `loading` pour l'état occupé — un bouton en chargement est désactivé
+et expose `aria-busy` ainsi qu'un statut réservé aux lecteurs d'écran.
+
+### États
+
+<Canvas of={ButtonStories.Loading} />
+
+<Canvas of={ButtonStories.Disabled} />
