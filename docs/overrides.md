@@ -1,13 +1,13 @@
 # Overriding components
 
-How consumers restyle gamut components — and their internal sub-parts — safely. This is the
+How consumers restyle Omnia components — and their internal sub-parts — safely. This is the
 convention every component follows (ADR 0010). It is built on two platform features already in the
 system: native cascade layers (ADR 0002) and the semantic token contract (ADR 0003), plus a stable
 data-attribute contract on each component (the Radix/Ark pattern).
 
 ## English
 
-gamut styles live in `@layer components`. The last cascade layer, `@layer overrides`, is reserved
+Omnia styles live in `@layer components`. The last cascade layer, `@layer overrides`, is reserved
 for you: a rule there wins over the design system **without `!important`** and without fighting
 specificity. You target components through a **stable, public `data-*` contract** — never the hashed
 CSS-Module class names, which change on every build and are private implementation detail.
@@ -16,7 +16,7 @@ Reach for the least powerful tier that solves your problem, in this order.
 
 ## Français
 
-Les styles de gamut vivent dans `@layer components`. La dernière couche de cascade,
+Les styles d'Omnia vivent dans `@layer components`. La dernière couche de cascade,
 `@layer overrides`, vous est réservée : une règle qui s'y trouve l'emporte sur le design system
 **sans `!important`** et sans lutte de spécificité. Vous ciblez les composants via un **contrat
 public et stable de `data-*`** — jamais les noms de classes CSS-Module hachés, qui changent à chaque
@@ -29,7 +29,7 @@ Utilisez le niveau le moins puissant qui résout votre problème, dans cet ordre
 | # | Tier | What you change | Scope |
 |---|------|-----------------|-------|
 | 1 | **Semantic tokens** | `--color-*`, `--radius-*`, `--shadow-*`, … | Global reskin across every component, theme and skin |
-| 2 | **Component variables** | `--gamut-<name>-*` (e.g. `--gamut-button-bg`) | One component type, the props it marks overridable |
+| 2 | **Component variables** | `--omnia-<name>-*` (e.g. `--omnia-button-bg`) | One component type, the props it marks overridable |
 | 3 | **`data-*` contract + `@layer overrides`** | Any CSS property on a part you select by `[data-scope][data-part]` (or your own `className`) | Precise, targeted — including internal sub-parts |
 | 4 | **`style` prop (escape hatch)** | Inline styles on the root `<button>` | One instance, last resort |
 
@@ -44,18 +44,18 @@ component that reads it updates together, in both themes and both skins. This is
 
 ### 2. Component variables — one component, documented props
 
-Each component exposes a small, namespaced set of `--gamut-<name>-*` variables for the props it
+Each component exposes a small, namespaced set of `--omnia-<name>-*` variables for the props it
 considers overridable. Each reads **with a fallback** to the semantic token, so the token contract
 holds when you set nothing:
 
 ```css
-background: var(--gamut-button-bg, var(--color-accent));
+background: var(--omnia-button-bg, var(--color-accent));
 ```
 
 Set them on the element or any ancestor (custom properties inherit):
 
 ```css
-.cta { --gamut-button-radius: 999px; }
+.cta { --omnia-button-radius: 999px; }
 ```
 
 ### 3. The `data-*` contract — target a part, including a sub-part
@@ -90,7 +90,7 @@ reach sub-parts and does not scale. Prefer a tier above it whenever the override
 ## Guardrails
 
 - **Never target hashed CSS-Module class names** (`.button_a1b2c`). They are private and change every
-  build. Use tokens, `--gamut-*` variables, or the `data-*` contract.
+  build. Use tokens, `--omnia-*` variables, or the `data-*` contract.
 - **No `!important`.** `@layer overrides` already wins; reaching for `!important` means you are
   fighting the wrong layer or targeting the wrong selector.
 - **Do not break the DOM or ARIA structure.** Restyle parts; never rely on removing them, reordering
@@ -107,7 +107,7 @@ private class name:
 /* consumer stylesheet */
 @layer overrides {
   .cta {
-    --gamut-button-radius: 999px;
+    --omnia-button-radius: 999px;
   }
 
   .cta [data-scope='button'][data-part='spinner'] {
@@ -121,7 +121,7 @@ private class name:
 <Button className="cta" loading>Checkout</Button>
 ```
 
-The `.cta` class merges onto the button, so `--gamut-button-radius` is read by the button's own
+The `.cta` class merges onto the button, so `--omnia-button-radius` is read by the button's own
 `border-radius`, and `[data-part='spinner']` selects the internal spinner. Both rules sit in
 `@layer overrides` and win over `@layer components` with no `!important`. This is demonstrated in the
 Button `Overridden` story.
@@ -130,16 +130,16 @@ Button `Overridden` story.
 
 Every component documents its override contract in its `.mdx`, in this shape:
 
-- **Component variables** — the `--gamut-<name>-*` custom properties, each with its fallback token.
+- **Component variables** — the `--omnia-<name>-*` custom properties, each with its fallback token.
 - **`data-scope`** — the scope value carried by every part.
 - **`data-part`** — the parts you may target.
 - **State attributes** — the prop-reflecting hooks and when each is present.
 
 Example (Button):
 
-- **Variables**: `--gamut-button-bg`, `--gamut-button-fg`, `--gamut-button-radius`,
-  `--gamut-button-border-color`, `--gamut-button-shadow`, `--gamut-button-padding-x`,
-  `--gamut-button-padding-y`.
+- **Variables**: `--omnia-button-bg`, `--omnia-button-fg`, `--omnia-button-radius`,
+  `--omnia-button-border-color`, `--omnia-button-shadow`, `--omnia-button-padding-x`,
+  `--omnia-button-padding-y`.
 - **`data-scope`**: `button`.
 - **`data-part`**: `root` (wrapper), `button` (the control + consumer `className`), `spinner`, `label`.
 - **State attributes** (on `data-part="button"`): `data-intent`, `data-size`, `data-loading`

@@ -77,17 +77,17 @@ export const Loading: Story = { args: { loading: true } };
 export const Disabled: Story = { args: { disabled: true } };
 
 /**
- * Consumer override through the public contract: a `.gamut-demo-override` class in
- * `@layer overrides` re-points `--gamut-button-radius`/`--gamut-button-bg` and resizes the
+ * Consumer override through the public contract: a `.omnia-demo-override` class in
+ * `@layer overrides` re-points `--omnia-button-radius`/`--omnia-button-bg` and resizes the
  * `[data-part="spinner"]` sub-part — no `!important`, no hashed class names. See docs/overrides.md.
  */
 export const Overridden: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-      <Button {...args} className="gamut-demo-override">
+      <Button {...args} className="omnia-demo-override">
         Overridden
       </Button>
-      <Button {...args} className="gamut-demo-override" loading>
+      <Button {...args} className="omnia-demo-override" loading>
         Overridden
       </Button>
     </div>

@@ -6,7 +6,7 @@ Proposed
 
 ## Context
 
-The LDSR this project learns from ran two test toolchains, which doubled config and drifted. gamut
+The LDSR this project learns from ran two test toolchains, which doubled config and drifted. Omnia
 wants a full pyramid (unit + interaction + a11y) with one runner, and tests that live next to the
 stories they cover so they cannot rot separately.
 

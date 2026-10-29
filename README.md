@@ -1,7 +1,7 @@
-# gamut
+# Omnia
 
 A portfolio-grade design system built on **Storybook 10** and strict **Atomic Design**. The name is
-Latin *neuter* ("neither / neutral") — a neutral base that reskins cleanly.
+Latin *omnia* ("all things", the neuter plural of *omnis*) — one token contract spanning the whole gamut: light and dark, neutral and pixel.
 
 ## What
 

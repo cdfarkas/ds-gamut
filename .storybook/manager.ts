@@ -4,7 +4,7 @@ import { create } from 'storybook/theming';
 addons.setConfig({
   theme: create({
     base: 'light',
-    brandTitle: 'gamut',
+    brandTitle: 'Omnia',
     brandImage: '/brand/logo.svg',
     brandUrl: undefined,
   }),

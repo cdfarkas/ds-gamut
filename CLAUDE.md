@@ -1,6 +1,6 @@
-# CLAUDE.md — gamut entry contract
+# CLAUDE.md — Omnia entry contract
 
-You are building or extending **gamut**, a portfolio-grade design system. This file is the
+You are building or extending **Omnia**, a portfolio-grade design system. This file is the
 shared contract for every agent and subagent: you arrive with no other context, so read it before
 you touch anything, and treat the linked `docs/` files as the detail behind each rule here.
 

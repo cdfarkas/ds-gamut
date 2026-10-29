@@ -6,7 +6,7 @@ Proposed
 
 ## Context
 
-gamut styles its components in `@layer components` with CSS-Module class names, which the bundler
+Omnia styles its components in `@layer components` with CSS-Module class names, which the bundler
 hashes (`.button_a1b2c`). Those hashes are not stable across builds, so a consumer who targets them
 to restyle a component breaks on the next release. Yet consumers legitimately need to restyle both
 whole components and their internal sub-parts (e.g. the loading spinner), and today there is no
@@ -37,7 +37,7 @@ layers and per-component variables. Hashed CSS-Module class names stay private; 
 public selector contract. Consumers choose the least powerful tier that works:
 
 1. **Semantic tokens** (`--color-*`, …) for a global reskin.
-2. **Per-component variables** `--gamut-<name>-*`, each read with a fallback to its semantic token, so
+2. **Per-component variables** `--omnia-<name>-*`, each read with a fallback to its semantic token, so
    the token contract holds when unset.
 3. **A stable `data-*` contract** — `data-scope="<name>"` on every part, `data-part="…"` per part,
    and prop-reflecting state hooks (`data-intent`, `data-size`, `data-loading`, `data-disabled`) —
@@ -54,12 +54,12 @@ fixed by `docs/overrides.md`. Button is the reference implementation.
 
 - Consumers get a clear, documented escalation path and never need `!important` or hashed class names.
   Sub-parts become restylable because they are individually addressable by `data-part`.
-- Every future component carries the same obligation: expose a small `--gamut-<name>-*` set, render
+- Every future component carries the same obligation: expose a small `--omnia-<name>-*` set, render
   the `data-scope`/`data-part`/state contract, and document it. This is now part of "done".
-- The public surface a component must not break silently grows: the `--gamut-*` variable names and the
+- The public surface a component must not break silently grows: the `--omnia-*` variable names and the
   `data-*` values are a stable contract, like the semantic tokens — renaming them needs a superseding
   ADR.
-- Component variables read through a `var(--gamut-…, <token>)` fallback, a negligible CSS cost that
+- Component variables read through a `var(--omnia-…, <token>)` fallback, a negligible CSS cost that
   keeps the no-raw-colour token contract intact (the stylelint gate still passes).
 - The override variables cover the rest state; interaction-state colours (`:hover`/`:active`) still
   follow their semantic tokens. A consumer who re-points a rest colour and wants the matching hover
