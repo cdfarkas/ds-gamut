@@ -1,0 +1,212 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Localized } from './lib/Localized';
+import * as ButtonStories from './components/atoms/Button/Button.stories';
+import logoLight from './assets/brand/logo.svg?raw';
+import logoDark from './assets/brand/logo-dark.svg?raw';
+import './Introduction.css';
+
+<Meta title="Introduction" />
+
+export const primitives = [
+  { name: 'Cobalt', value: '#2419E8', token: '--palette-cobalt' },
+  { name: 'Cobalt bright', value: '#4B3BFF', token: '--palette-cobalt-bright' },
+  { name: 'Violet', value: '#7A3BFF', token: '--palette-violet' },
+  { name: 'Coral', value: '#FF3D7F', token: '--palette-coral' },
+  { name: 'Acid', value: '#D4FF2E', token: '--palette-lime' },
+  { name: 'Cyan', value: '#7FE0FF', token: '--palette-cyan' },
+  { name: 'Ink', value: '#140F1C', token: '--palette-ink' },
+  { name: 'Cream', value: '#FBF7EE', token: '--palette-cream' },
+];
+
+export const semantics = [
+  { name: 'Surface', token: '--color-bg-surface' },
+  { name: 'Text', token: '--color-text-primary' },
+  { name: 'Accent', token: '--color-accent' },
+  { name: 'Danger', token: '--color-danger' },
+  { name: 'Border', token: '--color-border-strong' },
+  { name: 'Focus', token: '--color-border-focus' },
+];
+
+export const Swatch = ({ name, value, token }) => (
+  <li className="gamut-swatch">
+    <div className="gamut-swatch-chip" style={{ background: `var(${token})` }} />
+    <div className="gamut-swatch-meta">
+      <div className="gamut-swatch-name">{name}</div>
+      <div className="gamut-swatch-value">{value ?? token}</div>
+    </div>
+  </li>
+);
+
+<div className="gamut-hero">
+  <span dangerouslySetInnerHTML={{ __html: logoLight }} />
+  <Localized
+    en={
+      <p className="gamut-tagline">
+        The whole gamut of colour — flat, clashing, high-contrast.
+      </p>
+    }
+    fr={
+      <p className="gamut-tagline">
+        Tout le gamut des couleurs — à plat, contrasté, sans compromis.
+      </p>
+    }
+  />
+</div>
+
+<div className="gamut-logo-frames">
+  <div
+    className="gamut-logo-frame gamut-logo-frame-light"
+    dangerouslySetInnerHTML={{ __html: logoLight }}
+  />
+  <div
+    className="gamut-logo-frame gamut-logo-frame-dark"
+    dangerouslySetInnerHTML={{ __html: logoDark }}
+  />
+</div>
+
+<Localized
+  en={
+    <p>
+      <strong>gamut</strong> is a portfolio-grade design system built on two independent
+      axes — a light/dark theme and a neutral/pixel skin — driven entirely by a two-tier
+      token contract. Components consume semantic <code>var(--…)</code> tokens only, so
+      they reskin across every mode without touching their own CSS.
+    </p>
+  }
+  fr={
+    <p>
+      <strong>gamut</strong> est un design system de niveau portfolio, bâti sur deux axes
+      indépendants — un thème clair/sombre et un habillage neutre/pixel — pilotés par un
+      contrat de jetons à deux niveaux. Les composants ne consomment que des jetons
+      sémantiques <code>var(--…)</code> : ils changent d'apparence dans chaque mode sans
+      modifier leur propre CSS.
+    </p>
+  }
+/>
+
+## <Localized en="Colour palette" fr="Palette de couleurs" />
+
+<Localized
+  en={
+    <p>
+      The primitive palette holds the raw brand colours; the semantic layer aliases them
+      per theme and skin. The swatches below read live from{' '}
+      <code>src/styles/tokens.css</code> — the semantic ones recolour as you switch the
+      theme toolbar.
+    </p>
+  }
+  fr={
+    <p>
+      La palette primitive contient les couleurs brutes de la marque ; la couche
+      sémantique les redéfinit selon le thème et l'habillage. Les échantillons ci-dessous
+      sont lus en direct depuis <code>src/styles/tokens.css</code> — les sémantiques se
+      recolorent quand vous changez de thème dans la barre d'outils.
+    </p>
+  }
+/>
+
+### <Localized en="Brand primitives" fr="Primitives de marque" />
+
+<ul className="gamut-swatches">
+  {primitives.map((c) => (
+    <Swatch key={c.token} {...c} />
+  ))}
+</ul>
+
+### <Localized en="Semantic tokens" fr="Jetons sémantiques" />
+
+<ul className="gamut-swatches">
+  {semantics.map((c) => (
+    <Swatch key={c.token} {...c} />
+  ))}
+</ul>
+
+## <Localized en="Typography" fr="Typographie" />
+
+<Localized
+  en={
+    <p>
+      <strong>Fraunces</strong> carries display headings; <strong>Space Grotesk</strong>{' '}
+      carries body text, labels, and the wordmark. Both ship as variable fonts.
+    </p>
+  }
+  fr={
+    <p>
+      <strong>Fraunces</strong> porte les titres d'affichage ;{' '}
+      <strong>Space Grotesk</strong> porte le corps de texte, les libellés et le logotype.
+      Les deux sont des polices variables.
+    </p>
+  }
+/>
+
+<div className="gamut-type-specimen">
+  <span className="gamut-type-label">Fraunces — Display</span>
+  <p className="gamut-type-display">Chromaticity</p>
+</div>
+
+<div className="gamut-type-specimen">
+  <span className="gamut-type-label">Space Grotesk — Sans</span>
+  <p className="gamut-type-sans">
+    The quick brown fox jumps over the lazy dog — 0123456789
+  </p>
+</div>
+
+## <Localized en="Button" fr="Bouton" />
+
+<Localized
+  en={
+    <p>
+      The <strong>Button</strong> atom reskins across the full matrix — light/dark theme ×
+      neutral/pixel skin — from the same markup. Switch the Theme and Skin toolbars to see
+      it.
+    </p>
+  }
+  fr={
+    <p>
+      Le composant <strong>Button</strong> se réhabille sur toute la matrice — thème
+      clair/sombre × habillage neutre/pixel — à partir du même balisage. Changez les
+      barres Theme et Skin pour le constater.
+    </p>
+  }
+/>
+
+<Canvas of={ButtonStories.Primary} />
+
+<Canvas of={ButtonStories.Sizes} />
+
+## <Localized en="Further reading" fr="Pour aller plus loin" />
+
+<Localized
+  en={
+    <ul>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/overrides.md">
+          Override API
+        </a>{' '}
+        — restyle components through the public contract (<code>docs/overrides.md</code>).
+      </li>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/testing.md">
+          Testing contract
+        </a>{' '}
+        — the single-runner, two-layer test pyramid (<code>docs/testing.md</code>).
+      </li>
+    </ul>
+  }
+  fr={
+    <ul>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/overrides.md">
+          API de personnalisation
+        </a>{' '}
+        — restylez les composants via le contrat public (<code>docs/overrides.md</code>).
+      </li>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/testing.md">
+          Contrat de test
+        </a>{' '}
+        — la pyramide de tests à un runner et deux couches (<code>docs/testing.md</code>).
+      </li>
+    </ul>
+  }
+/>

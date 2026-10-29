@@ -29,6 +29,9 @@ const withLocale: Decorator = (Story, context) => {
 const preview: Preview = {
   parameters: {
     layout: 'centered',
+    options: {
+      storySort: { order: ['Introduction', 'Atoms', '*'] },
+    },
     a11y: {
       test: 'error',
       options: {
