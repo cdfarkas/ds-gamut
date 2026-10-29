@@ -33,7 +33,7 @@ Modes are driven through the Storybook iframe globals query parameter, e.g.
 
 - Colours are correct for the theme (not the wrong theme's palette).
 - The pixel skin actually looks pixel: hard edges, zero border-radius, the pixel/mono
-  font, stepped hard shadow, notched corners.
+  font, hard offset shadow, notched corners.
 - Dark mode is legible.
 - Text contrast reads as AA (the automated a11y gate is the hard proof; this is the
   eyes-on cross-check).

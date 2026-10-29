@@ -37,6 +37,14 @@ describe('Button edge cases', () => {
     expect(button?.textContent).toContain('Loading');
   });
 
+  test('loading spinner has a running spin animation', async () => {
+    await mount(<Loading />);
+    const spinner = container.querySelector('[aria-hidden="true"]');
+    const anim = spinner ? getComputedStyle(spinner).animationName : 'none';
+    expect(anim).not.toBe('none');
+    expect(anim).not.toBe('');
+  });
+
   test('disabled button does not fire onClick', async () => {
     const onClick = fn();
     await mount(<Disabled onClick={onClick} />);

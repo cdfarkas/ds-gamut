@@ -103,7 +103,7 @@
     --dur-press: 110ms;
     --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --press-offset: 4px;
-    --shadow-raised-hover: 6px 6px 0 var(--color-border-strong);
+    --shadow-raised-hover: 7px 7px 0 var(--color-border-strong);
     --shadow-pressed: 0 0 0 var(--color-border-strong);
   }
 

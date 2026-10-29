@@ -12,8 +12,12 @@
       transform var(--dur-fast) var(--ease-out),
       box-shadow var(--dur-fast) var(--ease-out),
       background-color var(--dur-fast) var(--ease-out),
-      border-color var(--dur-fast) var(--ease-out),
-      filter var(--dur-fast) var(--ease-out);
+      border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .frame {
+    display: inline-flex;
+    position: relative;
   }
 
   .button:focus-visible {
@@ -56,13 +60,13 @@
 
   /* Interaction choreography — rest/hover/press. See docs/adr/0009. */
   .primary:hover:not(:disabled) {
-    transform: translate(-1px, -1px);
+    transform: translate(-3px, -3px);
     background-color: var(--color-accent-hover);
     box-shadow: var(--shadow-raised-hover);
   }
 
   .danger:hover:not(:disabled) {
-    transform: translate(-1px, -1px);
+    transform: translate(-3px, -3px);
     background-color: var(--color-danger-hover);
     box-shadow: var(--shadow-raised-hover);
   }
@@ -96,18 +100,15 @@
     color: var(--color-text-muted);
   }
 
+  /* Loading is essential feedback, so the spinner keeps turning even under
+     reduced motion; the reduced-motion block below only drops lift/press. */
   .spinner {
     width: 1em;
     height: 1em;
     border: 2px solid currentcolor;
     border-top-color: transparent;
     border-radius: 50%;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .spinner {
-      animation: ds-button-spin 0.6s linear infinite;
-    }
+    animation: ds-button-spin 0.6s linear infinite;
   }
 
   @keyframes ds-button-spin {
@@ -128,7 +129,7 @@
     border: 0;
   }
 
-  /* Pixel skin: sharp corners, notched silhouette, hard stepped shadow. */
+  /* Pixel skin: sharp corners, notched silhouette. */
   :global([data-skin='pixel']) .button {
     border-radius: 0;
     box-shadow: none;
@@ -144,25 +145,26 @@
     );
   }
 
-  :global([data-skin='pixel']) .button.primary,
-  :global([data-skin='pixel']) .button.danger {
-    filter: drop-shadow(2px 2px 0 var(--color-border-strong))
-      drop-shadow(4px 4px 0 var(--color-border-strong));
-  }
-
-  /* Pixel hover: the stepped shadow grows chunkier. */
-  :global([data-skin='pixel']) .button.primary:hover:not(:disabled),
-  :global([data-skin='pixel']) .button.danger:hover:not(:disabled) {
-    box-shadow: none;
-    filter: drop-shadow(3px 3px 0 var(--color-border-strong))
-      drop-shadow(6px 6px 0 var(--color-border-strong));
-  }
-
-  /* Pixel press: the stepped shadow collapses flat onto the page. */
-  :global([data-skin='pixel']) .button.primary:active:not(:disabled),
-  :global([data-skin='pixel']) .button.danger:active:not(:disabled) {
-    box-shadow: none;
-    filter: none;
+  /* The notch clip-path clips any shadow on the button itself, so the offset
+     shadow lives on the non-clipped frame behind it (see docs/adr/0009). */
+  :global([data-skin='pixel']) .frame:has(> .primary:not(:disabled))::before,
+  :global([data-skin='pixel']) .frame:has(> .danger:not(:disabled))::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--color-border-strong);
+    transform: translate(4px, 4px);
+    clip-path: polygon(
+      4px 0,
+      calc(100% - 4px) 0,
+      100% 4px,
+      100% calc(100% - 4px),
+      calc(100% - 4px) 100%,
+      4px 100%,
+      0 calc(100% - 4px),
+      0 4px
+    );
   }
 
   /* clip-path clips an outer outline; inset a thick ring with a fill-coloured

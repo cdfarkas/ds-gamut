@@ -40,20 +40,22 @@ export function Button({
     .join(' ');
 
   return (
-    <button
-      type={type}
-      className={classes}
-      disabled={disabled || loading}
-      aria-busy={loading || undefined}
-      {...rest}
-    >
-      {loading ? (
-        <>
-          <span className={styles.spinner} aria-hidden="true" />
-          <span className={styles.srOnly}>{t('button.loading')}</span>
-        </>
-      ) : null}
-      <span>{children}</span>
-    </button>
+    <span className={styles.frame}>
+      <button
+        type={type}
+        className={classes}
+        disabled={disabled || loading}
+        aria-busy={loading || undefined}
+        {...rest}
+      >
+        {loading ? (
+          <>
+            <span className={styles.spinner} aria-hidden="true" />
+            <span className={styles.srOnly}>{t('button.loading')}</span>
+          </>
+        ) : null}
+        <span>{children}</span>
+      </button>
+    </span>
   );
 }

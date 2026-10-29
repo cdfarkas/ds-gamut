@@ -94,7 +94,7 @@ not in `tokens.css`:
 
 - the pixel `@font-face` declaration,
 - `image-rendering: pixelated` on relevant surfaces,
-- stepped multi-shadow stacks (faked hard pixel shadows),
+- the pixel skin's notched offset shadow geometry (a non-clipped frame `::before`, offset in raw px),
 - notched / stepped borders.
 
 This is a **documented, deliberate** carve-out: these are structural style rules, not design tokens,
@@ -104,18 +104,22 @@ so forcing them through the token layer would distort it. Colour still comes fro
 
 The offset shadow is a physical affordance, so it responds to interaction — this is the house
 standard, defined once on Button and reused by every future interactive atom (ADR 0009). Rest shows
-the flat `--shadow-raised`; hover lifts the control `translate(-1px, -1px)` and grows the shadow to
-`--shadow-raised-hover`; the signature press collapses it onto the page — `translate(--press-offset)`
-(equal to the rest offset) with the shadow flattened to `--shadow-pressed`. The pixel skin harmonises
-with its stepped `drop-shadow` stack growing and collapsing the same way.
+the flat `--shadow-raised` (`4px`, the ground reference); hover lifts the control
+`translate(-3px, -3px)` and grows the shadow to `--shadow-raised-hover` (`7px`); the signature press
+slams flat — `translate(--press-offset)` (`4px`) drops the control onto its shadow while the shadow
+collapses to `--shadow-pressed` (`0`).
+Elevation is shadow thickness (7 > 4 > 0) with the ground fixed: `translate + shadow offset` stays `4`
+in every state. The pixel skin gets the same model through a non-clipped `.frame` wrapper whose
+`::before` carries the offset shadow, because the button's notch `clip-path` would clip a shadow drawn
+on the button itself.
 
 Motion is tokenised and asymmetric: hover and release settle over `--dur-fast` (200ms) with
 `--ease-out` (easeOutCubic), press-in is quicker at `--dur-press` (110ms). It transitions only
-`transform` / `box-shadow` / `background-color` / `border-color` (and `filter` for the pixel skin),
-so neighbours never reflow. All motion is wrapped in
-`@media (prefers-reduced-motion: reduce)`, which disables transitions and transforms while keeping the
-colour and shadow state cues, so states stay distinguishable without movement. Every state holds WCAG
-2.1 AA (ADR 0006).
+`transform` / `box-shadow` / `background-color` / `border-color`, so neighbours never reflow. Interaction
+motion is wrapped in `@media (prefers-reduced-motion: reduce)`, which disables transitions and transforms
+while keeping the colour and shadow state cues, so states stay distinguishable without movement; the
+loading spinner is exempt and keeps turning, since it is essential progress feedback. Every state holds
+WCAG 2.1 AA (ADR 0006).
 
 ## CSS Modules + `@layer`
 
