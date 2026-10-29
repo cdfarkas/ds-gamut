@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Localized } from '../lib/Localized';
+import { ThemeSync } from '../lib/DocsTheme';
+import '../Introduction.css';
+
+<Meta title="Foundations/Colors" />
+
+<ThemeSync />
+
+export const primitives = [
+  { name: 'Cobalt', value: '#2419E8', token: '--palette-cobalt' },
+  { name: 'Cobalt bright', value: '#4B3BFF', token: '--palette-cobalt-bright' },
+  { name: 'Violet', value: '#7A3BFF', token: '--palette-violet' },
+  { name: 'Coral', value: '#FF3D7F', token: '--palette-coral' },
+  { name: 'Acid', value: '#D4FF2E', token: '--palette-lime' },
+  { name: 'Cyan', value: '#7FE0FF', token: '--palette-cyan' },
+  { name: 'Ink', value: '#140F1C', token: '--palette-ink' },
+  { name: 'Cream', value: '#FBF7EE', token: '--palette-cream' },
+];
+
+export const semantics = [
+  { name: 'Surface', token: '--color-bg-surface' },
+  { name: 'Text', token: '--color-text-primary' },
+  { name: 'Accent', token: '--color-accent' },
+  { name: 'Danger', token: '--color-danger' },
+  { name: 'Border', token: '--color-border-strong' },
+  { name: 'Focus', token: '--color-border-focus' },
+];
+
+export const Swatch = ({ name, value, token }) => (
+  <li className="gamut-swatch">
+    <div className="gamut-swatch-chip" style={{ background: `var(${token})` }} />
+    <div className="gamut-swatch-meta">
+      <div className="gamut-swatch-name">{name}</div>
+      <div className="gamut-swatch-value">{value ?? token}</div>
+    </div>
+  </li>
+);
+
+# <Localized en="Colors" fr="Couleurs" />
+
+<Localized
+  en={
+    <p>
+      The palette is two tiers. The primitive <code>--palette-*</code> layer holds the raw
+      brand colours and never changes; the semantic <code>--color-*</code> layer aliases
+      them per theme and skin. Components only ever read the semantic layer. The swatches
+      below are read live from <code>src/styles/tokens.css</code>.
+    </p>
+  }
+  fr={
+    <p>
+      La palette a deux niveaux. La couche primitive <code>--palette-*</code> contient les
+      couleurs brutes de la marque et ne change jamais ; la couche sémantique{' '}
+      <code>--color-*</code> les redéfinit selon le thème et l'habillage. Les composants
+      ne lisent que la couche sémantique. Les échantillons ci-dessous sont lus en direct
+      depuis <code>src/styles/tokens.css</code>.
+    </p>
+  }
+/>
+
+## <Localized en="Brand primitives" fr="Primitives de marque" />
+
+<Localized
+  en={
+    <p>
+      Fixed raw values — the printed hex is the colour. These do not react to the theme or
+      skin toolbars.
+    </p>
+  }
+  fr={
+    <p>
+      Valeurs brutes figées — le code hexadécimal affiché est la couleur. Elles ne
+      réagissent pas aux barres de thème ou d'habillage.
+    </p>
+  }
+/>
+
+<ul className="gamut-swatches">
+  {primitives.map((c) => (
+    <Swatch key={c.token} {...c} />
+  ))}
+</ul>
+
+## <Localized en="Semantic tokens" fr="Jetons sémantiques" />
+
+<Localized
+  en={
+    <p>
+      These recolour live: switch the <strong>Theme</strong> toolbar from light to dark
+      and the surface, text, accent, and border swatches below all shift — cobalt
+      brightens, cream and ink swap roles — because only this layer is reassigned per
+      mode.
+    </p>
+  }
+  fr={
+    <p>
+      Ceux-ci se recolorent en direct : basculez la barre <strong>Theme</strong> de clair
+      à sombre et les échantillons de surface, texte, accent et bordure ci-dessous
+      changent tous — le cobalt s'éclaircit, le crème et l'encre échangent leurs rôles —
+      car seule cette couche est réassignée par mode.
+    </p>
+  }
+/>
+
+<ul className="gamut-swatches">
+  {semantics.map((c) => (
+    <Swatch key={c.token} {...c} />
+  ))}
+</ul>

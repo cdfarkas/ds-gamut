@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -6 108 108" role="img" aria-label="gamut">
+  <polygon points="48,16 15,76 81,76" fill="#fbf7ee" stroke="#140f1c" stroke-width="4.5" stroke-linejoin="round" />
+  <circle cx="48" cy="16" r="9" fill="#2419e8" stroke="#140f1c" stroke-width="2" />
+  <circle cx="15" cy="76" r="9" fill="#d4ff2e" stroke="#140f1c" stroke-width="2" />
+  <circle cx="81" cy="76" r="9" fill="#ff3d7f" stroke="#140f1c" stroke-width="2" />
+</svg>

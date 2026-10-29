@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 112" role="img" aria-label="gamut">
+  <defs>
+    <clipPath id="ld-horse">
+      <path d="M20,76 C9,47 24,15 45,11 C68,7 92,38 92,63 L20,76 Z" />
+    </clipPath>
+  </defs>
+  <g transform="translate(6,10)">
+    <path d="M20,76 C9,47 24,15 45,11 C68,7 92,38 92,63 L20,76 Z" transform="translate(4,5)" fill="#fbf7ee" />
+    <g clip-path="url(#ld-horse)">
+      <rect x="20" y="0" width="14.4" height="100" fill="#d4ff2e" />
+      <rect x="34.4" y="0" width="14.4" height="100" fill="#22d3ee" />
+      <rect x="48.8" y="0" width="14.4" height="100" fill="#4b3bff" />
+      <rect x="63.2" y="0" width="14.4" height="100" fill="#7a3bff" />
+      <rect x="77.6" y="0" width="15" height="100" fill="#ff3d7f" />
+    </g>
+    <path d="M20,76 C9,47 24,15 45,11 C68,7 92,38 92,63 L20,76 Z" fill="none" stroke="#fbf7ee" stroke-width="4" stroke-linejoin="round" />
+    <polygon points="47,27 35,63 73,56" fill="none" stroke="#fbf7ee" stroke-width="3" stroke-linejoin="round" />
+    <circle cx="47" cy="27" r="4.5" fill="#d4ff2e" stroke="#fbf7ee" stroke-width="1.5" />
+    <circle cx="35" cy="63" r="4.5" fill="#4b3bff" stroke="#fbf7ee" stroke-width="1.5" />
+    <circle cx="73" cy="56" r="4.5" fill="#ff3d7f" stroke="#fbf7ee" stroke-width="1.5" />
+  </g>
+  <text x="122" y="76" font-family="'Space Grotesk Variable','Space Grotesk',system-ui,sans-serif" font-size="60" font-weight="700" letter-spacing="-1.5" fill="#fbf7ee">gamut</text>
+</svg>

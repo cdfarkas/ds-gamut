@@ -1,0 +1,146 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Localized } from './lib/Localized';
+import logoLight from './assets/brand/logo.svg?raw';
+import './Introduction.css';
+
+<Meta title="Introduction" />
+
+<div className="gamut-hero">
+  <span dangerouslySetInnerHTML={{ __html: logoLight }} />
+  <Localized
+    en={
+      <p className="gamut-tagline">
+        The whole gamut of colour — flat, clashing, high-contrast.
+      </p>
+    }
+    fr={
+      <p className="gamut-tagline">
+        Tout le gamut des couleurs — à plat, contrasté, sans compromis.
+      </p>
+    }
+  />
+</div>
+
+<Localized
+  en={
+    <p>
+      <strong>gamut</strong> is a portfolio-grade design system built on two independent
+      axes — a light/dark theme and a neutral/pixel skin — driven entirely by a two-tier
+      token contract. Components consume semantic <code>var(--…)</code> tokens only, so
+      they reskin across every mode without touching their own CSS.
+    </p>
+  }
+  fr={
+    <p>
+      <strong>gamut</strong> est un design system de niveau portfolio, bâti sur deux axes
+      indépendants — un thème clair/sombre et un habillage neutre/pixel — pilotés par un
+      contrat de jetons à deux niveaux. Les composants ne consomment que des jetons
+      sémantiques <code>var(--…)</code> : ils changent d'apparence dans chaque mode sans
+      modifier leur propre CSS.
+    </p>
+  }
+/>
+
+<Localized
+  en={
+    <p>
+      The look is deliberately maximalist — warm cream paper, near-black ink, and clashing
+      electric accents — because a design system should prove it can hold a loud identity,
+      not only a safe one. The sections below break the brand into its foundations.
+    </p>
+  }
+  fr={
+    <p>
+      Le style est délibérément maximaliste — papier crème chaud, encre presque noire et
+      accents électriques qui claquent — car un design system doit prouver qu'il tient une
+      identité forte, pas seulement une identité prudente. Les sections ci-dessous
+      détaillent chaque fondation de la marque.
+    </p>
+  }
+/>
+
+## <Localized en="Foundations" fr="Fondations" />
+
+<ul className="gamut-nav">
+  <li>
+    <a href="?path=/docs/foundations-logo--docs">
+      <strong>
+        <Localized en="Logo" fr="Logo" />
+      </strong>
+      <Localized
+        en="The full wordmark and the standalone icon, what they encode, and how to use them."
+        fr="Le logotype complet et l'icône seule, ce qu'ils encodent et comment les utiliser."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-colors--docs">
+      <strong>
+        <Localized en="Colors" fr="Couleurs" />
+      </strong>
+      <Localized
+        en="Primitive brand palette and the semantic tokens that recolour per theme and skin."
+        fr="Palette primitive de marque et jetons sémantiques qui se recolorent selon le thème et l'habillage."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-typography--docs">
+      <strong>
+        <Localized en="Typography" fr="Typographie" />
+      </strong>
+      <Localized
+        en="Fraunces for display, Space Grotesk for body — specimens and the type scale."
+        fr="Fraunces pour l'affichage, Space Grotesk pour le corps — spécimens et échelle typographique."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-favicon-app-icons--docs">
+      <strong>
+        <Localized en="Favicon & app icons" fr="Favicon et icônes d'app" />
+      </strong>
+      <Localized
+        en="The favicon and home-screen icons, shown at real size, with downloads."
+        fr="Le favicon et les icônes d'écran d'accueil, à taille réelle, avec les téléchargements."
+      />
+    </a>
+  </li>
+</ul>
+
+## <Localized en="Further reading" fr="Pour aller plus loin" />
+
+<Localized
+  en={
+    <ul>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/overrides.md">
+          Override API
+        </a>{' '}
+        — restyle components through the public contract (<code>docs/overrides.md</code>).
+      </li>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/testing.md">
+          Testing contract
+        </a>{' '}
+        — the single-runner, two-layer test pyramid (<code>docs/testing.md</code>).
+      </li>
+    </ul>
+  }
+  fr={
+    <ul>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/overrides.md">
+          API de personnalisation
+        </a>{' '}
+        — restylez les composants via le contrat public (<code>docs/overrides.md</code>).
+      </li>
+      <li>
+        <a href="https://github.com/cdfarkas/ds-gamut/blob/main/docs/testing.md">
+          Contrat de test
+        </a>{' '}
+        — la pyramide de tests à un runner et deux couches (<code>docs/testing.md</code>).
+      </li>
+    </ul>
+  }
+/>

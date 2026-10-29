@@ -1,0 +1,171 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Localized } from '../lib/Localized';
+import logoLight from '../assets/brand/logo.svg?raw';
+import logoDark from '../assets/brand/logo-dark.svg?raw';
+import iconLight from '../assets/brand/icon.svg?raw';
+import iconDark from '../assets/brand/icon-dark.svg?raw';
+import '../Introduction.css';
+
+<Meta title="Foundations/Logo" />
+
+# <Localized en="Logo" fr="Logo" />
+
+<Localized
+  en={
+    <p>
+      The <strong>gamut</strong> logo pairs a full wordmark with a standalone icon. Both
+      encode the same idea: the CIE chromaticity horseshoe — the boundary of every colour
+      the eye can see — with a <em>gamut</em> triangle inside it and a vertex at each of
+      the three additive primaries. The horseshoe is filled with the brand spectrum so the
+      mark literally shows its own range.
+    </p>
+  }
+  fr={
+    <p>
+      Le logo <strong>gamut</strong> associe un logotype complet et une icône autonome.
+      Les deux encodent la même idée : le fer à cheval de chromaticité CIE — la frontière
+      de toutes les couleurs visibles par l'œil — avec, à l'intérieur, le triangle de{' '}
+      <em>gamut</em> et un sommet sur chacune des trois primaires additives. Le fer à
+      cheval est rempli du spectre de la marque : le symbole montre littéralement sa
+      propre étendue.
+    </p>
+  }
+/>
+
+## <Localized en="Full logo" fr="Logo complet" />
+
+<Localized
+  en={
+    <p>
+      The primary lockup. Use <code>logo.svg</code> on light surfaces and{' '}
+      <code>logo-dark.svg</code> on dark ones — the wordmark and outline flip from ink to
+      cream, the spectrum inside the horseshoe stays constant.
+    </p>
+  }
+  fr={
+    <p>
+      Le verrouillage principal. Utilisez <code>logo.svg</code> sur fond clair et{' '}
+      <code>logo-dark.svg</code> sur fond sombre — le logotype et le contour passent de
+      l'encre au crème, le spectre dans le fer à cheval reste constant.
+    </p>
+  }
+/>
+
+<div className="gamut-logo-frames">
+  <div
+    className="gamut-logo-frame gamut-logo-frame-light"
+    dangerouslySetInnerHTML={{ __html: logoLight }}
+  />
+  <div
+    className="gamut-logo-frame gamut-logo-frame-dark"
+    dangerouslySetInnerHTML={{ __html: logoDark }}
+  />
+</div>
+
+## <Localized en="Icon" fr="Icône" />
+
+<Localized
+  en={
+    <p>
+      When space is tight — a favicon, an avatar, an app tile — the icon drops the
+      wordmark and keeps the triangle with its three primary vertices: acid lime, cobalt,
+      and coral. <code>icon.svg</code> is for light contexts, <code>icon-dark.svg</code>{' '}
+      for dark.
+    </p>
+  }
+  fr={
+    <p>
+      Quand la place manque — favicon, avatar, tuile d'application — l'icône abandonne le
+      logotype et garde le triangle et ses trois sommets primaires : vert acide, cobalt et
+      corail. <code>icon.svg</code> pour les contextes clairs, <code>icon-dark.svg</code>{' '}
+      pour les sombres.
+    </p>
+  }
+/>
+
+<div className="gamut-logo-frames">
+  <div
+    className="gamut-logo-frame gamut-logo-frame-light gamut-icon-frame"
+    dangerouslySetInnerHTML={{ __html: iconLight }}
+  />
+  <div
+    className="gamut-logo-frame gamut-logo-frame-dark gamut-icon-frame"
+    dangerouslySetInnerHTML={{ __html: iconDark }}
+  />
+</div>
+
+## <Localized en="Clear space" fr="Zone de protection" />
+
+<Localized
+  en={
+    <p>
+      Keep a margin of at least the icon's triangle height clear on every side of the
+      mark. Nothing — text, rules, or other logos — enters that zone.
+    </p>
+  }
+  fr={
+    <p>
+      Gardez une marge d'au moins la hauteur du triangle de l'icône libre sur chaque côté
+      du symbole. Rien — texte, filets ou autres logos — n'entre dans cette zone.
+    </p>
+  }
+/>
+
+<div className="gamut-logo-frame gamut-logo-frame-light gamut-clearspace">
+  <span dangerouslySetInnerHTML={{ __html: logoLight }} />
+</div>
+
+## <Localized en="Usage" fr="Usage" />
+
+<div className="gamut-usage">
+  <div className="gamut-usage-item gamut-usage-do">
+    <span className="gamut-usage-tag">
+      <Localized en="Do" fr="À faire" />
+    </span>
+    <ul>
+      <li>
+        <Localized
+          en="Pick the light or dark variant to match the surface it sits on."
+          fr="Choisir la variante claire ou sombre selon le fond qui la porte."
+        />
+      </li>
+      <li>
+        <Localized
+          en="Scale the whole SVG uniformly so the horseshoe and wordmark keep their proportion."
+          fr="Mettre à l'échelle tout le SVG de façon uniforme pour garder la proportion du fer à cheval et du logotype."
+        />
+      </li>
+      <li>
+        <Localized
+          en="Drop to the icon alone below roughly 120px of width."
+          fr="Passer à l'icône seule en dessous d'environ 120px de largeur."
+        />
+      </li>
+    </ul>
+  </div>
+  <div className="gamut-usage-item gamut-usage-dont">
+    <span className="gamut-usage-tag">
+      <Localized en="Don't" fr="À éviter" />
+    </span>
+    <ul>
+      <li>
+        <Localized
+          en="Recolour the spectrum or the primary vertices — they are the brand."
+          fr="Recolorer le spectre ou les sommets primaires — ils sont la marque."
+        />
+      </li>
+      <li>
+        <Localized
+          en="Stretch, rotate, or add effects such as shadows or gradients."
+          fr="Étirer, pivoter ou ajouter des effets comme des ombres ou des dégradés."
+        />
+      </li>
+      <li>
+        <Localized
+          en="Place the light logo on a dark surface, or the reverse."
+          fr="Placer le logo clair sur un fond sombre, ou l'inverse."
+        />
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Localized } from '../lib/Localized';
+import '../Introduction.css';
+
+<Meta title="Foundations/Typography" />
+
+# <Localized en="Typography" fr="Typographie" />
+
+<Localized
+  en={
+    <p>
+      Two variable typefaces carry the whole system. <strong>Fraunces</strong> — a
+      high-contrast display serif — sets headings and expressive moments.{' '}
+      <strong>Space Grotesk</strong> sets body text, labels, and the wordmark. Both ship
+      as variable fonts via <code>@fontsource-variable</code>, so weight is fluid without
+      extra network requests.
+    </p>
+  }
+  fr={
+    <p>
+      Deux polices variables portent tout le système. <strong>Fraunces</strong> — une
+      serif d'affichage à fort contraste — compose les titres et les moments expressifs.{' '}
+      <strong>Space Grotesk</strong> compose le corps de texte, les libellés et le
+      logotype. Les deux sont livrées en polices variables via{' '}
+      <code>@fontsource-variable</code> : le poids est fluide sans requête réseau
+      supplémentaire.
+    </p>
+  }
+/>
+
+## <Localized en="Display — Fraunces" fr="Affichage — Fraunces" />
+
+<div className="gamut-type-specimen">
+  <span className="gamut-type-label">Fraunces — Display</span>
+  <p className="gamut-type-display">Chromaticity</p>
+</div>
+
+## <Localized en="Body — Space Grotesk" fr="Corps — Space Grotesk" />
+
+<div className="gamut-type-specimen">
+  <span className="gamut-type-label">Space Grotesk — Sans</span>
+  <p className="gamut-type-sans">
+    The quick brown fox jumps over the lazy dog — 0123456789
+  </p>
+</div>
+
+## <Localized en="Type scale" fr="Échelle typographique" />
+
+<Localized
+  en={
+    <p>
+      Display sizes are set in Fraunces, text sizes in Space Grotesk. The steps below are
+      the ones the catalogue uses in its docs prose and specimens.
+    </p>
+  }
+  fr={
+    <p>
+      Les tailles d'affichage sont en Fraunces, les tailles de texte en Space Grotesk. Les
+      paliers ci-dessous sont ceux qu'utilise le catalogue dans sa prose et ses spécimens.
+    </p>
+  }
+/>
+
+<ul className="gamut-scale">
+  <li className="gamut-scale-row">
+    <span className="gamut-scale-meta">Display · 3rem</span>
+    <span className="gamut-scale-display gamut-scale-xl">gamut</span>
+  </li>
+  <li className="gamut-scale-row">
+    <span className="gamut-scale-meta">Display · 1.5rem</span>
+    <span className="gamut-scale-display gamut-scale-lg">gamut</span>
+  </li>
+  <li className="gamut-scale-row">
+    <span className="gamut-scale-meta">Sans · 1.125rem</span>
+    <span className="gamut-scale-sans gamut-scale-md">The whole gamut of colour</span>
+  </li>
+  <li className="gamut-scale-row">
+    <span className="gamut-scale-meta">Sans · 1rem</span>
+    <span className="gamut-scale-sans gamut-scale-base">The whole gamut of colour</span>
+  </li>
+  <li className="gamut-scale-row">
+    <span className="gamut-scale-meta">Sans · 0.8rem</span>
+    <span className="gamut-scale-sans gamut-scale-sm">The whole gamut of colour</span>
+  </li>
+</ul>
