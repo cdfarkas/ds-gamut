@@ -111,11 +111,50 @@ async function shoot(id, name, mode, locale, suffix, focus = false) {
   });
 }
 
+async function shootInteraction(id, name, mode) {
+  const applied = await open(id, mode.theme, mode.skin, 'en');
+  await page.evaluate(() => document.activeElement?.blur());
+  const btn = page.locator('#storybook-root button').first();
+  await btn.hover();
+  await page.waitForTimeout(250);
+  const hoverFile = `${name}__hover-${mode.key}.png`;
+  await page.screenshot({ path: join(outDir, hoverFile) });
+  manifest.push({
+    story: name,
+    storyId: id,
+    mode: mode.key,
+    state: 'hover',
+    appliedTheme: applied.theme,
+    appliedSkin: applied.skin,
+    file: hoverFile,
+  });
+
+  const box = await btn.boundingBox();
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await page.waitForTimeout(250);
+  const pressFile = `${name}__press-${mode.key}.png`;
+  await page.screenshot({ path: join(outDir, pressFile) });
+  await page.mouse.up();
+  manifest.push({
+    story: name,
+    storyId: id,
+    mode: mode.key,
+    state: 'press',
+    appliedTheme: applied.theme,
+    appliedSkin: applied.skin,
+    file: pressFile,
+  });
+}
+
 for (const s of stories) {
   for (const m of modes) {
     await shoot(s.id, s.name, m, 'en', m.key);
   }
 }
+
+await shootInteraction(stories[0].id, 'primary', modes[0]);
+await shootInteraction(stories[0].id, 'primary', modes[3]);
 
 await shoot(stories[0].id, 'primary', modes[0], 'en', 'focus-light-neutral', true);
 await shoot(stories[0].id, 'primary', modes[3], 'en', 'focus-dark-pixel', true);

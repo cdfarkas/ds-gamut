@@ -9,8 +9,10 @@
     font-weight: 600;
     line-height: 1.2;
     transition:
-      background-color 0.15s ease,
-      box-shadow 0.15s ease;
+      transform var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out),
+      background-color var(--dur-fast) var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out);
   }
 
   .button:focus-visible {
@@ -39,22 +41,10 @@
     color: var(--color-text-on-accent);
   }
 
-  .primary:hover:not(:disabled) {
-    background-color: var(--color-accent-hover);
-  }
-
-  .primary:active:not(:disabled) {
-    background-color: var(--color-accent-active);
-  }
-
   .neutral {
     border-color: var(--color-border-default);
     background-color: var(--color-bg-subtle);
     color: var(--color-text-primary);
-  }
-
-  .neutral:hover:not(:disabled) {
-    background-color: var(--color-bg-disabled);
   }
 
   .danger {
@@ -63,12 +53,39 @@
     color: var(--color-text-on-danger);
   }
 
+  /* Interaction choreography — rest/hover/press. See docs/adr/0009. */
+  .primary:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    background-color: var(--color-accent-hover);
+    box-shadow: var(--shadow-raised-hover);
+  }
+
   .danger:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
     background-color: var(--color-danger-hover);
+    box-shadow: var(--shadow-raised-hover);
+  }
+
+  .neutral:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    background-color: var(--color-bg-disabled);
+  }
+
+  .neutral:active:not(:disabled) {
+    transform: translate(1px, 1px);
+    border-color: var(--color-border-strong);
+  }
+
+  .primary:active:not(:disabled) {
+    transform: translate(var(--press-offset), var(--press-offset));
+    background-color: var(--color-accent-active);
+    box-shadow: var(--shadow-pressed);
   }
 
   .danger:active:not(:disabled) {
+    transform: translate(var(--press-offset), var(--press-offset));
     background-color: var(--color-danger-active);
+    box-shadow: var(--shadow-pressed);
   }
 
   .button:disabled {
@@ -132,9 +149,37 @@
       drop-shadow(4px 4px 0 var(--color-border-strong));
   }
 
-  /* clip-path would clip an outer outline; keep the focus ring inset and visible. */
+  /* Pixel hover: the stepped shadow grows chunkier. */
+  :global([data-skin='pixel']) .button.primary:hover:not(:disabled),
+  :global([data-skin='pixel']) .button.danger:hover:not(:disabled) {
+    box-shadow: none;
+    filter: drop-shadow(3px 3px 0 var(--color-border-strong))
+      drop-shadow(6px 6px 0 var(--color-border-strong));
+  }
+
+  /* Pixel press: the stepped shadow collapses flat onto the page. */
+  :global([data-skin='pixel']) .button.primary:active:not(:disabled),
+  :global([data-skin='pixel']) .button.danger:active:not(:disabled) {
+    box-shadow: none;
+    filter: none;
+  }
+
+  /* clip-path clips an outer outline; inset a thick ring with a fill-coloured
+     gap so the parchment ring separates from the parchment frame. */
   :global([data-skin='pixel']) .button:focus-visible {
-    outline-color: currentcolor;
-    outline-offset: -5px;
+    outline: var(--border-width-thick) solid currentcolor;
+    outline-offset: -7px;
+  }
+
+  /* Reduced motion: no transitions or movement; colour/shadow state cues stay. */
+  @media (prefers-reduced-motion: reduce) {
+    .button {
+      transition: none;
+    }
+
+    .button:hover:not(:disabled),
+    .button:active:not(:disabled) {
+      transform: none;
+    }
   }
 }

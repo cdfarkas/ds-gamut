@@ -243,6 +243,42 @@
     "story": "primary",
     "storyId": "atoms-button--primary",
     "mode": "light-neutral",
+    "state": "hover",
+    "appliedTheme": "light",
+    "appliedSkin": "default",
+    "file": "primary__hover-light-neutral.png"
+  },
+  {
+    "story": "primary",
+    "storyId": "atoms-button--primary",
+    "mode": "light-neutral",
+    "state": "press",
+    "appliedTheme": "light",
+    "appliedSkin": "default",
+    "file": "primary__press-light-neutral.png"
+  },
+  {
+    "story": "primary",
+    "storyId": "atoms-button--primary",
+    "mode": "dark-pixel",
+    "state": "hover",
+    "appliedTheme": "dark",
+    "appliedSkin": "pixel",
+    "file": "primary__hover-dark-pixel.png"
+  },
+  {
+    "story": "primary",
+    "storyId": "atoms-button--primary",
+    "mode": "dark-pixel",
+    "state": "press",
+    "appliedTheme": "dark",
+    "appliedSkin": "pixel",
+    "file": "primary__press-dark-pixel.png"
+  },
+  {
+    "story": "primary",
+    "storyId": "atoms-button--primary",
+    "mode": "light-neutral",
     "locale": "en",
     "focus": true,
     "appliedTheme": "light",

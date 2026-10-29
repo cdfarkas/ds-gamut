@@ -16,6 +16,10 @@ Use `intent` for meaning (`primary`, `neutral`, `danger`), `size` for scale, and
 `loading` to show a busy state — a loading button is disabled and exposes
 `aria-busy` plus a screen-reader-only status.
 
+On hover the button lifts and its offset shadow grows; on press it collapses onto
+the page (see ADR 0009). All motion respects `prefers-reduced-motion`, falling
+back to colour and shadow cues so states stay distinguishable without movement.
+
 <Canvas of={ButtonStories.Primary} />
 
 ### Props
@@ -39,6 +43,10 @@ l'indirection typée `t()`.
 Utilisez `intent` pour le sens (`primary`, `neutral`, `danger`), `size` pour la
 taille, et `loading` pour l'état occupé — un bouton en chargement est désactivé
 et expose `aria-busy` ainsi qu'un statut réservé aux lecteurs d'écran.
+
+Au survol, le bouton se soulève et son ombre portée grandit ; à l'enfoncement, il
+s'écrase sur la page (voir l'ADR 0009). Toute animation respecte
+`prefers-reduced-motion` et se rabat sur des indices de couleur et d'ombre.
 
 ### États
 

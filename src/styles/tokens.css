@@ -97,6 +97,13 @@
     --shadow-raised: 4px 4px 0 var(--color-border-strong);
     --shadow-focus: 0 0 0 3px
       color-mix(in srgb, var(--color-border-focus) 55%, transparent);
+
+    /* Motion — snappy ease-out; the house interaction standard (ADR 0009). */
+    --dur-fast: 120ms;
+    --ease-out: cubic-bezier(0.2, 0, 0, 1);
+    --press-offset: 4px;
+    --shadow-raised-hover: 6px 6px 0 var(--color-border-strong);
+    --shadow-pressed: 0 0 0 var(--color-border-strong);
   }
 
   :root[data-theme='dark'] {

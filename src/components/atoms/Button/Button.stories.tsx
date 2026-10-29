@@ -35,6 +35,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Controllable surface: every arg is spread, so intent/size/loading/disabled are live. */
+export const Playground: Story = {
+  render: (args) => <Button {...args} />,
+};
+
 export const Primary: Story = {
   tags: ['interaction'],
   play: async ({ canvas, args, step }) => {

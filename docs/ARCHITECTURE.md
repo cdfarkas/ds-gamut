@@ -100,6 +100,21 @@ not in `tokens.css`:
 This is a **documented, deliberate** carve-out: these are structural style rules, not design tokens,
 so forcing them through the token layer would distort it. Colour still comes from semantic tokens.
 
+## Interaction & motion
+
+The offset shadow is a physical affordance, so it responds to interaction — this is the house
+standard, defined once on Button and reused by every future interactive atom (ADR 0009). Rest shows
+the flat `--shadow-raised`; hover lifts the control `translate(-1px, -1px)` and grows the shadow to
+`--shadow-raised-hover`; the signature press collapses it onto the page — `translate(--press-offset)`
+(equal to the rest offset) with the shadow flattened to `--shadow-pressed`. The pixel skin harmonises
+with its stepped `drop-shadow` stack growing and collapsing the same way.
+
+Motion is tokenised (`--dur-fast` 120ms, `--ease-out`) and transitions only `transform` / `box-shadow`
+/ `background-color` / `border-color`, so neighbours never reflow. All motion is wrapped in
+`@media (prefers-reduced-motion: reduce)`, which disables transitions and transforms while keeping the
+colour and shadow state cues, so states stay distinguishable without movement. Every state holds WCAG
+2.1 AA (ADR 0006).
+
 ## CSS Modules + `@layer`
 
 Styling is **CSS Modules + CSS custom properties + native `@layer`** — no Sass, no CSS-in-JS

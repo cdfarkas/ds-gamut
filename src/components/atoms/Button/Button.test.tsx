@@ -6,7 +6,7 @@ import { composeStories } from '@storybook/react-vite';
 import { fn, userEvent } from 'storybook/test';
 import * as stories from './Button.stories';
 
-const { Loading, Disabled } = composeStories(stories);
+const { Loading, Disabled, Playground } = composeStories(stories);
 
 let container: HTMLDivElement;
 let root: Root;
@@ -43,5 +43,14 @@ describe('Button edge cases', () => {
     const button = container.querySelector('button');
     if (button) await userEvent.click(button);
     expect(onClick).not.toHaveBeenCalled();
+  });
+
+  test('intent is live: changing it swaps the variant class', async () => {
+    await mount(<Playground intent="primary" />);
+    const primary = container.querySelector('button')?.className;
+    await mount(<Playground intent="danger" />);
+    const danger = container.querySelector('button')?.className;
+    expect(primary).toBeTruthy();
+    expect(primary).not.toBe(danger);
   });
 });
