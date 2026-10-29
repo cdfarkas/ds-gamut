@@ -124,9 +124,19 @@ WCAG 2.1 AA (ADR 0006).
 ## CSS Modules + `@layer`
 
 Styling is **CSS Modules + CSS custom properties + native `@layer`** — no Sass, no CSS-in-JS
-(ADR 0002). The cascade-layer order is declared **once** in `src/styles/layers.css` (e.g. reset →
-tokens → base → components → utilities) so specificity is predictable and a component never has to
-fight the cascade.
+(ADR 0002). The cascade-layer order is declared **once** in `src/styles/layers.css` (reset →
+tokens → base → components → utilities → overrides) so specificity is predictable and a component
+never has to fight the cascade.
+
+## Overriding components
+
+Consumers restyle components — and their internal sub-parts — through a layered, public API, never by
+touching the hashed CSS-Module class names, which are private and change every build. The tiers, from
+most-sanctioned to escape hatch: semantic tokens → per-component `--gamut-<name>-*` variables → a
+stable `data-scope`/`data-part` attribute contract selected from `@layer overrides` (the last layer,
+so consumer rules win without `!important`) → the `style` prop. Every component documents its own
+contract in its `.mdx`. Full specification and the per-component contract format: `docs/overrides.md`
+(ADR 0010).
 
 ## Tooling
 

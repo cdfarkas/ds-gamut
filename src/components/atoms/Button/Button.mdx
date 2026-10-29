@@ -32,6 +32,25 @@ back to colour and shadow cues so states stay distinguishable without movement.
 
 <Canvas of={ButtonStories.Danger} />
 
+### Overriding
+
+Button follows the system override contract (see `docs/overrides.md`). Restyle it through this public
+surface — never through the hashed CSS-Module class names.
+
+- **Component variables**: `--gamut-button-bg`, `--gamut-button-fg`, `--gamut-button-radius`,
+  `--gamut-button-border-color`, `--gamut-button-shadow`, `--gamut-button-padding-x`,
+  `--gamut-button-padding-y`. Each falls back to its semantic token.
+- **`data-scope`**: `button`, on every part.
+- **`data-part`**: `root` (wrapper), `button` (the control, where your `className` merges),
+  `spinner`, `label`.
+- **State attributes** on `data-part="button"`: `data-intent`, `data-size`, `data-loading` (present
+  when loading), `data-disabled` (present when disabled or loading).
+
+The `Overridden` story below re-points `--gamut-button-radius`/`--gamut-button-bg` and resizes the
+`[data-part="spinner"]` sub-part from `@layer overrides`, with no `!important`.
+
+<Canvas of={ButtonStories.Overridden} />
+
 ## Français
 
 Le composant **Button** est le contrôle interactif principal. Il ne consomme que
@@ -53,3 +72,20 @@ s'écrase sur la page (voir l'ADR 0009). Toute animation respecte
 <Canvas of={ButtonStories.Loading} />
 
 <Canvas of={ButtonStories.Disabled} />
+
+### Personnalisation
+
+Button suit le contrat de personnalisation du système (voir `docs/overrides.md`). Restylez-le via
+cette surface publique — jamais via les noms de classes CSS-Module hachés.
+
+- **Variables de composant** : `--gamut-button-bg`, `--gamut-button-fg`, `--gamut-button-radius`,
+  `--gamut-button-border-color`, `--gamut-button-shadow`, `--gamut-button-padding-x`,
+  `--gamut-button-padding-y`. Chacune se rabat sur son jeton sémantique.
+- **`data-scope`** : `button`, sur chaque partie.
+- **`data-part`** : `root` (conteneur), `button` (le contrôle, où votre `className` fusionne),
+  `spinner`, `label`.
+- **Attributs d'état** sur `data-part="button"` : `data-intent`, `data-size`, `data-loading`
+  (présent en chargement), `data-disabled` (présent si désactivé ou en chargement).
+
+L'histoire `Overridden` ci-dessus redirige `--gamut-button-radius`/`--gamut-button-bg` et
+redimensionne la sous-partie `[data-part="spinner"]` depuis `@layer overrides`, sans `!important`.

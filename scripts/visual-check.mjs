@@ -60,6 +60,7 @@ const stories = [
   { id: 'atoms-button--sizes', name: 'sizes' },
   { id: 'atoms-button--loading', name: 'loading' },
   { id: 'atoms-button--disabled', name: 'disabled' },
+  { id: 'atoms-button--overridden', name: 'overridden' },
 ];
 
 const modes = [

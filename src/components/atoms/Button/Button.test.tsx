@@ -62,3 +62,33 @@ describe('Button edge cases', () => {
     expect(primary).not.toBe(danger);
   });
 });
+
+describe('Button override contract', () => {
+  test('exposes data-scope/data-part on each part and reflects intent/size', async () => {
+    await mount(<Playground intent="danger" size="lg" />);
+    const root = container.querySelector('[data-scope="button"][data-part="root"]');
+    const button = container.querySelector('[data-scope="button"][data-part="button"]');
+    const label = container.querySelector('[data-scope="button"][data-part="label"]');
+    expect(root).not.toBeNull();
+    expect(button?.tagName).toBe('BUTTON');
+    expect(label?.textContent).toBe('Button');
+    expect(button?.getAttribute('data-intent')).toBe('danger');
+    expect(button?.getAttribute('data-size')).toBe('lg');
+  });
+
+  test('loading reflects data-loading/data-disabled and exposes the spinner part', async () => {
+    await mount(<Loading />);
+    const button = container.querySelector('[data-part="button"]');
+    const spinner = container.querySelector('[data-scope="button"][data-part="spinner"]');
+    expect(button?.hasAttribute('data-loading')).toBe(true);
+    expect(button?.hasAttribute('data-disabled')).toBe(true);
+    expect(spinner).not.toBeNull();
+  });
+
+  test('disabled reflects data-disabled without data-loading', async () => {
+    await mount(<Disabled />);
+    const button = container.querySelector('[data-part="button"]');
+    expect(button?.hasAttribute('data-disabled')).toBe(true);
+    expect(button?.hasAttribute('data-loading')).toBe(false);
+  });
+});

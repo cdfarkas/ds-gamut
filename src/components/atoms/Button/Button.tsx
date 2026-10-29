@@ -39,22 +39,37 @@ export function Button({
     .filter(Boolean)
     .join(' ');
 
+  const isDisabled = disabled || loading;
+
   return (
-    <span className={styles.frame}>
+    <span className={styles.frame} data-scope="button" data-part="root">
       <button
         type={type}
         className={classes}
-        disabled={disabled || loading}
+        disabled={isDisabled}
         aria-busy={loading || undefined}
+        data-scope="button"
+        data-part="button"
+        data-intent={intent}
+        data-size={size}
+        data-loading={loading || undefined}
+        data-disabled={isDisabled || undefined}
         {...rest}
       >
         {loading ? (
           <>
-            <span className={styles.spinner} aria-hidden="true" />
+            <span
+              className={styles.spinner}
+              aria-hidden="true"
+              data-scope="button"
+              data-part="spinner"
+            />
             <span className={styles.srOnly}>{t('button.loading')}</span>
           </>
         ) : null}
-        <span>{children}</span>
+        <span data-scope="button" data-part="label">
+          {children}
+        </span>
       </button>
     </span>
   );
