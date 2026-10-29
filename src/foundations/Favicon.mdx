@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Localized } from '../lib/Localized';
+import '../Introduction.css';
+
+<Meta title="Foundations/Favicon & app icons" />
+
+# <Localized en="Favicon & app icons" fr="Favicon et icônes d'app" />
+
+<Localized
+  en={
+    <p>
+      The small-surface marks derive from the logo icon — the gamut triangle with its
+      three primary vertices. They are served from <code>/brand</code> (mapped from{' '}
+      <code>src/assets/brand</code> via <code>staticDirs</code>) and shown here at their
+      real pixel sizes.
+    </p>
+  }
+  fr={
+    <p>
+      Les symboles pour petites surfaces dérivent de l'icône du logo — le triangle gamut
+      et ses trois sommets primaires. Ils sont servis depuis <code>/brand</code> (mappé
+      depuis <code>src/assets/brand</code> via <code>staticDirs</code>) et affichés ici à
+      leur taille réelle en pixels.
+    </p>
+  }
+/>
+
+<ul className="gamut-icon-row">
+  <li className="gamut-icon-cell">
+    <img src="/brand/favicon.svg" width="32" height="32" alt="favicon.svg" />
+    <div className="gamut-icon-meta">
+      <div className="gamut-icon-name">favicon.svg</div>
+      <div className="gamut-icon-size">
+        <Localized en="scalable · theme-aware" fr="vectoriel · suit le thème" />
+      </div>
+    </div>
+  </li>
+  <li className="gamut-icon-cell">
+    <img src="/brand/favicon-32.png" width="32" height="32" alt="favicon-32.png" />
+    <div className="gamut-icon-meta">
+      <div className="gamut-icon-name">favicon-32.png</div>
+      <div className="gamut-icon-size">32 × 32</div>
+    </div>
+  </li>
+  <li className="gamut-icon-cell">
+    <img
+      src="/brand/apple-touch-icon.png"
+      width="180"
+      height="180"
+      alt="apple-touch-icon.png"
+    />
+    <div className="gamut-icon-meta">
+      <div className="gamut-icon-name">apple-touch-icon.png</div>
+      <div className="gamut-icon-size">180 × 180</div>
+    </div>
+  </li>
+</ul>
+
+<Localized
+  en={
+    <p>
+      The SVG favicon carries its own <code>prefers-color-scheme</code> rule, so it flips
+      its fill and outline between light and dark on its own; the PNGs are fixed raster
+      fallbacks for clients that do not take an SVG icon.
+    </p>
+  }
+  fr={
+    <p>
+      Le favicon SVG embarque sa propre règle <code>prefers-color-scheme</code> : il
+      inverse donc son remplissage et son contour entre clair et sombre tout seul ; les
+      PNG sont des replis matriciels fixes pour les clients qui n'acceptent pas d'icône
+      SVG.
+    </p>
+  }
+/>
+
+## <Localized en="What's wired" fr="Ce qui est câblé" />
+
+<Localized
+  en={
+    <ul>
+      <li>
+        The Storybook manager brand (<code>.storybook/manager.ts</code>) sets the sidebar
+        logo to <code>/brand/logo.svg</code>.
+      </li>
+      <li>
+        <code>.storybook/main.ts</code> injects the icon links into the manager head:{' '}
+        <code>favicon.svg</code>, the 32px PNG, and the apple-touch icon.
+      </li>
+    </ul>
+  }
+  fr={
+    <ul>
+      <li>
+        La marque du manager Storybook (<code>.storybook/manager.ts</code>) définit le
+        logo de la barre latérale sur <code>/brand/logo.svg</code>.
+      </li>
+      <li>
+        <code>.storybook/main.ts</code> injecte les liens d'icône dans l'en-tête du
+        manager : <code>favicon.svg</code>, le PNG 32px et l'icône apple-touch.
+      </li>
+    </ul>
+  }
+/>
+
+## <Localized en="Downloads" fr="Téléchargements" />
+
+<ul className="gamut-downloads">
+  <li>
+    <a href="/brand/favicon.svg" download>
+      favicon.svg
+    </a>
+  </li>
+  <li>
+    <a href="/brand/favicon-32.png" download>
+      favicon-32.png
+    </a>
+  </li>
+  <li>
+    <a href="/brand/apple-touch-icon.png" download>
+      apple-touch-icon.png
+    </a>
+  </li>
+</ul>

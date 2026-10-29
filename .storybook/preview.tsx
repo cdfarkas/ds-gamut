@@ -30,7 +30,15 @@ const preview: Preview = {
   parameters: {
     layout: 'centered',
     options: {
-      storySort: { order: ['Introduction', 'Atoms', '*'] },
+      storySort: {
+        order: [
+          'Introduction',
+          'Foundations',
+          ['Logo', 'Colors', 'Typography', 'Favicon & app icons'],
+          'Atoms',
+          '*',
+        ],
+      },
     },
     a11y: {
       test: 'error',

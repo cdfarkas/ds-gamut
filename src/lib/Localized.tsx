@@ -1,40 +1,58 @@
-import { useContext, useEffect, useState, type ReactNode } from 'react';
-import { DocsContext } from '@storybook/addon-docs/blocks';
-import { GLOBALS_UPDATED } from 'storybook/internal/core-events';
+import { useEffect, useState, type ReactNode } from 'react';
 import { locales, type Locale } from './i18n';
+
+type Globals = Record<string, unknown>;
+
+interface StorybookPreview {
+  channel?: {
+    on(event: string, cb: (payload: unknown) => void): void;
+    off(event: string, cb: (payload: unknown) => void): void;
+  };
+  storyStore?: { userGlobals?: { get(): Globals } };
+}
+
+const GLOBALS_UPDATED = 'globalsUpdated';
+
+function preview(): StorybookPreview | undefined {
+  return (globalThis as { __STORYBOOK_PREVIEW__?: StorybookPreview })
+    .__STORYBOOK_PREVIEW__;
+}
+
+function readGlobals(): Globals {
+  try {
+    return preview()?.storyStore?.userGlobals?.get() ?? {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Live-read one toolbar global from inside a Docs/MDX page, attached or story-less.
+ * Reads the preview's user-globals store, which resolves on page-level MDX where the
+ * Docs story context does not, and re-reads it on every globals change.
+ */
+export function useGlobal(key: string): unknown {
+  const [value, setValue] = useState<unknown>(() => readGlobals()[key]);
+
+  useEffect(() => {
+    const channel = preview()?.channel;
+    if (!channel) return undefined;
+    const onUpdate = () => setValue(readGlobals()[key]);
+    channel.on(GLOBALS_UPDATED, onUpdate);
+    return () => channel.off(GLOBALS_UPDATED, onUpdate);
+  }, [key]);
+
+  return value;
+}
 
 function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (locales as readonly string[]).includes(value);
 }
 
-/**
- * Read the live `locale` toolbar global from inside a Docs/MDX page and re-render when it changes.
- * Preview hooks like `useGlobals` are unavailable in page-level MDX, so this reads the Docs channel.
- */
+/** Read the live `locale` toolbar global, falling back to English. */
 export function useLocale(): Locale {
-  const docsContext = useContext(DocsContext);
-
-  const read = (): Locale => {
-    try {
-      const { globals } = docsContext.getStoryContext(docsContext.storyById());
-      return isLocale(globals.locale) ? globals.locale : 'en';
-    } catch {
-      return 'en';
-    }
-  };
-
-  const [locale, setLocaleState] = useState<Locale>(read);
-
-  useEffect(() => {
-    const { channel } = docsContext;
-    const onGlobals = ({ globals }: { globals: Record<string, unknown> }) => {
-      if (isLocale(globals.locale)) setLocaleState(globals.locale);
-    };
-    channel.on(GLOBALS_UPDATED, onGlobals);
-    return () => channel.off(GLOBALS_UPDATED, onGlobals);
-  }, [docsContext]);
-
-  return locale;
+  const value = useGlobal('locale');
+  return isLocale(value) ? value : 'en';
 }
 
 /** Render only the active locale's node, switching live with the `locale` toolbar global. */

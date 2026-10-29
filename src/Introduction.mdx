@@ -1,41 +1,9 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 import { Localized } from './lib/Localized';
-import * as ButtonStories from './components/atoms/Button/Button.stories';
 import logoLight from './assets/brand/logo.svg?raw';
-import logoDark from './assets/brand/logo-dark.svg?raw';
 import './Introduction.css';
 
 <Meta title="Introduction" />
-
-export const primitives = [
-  { name: 'Cobalt', value: '#2419E8', token: '--palette-cobalt' },
-  { name: 'Cobalt bright', value: '#4B3BFF', token: '--palette-cobalt-bright' },
-  { name: 'Violet', value: '#7A3BFF', token: '--palette-violet' },
-  { name: 'Coral', value: '#FF3D7F', token: '--palette-coral' },
-  { name: 'Acid', value: '#D4FF2E', token: '--palette-lime' },
-  { name: 'Cyan', value: '#7FE0FF', token: '--palette-cyan' },
-  { name: 'Ink', value: '#140F1C', token: '--palette-ink' },
-  { name: 'Cream', value: '#FBF7EE', token: '--palette-cream' },
-];
-
-export const semantics = [
-  { name: 'Surface', token: '--color-bg-surface' },
-  { name: 'Text', token: '--color-text-primary' },
-  { name: 'Accent', token: '--color-accent' },
-  { name: 'Danger', token: '--color-danger' },
-  { name: 'Border', token: '--color-border-strong' },
-  { name: 'Focus', token: '--color-border-focus' },
-];
-
-export const Swatch = ({ name, value, token }) => (
-  <li className="gamut-swatch">
-    <div className="gamut-swatch-chip" style={{ background: `var(${token})` }} />
-    <div className="gamut-swatch-meta">
-      <div className="gamut-swatch-name">{name}</div>
-      <div className="gamut-swatch-value">{value ?? token}</div>
-    </div>
-  </li>
-);
 
 <div className="gamut-hero">
   <span dangerouslySetInnerHTML={{ __html: logoLight }} />
@@ -50,17 +18,6 @@ export const Swatch = ({ name, value, token }) => (
         Tout le gamut des couleurs — à plat, contrasté, sans compromis.
       </p>
     }
-  />
-</div>
-
-<div className="gamut-logo-frames">
-  <div
-    className="gamut-logo-frame gamut-logo-frame-light"
-    dangerouslySetInnerHTML={{ __html: logoLight }}
-  />
-  <div
-    className="gamut-logo-frame gamut-logo-frame-dark"
-    dangerouslySetInnerHTML={{ __html: logoDark }}
   />
 </div>
 
@@ -84,95 +41,72 @@ export const Swatch = ({ name, value, token }) => (
   }
 />
 
-## <Localized en="Colour palette" fr="Palette de couleurs" />
-
 <Localized
   en={
     <p>
-      The primitive palette holds the raw brand colours; the semantic layer aliases them
-      per theme and skin. The swatches below read live from{' '}
-      <code>src/styles/tokens.css</code> — the semantic ones recolour as you switch the
-      theme toolbar.
+      The look is deliberately maximalist — warm cream paper, near-black ink, and clashing
+      electric accents — because a design system should prove it can hold a loud identity,
+      not only a safe one. The sections below break the brand into its foundations.
     </p>
   }
   fr={
     <p>
-      La palette primitive contient les couleurs brutes de la marque ; la couche
-      sémantique les redéfinit selon le thème et l'habillage. Les échantillons ci-dessous
-      sont lus en direct depuis <code>src/styles/tokens.css</code> — les sémantiques se
-      recolorent quand vous changez de thème dans la barre d'outils.
+      Le style est délibérément maximaliste — papier crème chaud, encre presque noire et
+      accents électriques qui claquent — car un design system doit prouver qu'il tient une
+      identité forte, pas seulement une identité prudente. Les sections ci-dessous
+      détaillent chaque fondation de la marque.
     </p>
   }
 />
 
-### <Localized en="Brand primitives" fr="Primitives de marque" />
+## <Localized en="Foundations" fr="Fondations" />
 
-<ul className="gamut-swatches">
-  {primitives.map((c) => (
-    <Swatch key={c.token} {...c} />
-  ))}
+<ul className="gamut-nav">
+  <li>
+    <a href="?path=/docs/foundations-logo--docs">
+      <strong>
+        <Localized en="Logo" fr="Logo" />
+      </strong>
+      <Localized
+        en="The full wordmark and the standalone icon, what they encode, and how to use them."
+        fr="Le logotype complet et l'icône seule, ce qu'ils encodent et comment les utiliser."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-colors--docs">
+      <strong>
+        <Localized en="Colors" fr="Couleurs" />
+      </strong>
+      <Localized
+        en="Primitive brand palette and the semantic tokens that recolour per theme and skin."
+        fr="Palette primitive de marque et jetons sémantiques qui se recolorent selon le thème et l'habillage."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-typography--docs">
+      <strong>
+        <Localized en="Typography" fr="Typographie" />
+      </strong>
+      <Localized
+        en="Fraunces for display, Space Grotesk for body — specimens and the type scale."
+        fr="Fraunces pour l'affichage, Space Grotesk pour le corps — spécimens et échelle typographique."
+      />
+    </a>
+  </li>
+  <li>
+    <a href="?path=/docs/foundations-favicon-app-icons--docs">
+      <strong>
+        <Localized en="Favicon & app icons" fr="Favicon et icônes d'app" />
+      </strong>
+      <Localized
+        en="The favicon and home-screen icons, shown at real size, with downloads."
+        fr="Le favicon et les icônes d'écran d'accueil, à taille réelle, avec les téléchargements."
+      />
+    </a>
+  </li>
 </ul>
-
-### <Localized en="Semantic tokens" fr="Jetons sémantiques" />
-
-<ul className="gamut-swatches">
-  {semantics.map((c) => (
-    <Swatch key={c.token} {...c} />
-  ))}
-</ul>
-
-## <Localized en="Typography" fr="Typographie" />
-
-<Localized
-  en={
-    <p>
-      <strong>Fraunces</strong> carries display headings; <strong>Space Grotesk</strong>{' '}
-      carries body text, labels, and the wordmark. Both ship as variable fonts.
-    </p>
-  }
-  fr={
-    <p>
-      <strong>Fraunces</strong> porte les titres d'affichage ;{' '}
-      <strong>Space Grotesk</strong> porte le corps de texte, les libellés et le logotype.
-      Les deux sont des polices variables.
-    </p>
-  }
-/>
-
-<div className="gamut-type-specimen">
-  <span className="gamut-type-label">Fraunces — Display</span>
-  <p className="gamut-type-display">Chromaticity</p>
-</div>
-
-<div className="gamut-type-specimen">
-  <span className="gamut-type-label">Space Grotesk — Sans</span>
-  <p className="gamut-type-sans">
-    The quick brown fox jumps over the lazy dog — 0123456789
-  </p>
-</div>
-
-## <Localized en="Button" fr="Bouton" />
-
-<Localized
-  en={
-    <p>
-      The <strong>Button</strong> atom reskins across the full matrix — light/dark theme ×
-      neutral/pixel skin — from the same markup. Switch the Theme and Skin toolbars to see
-      it.
-    </p>
-  }
-  fr={
-    <p>
-      Le composant <strong>Button</strong> se réhabille sur toute la matrice — thème
-      clair/sombre × habillage neutre/pixel — à partir du même balisage. Changez les
-      barres Theme et Skin pour le constater.
-    </p>
-  }
-/>
-
-<Canvas of={ButtonStories.Primary} />
-
-<Canvas of={ButtonStories.Sizes} />
 
 ## <Localized en="Further reading" fr="Pour aller plus loin" />
 
