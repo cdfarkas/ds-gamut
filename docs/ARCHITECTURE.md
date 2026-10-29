@@ -1,6 +1,6 @@
 # Architecture
 
-How ds-neuter is laid out and why. Rules here are binding; the summaries in `CLAUDE.md` point at
+How gamut is laid out and why. Rules here are binding; the summaries in `CLAUDE.md` point at
 this file for the detail.
 
 ## Folder layering

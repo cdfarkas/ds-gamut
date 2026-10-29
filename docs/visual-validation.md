@@ -22,7 +22,7 @@ pass — a real contrast failure is flagged, not hidden.
    story it screenshots the four theme×skin modes, captures the keyboard-focus state,
    and captures both locales on one representative story. Output and a `manifest.json`
    (recording the `data-theme` / `data-skin` actually applied per shot) land in
-   `visual-report/`.
+   `visual-report/` (a local/CI artifact, gitignored and never committed).
 3. The agent **reads** each PNG (the Read tool renders images) and judges it against
    the checklist below, writing a reasoned PASS / CONCERNS verdict per mode.
 
@@ -46,6 +46,6 @@ Modes are driven through the Storybook iframe globals query parameter, e.g.
 `scripts/visual-check.mjs` is the agent's own eyes and runs with no account. Chromatic
 is the human-facing visual-regression history and runs later on the maintainer's token.
 `.github/workflows/chromatic.yml` is wired with the four theme×skin modes but gated on
-`secrets.CHROMATIC_PROJECT_TOKEN`; without the secret the job is skipped, not failed.
+`secrets.CHROMATIC_PROJECT_TOKEN`, and runs the installed `chromatic` CLI via `pnpm exec`; without the secret the job is skipped, not failed.
 The two are complementary: the agent gate blocks a bad PR before review, Chromatic
 tracks pixel drift over time once a project and token exist.
