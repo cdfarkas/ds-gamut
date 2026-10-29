@@ -30,7 +30,7 @@ Everything a component needs sits in one folder, `components/<layer>/<Name>/`:
 - `<Name>.tsx` — the component
 - `<Name>.module.css` — its styles (semantic tokens only)
 - `<Name>.stories.tsx` — the catalogue entry, with `play` where it earns one
-- `<Name>.mdx` — bilingual authored prose
+- `<Name>.mdx` — authored prose, locale-switched via `<Localized>` (one language at a time)
 - `<Name>.test.tsx` — edge-case assertions on composed stories
 - `<Name>.test.ts` — pure-logic tests (only when there is pure logic)
 - `index.ts` — the public surface of the component
