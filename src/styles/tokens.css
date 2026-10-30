@@ -105,6 +105,7 @@
     --omnia-color-danger: var(--omnia-palette-red);
     --omnia-color-danger-hover: var(--omnia-palette-red-hover);
     --omnia-color-danger-active: var(--omnia-palette-red-active);
+    --omnia-color-danger-border: var(--omnia-color-danger);
     --omnia-color-success: var(--omnia-palette-mint);
     --omnia-color-success-hover: var(--omnia-palette-mint-hover);
     --omnia-color-success-active: var(--omnia-palette-mint-active);
@@ -211,6 +212,7 @@
     --omnia-color-text-primary: var(--omnia-palette-parchment);
     --omnia-color-text-muted: var(--omnia-palette-parchment);
     --omnia-color-accent: var(--omnia-palette-pixel-violet);
+    --omnia-color-danger-border: var(--omnia-palette-red-bright);
     --omnia-color-border-default: var(--omnia-palette-parchment);
     --omnia-color-border-strong: var(--omnia-palette-parchment);
     --omnia-color-border-focus: var(--omnia-palette-violet-bright);

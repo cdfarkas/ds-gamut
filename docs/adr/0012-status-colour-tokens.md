@@ -65,6 +65,10 @@ itself is shared in TypeScript as `intents` / `Intent` (`src/lib/intents.ts`), w
 `ButtonIntent` alias. The `omnia-` prefix avoids collisions with consumer variables once the package is
 published.
 
+Amendment 2026-10-30: `--omnia-color-danger-border` is the danger colour for non-text UI (the
+invalid Input border). It aliases `--omnia-color-danger` except in dark + pixel, where blood red is
+2.42:1 on pixel night and fails WCAG SC 1.4.11; there it is `--omnia-palette-red-bright` (5.76:1).
+
 ## Consequences
 
 - The new names join the stable token contract: renaming them needs a superseding ADR.

@@ -1,0 +1,14 @@
+/* Consumer override demo (see docs/overrides.md): lives in the public
+   @layer overrides and wins over @layer components without !important. */
+@layer overrides {
+  .omnia-demo-override-input {
+    --omnia-input-radius: 999px;
+    --omnia-input-bg: var(--omnia-color-bg-subtle);
+    --omnia-input-border-color: var(--omnia-color-border-focus);
+  }
+
+  .omnia-demo-override-input [data-scope='input'][data-part='start'] {
+    color: var(--omnia-color-text-primary);
+    font-weight: 700;
+  }
+}
