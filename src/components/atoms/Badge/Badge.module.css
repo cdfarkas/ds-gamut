@@ -21,6 +21,21 @@
     color: var(--omnia-badge-fg, var(--color-text-primary));
   }
 
+  .success {
+    background-color: var(--omnia-badge-bg, var(--color-success));
+    color: var(--omnia-badge-fg, var(--color-text-on-success));
+  }
+
+  .warning {
+    background-color: var(--omnia-badge-bg, var(--color-warning));
+    color: var(--omnia-badge-fg, var(--color-text-on-warning));
+  }
+
+  .info {
+    background-color: var(--omnia-badge-bg, var(--color-info));
+    color: var(--omnia-badge-fg, var(--color-text-on-info));
+  }
+
   .danger {
     background-color: var(--omnia-badge-bg, var(--color-danger));
     color: var(--omnia-badge-fg, var(--color-text-on-danger));

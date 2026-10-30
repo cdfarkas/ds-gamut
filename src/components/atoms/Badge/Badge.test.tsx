@@ -58,6 +58,25 @@ describe('Badge edge cases', () => {
     expect(primary).toBeTruthy();
     expect(primary).not.toBe(danger);
   });
+
+  test('every intent reflects data-intent and gets a distinct module class', async () => {
+    const intents = [
+      'primary',
+      'neutral',
+      'success',
+      'warning',
+      'info',
+      'danger',
+    ] as const;
+    const classNames = new Set<string>();
+    for (const intent of intents) {
+      await mount(<Badge intent={intent}>{intent}</Badge>);
+      const badge = container.querySelector('span');
+      expect(badge?.getAttribute('data-intent')).toBe(intent);
+      classNames.add(badge?.className ?? '');
+    }
+    expect(classNames.size).toBe(intents.length);
+  });
 });
 
 describe('Badge override contract', () => {

@@ -34,6 +34,8 @@
     --palette-violet-bright: #9a6bff;
     --palette-lime: #d4ff2e;
     --palette-cyan: #7fe0ff;
+    --palette-mint: #3ddc84;
+    --palette-amber: #ffb627;
 
     /* Pixel-skin accents — deep, saturated retro blocks. */
     --palette-pixel-violet: #5b1fb8;
@@ -41,6 +43,9 @@
     --palette-pixel-violet-dark: #330b6b;
     --palette-pixel-blood: #a01e1e;
     --palette-pixel-blood-deep: #7d1515;
+    --palette-pixel-forest: #1e6b2e;
+    --palette-pixel-ochre: #8a5a00;
+    --palette-pixel-navy: #1a4f8a;
     --palette-pixel-night: #140f1c;
     --palette-pixel-night-raised: #281c38;
 
@@ -73,12 +78,18 @@
     --color-text-muted: var(--palette-ink-soft);
     --color-text-on-accent: var(--palette-cream);
     --color-text-on-danger: var(--palette-ink);
+    --color-text-on-success: var(--palette-ink);
+    --color-text-on-warning: var(--palette-ink);
+    --color-text-on-info: var(--palette-ink);
     --color-accent: var(--palette-cobalt);
     --color-accent-hover: var(--palette-cobalt-hover);
     --color-accent-active: var(--palette-cobalt-active);
     --color-danger: var(--palette-coral);
     --color-danger-hover: var(--palette-coral-hover);
     --color-danger-active: var(--palette-coral-active);
+    --color-success: var(--palette-mint);
+    --color-warning: var(--palette-amber);
+    --color-info: var(--palette-cyan);
     --color-border-default: var(--palette-ink-soft);
     --color-border-strong: var(--palette-ink);
     --color-border-focus: var(--palette-violet);
@@ -115,12 +126,18 @@
     --color-text-muted: var(--palette-lilac-muted);
     --color-text-on-accent: var(--palette-cream);
     --color-text-on-danger: var(--palette-ink);
+    --color-text-on-success: var(--palette-ink);
+    --color-text-on-warning: var(--palette-ink);
+    --color-text-on-info: var(--palette-ink);
     --color-accent: var(--palette-cobalt-bright);
     --color-accent-hover: var(--palette-cobalt-bright-hover);
     --color-accent-active: var(--palette-cobalt-bright-active);
     --color-danger: var(--palette-coral-bright);
     --color-danger-hover: var(--palette-coral-bright-hover);
     --color-danger-active: var(--palette-coral-bright-active);
+    --color-success: var(--palette-mint);
+    --color-warning: var(--palette-amber);
+    --color-info: var(--palette-cyan);
     --color-border-default: var(--palette-lilac-border);
     --color-border-strong: var(--palette-parchment);
     --color-border-focus: var(--palette-violet-bright);
@@ -134,12 +151,18 @@
     --color-text-muted: var(--palette-ink);
     --color-text-on-accent: var(--palette-parchment);
     --color-text-on-danger: var(--palette-parchment);
+    --color-text-on-success: var(--palette-parchment);
+    --color-text-on-warning: var(--palette-parchment);
+    --color-text-on-info: var(--palette-parchment);
     --color-accent: var(--palette-pixel-violet);
     --color-accent-hover: var(--palette-pixel-violet-deep);
     --color-accent-active: var(--palette-pixel-violet-dark);
     --color-danger: var(--palette-pixel-blood);
     --color-danger-hover: var(--palette-pixel-blood-deep);
     --color-danger-active: var(--palette-pixel-blood-deep);
+    --color-success: var(--palette-pixel-forest);
+    --color-warning: var(--palette-pixel-ochre);
+    --color-info: var(--palette-pixel-navy);
     --color-border-default: var(--palette-ink);
     --color-border-strong: var(--palette-ink);
     --color-border-focus: var(--palette-pixel-violet-deep);

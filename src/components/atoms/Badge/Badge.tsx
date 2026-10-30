@@ -1,7 +1,8 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import styles from './Badge.module.css';
 
-export type BadgeIntent = 'primary' | 'neutral' | 'danger';
+export type BadgeIntent =
+  'primary' | 'neutral' | 'success' | 'warning' | 'info' | 'danger';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   intent?: BadgeIntent;
@@ -11,6 +12,9 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 const intentClass: Record<BadgeIntent, string> = {
   primary: styles.primary,
   neutral: styles.neutral,
+  success: styles.success,
+  warning: styles.warning,
+  info: styles.info,
   danger: styles.danger,
 };
 

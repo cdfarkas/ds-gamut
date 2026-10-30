@@ -12,7 +12,7 @@ const meta = {
   argTypes: {
     intent: {
       control: 'inline-radio',
-      options: ['primary', 'neutral', 'danger'],
+      options: ['primary', 'neutral', 'success', 'warning', 'info', 'danger'],
     },
   },
   parameters: {
@@ -43,12 +43,23 @@ export const Danger: Story = { args: { intent: 'danger' } };
 
 export const Intents: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
+    >
       <Badge {...args} intent="primary">
         Primary
       </Badge>
       <Badge {...args} intent="neutral">
         Neutral
+      </Badge>
+      <Badge {...args} intent="success">
+        Success
+      </Badge>
+      <Badge {...args} intent="warning">
+        Warning
+      </Badge>
+      <Badge {...args} intent="info">
+        Info
       </Badge>
       <Badge {...args} intent="danger">
         Danger

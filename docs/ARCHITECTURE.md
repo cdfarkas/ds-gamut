@@ -58,10 +58,12 @@ All tokens live in one file, `src/styles/tokens.css`, in two tiers:
    `--palette-ink`, `--palette-space-4`, `--palette-radius-md`, `--palette-border-thick`,
    `--palette-font-sans`. The only place raw colour values exist.
 2. **Semantic aliases** — named by what they *do*, referencing primitives: `--color-bg-surface`,
-   `--color-text-primary`, `--color-border-focus`, `--radius-md`, `--shadow-raised`. The vocabulary
-   spans four families: colour (`--color-*`), shape (`--radius-sm/md/lg`, `--border-width-regular/
-   thick`, the flat `--shadow-raised`), and type (`--font-display` serif, `--font-sans` grotesk).
-   The maximalist base aesthetic that fills these is recorded in ADR 0008.
+   `--color-text-primary`, `--color-border-focus`, `--radius-md`, `--shadow-raised`. The
+   vocabulary spans four families: colour (`--color-*`, including the status pairs
+   `--color-success/warning/info/danger` each with `--color-text-on-<status>`, ADR 0012), shape
+   (`--radius-sm/md/lg`, `--border-width-regular/thick`, the flat `--shadow-raised`), and type
+   (`--font-display` serif, `--font-sans` grotesk). The maximalist base aesthetic that fills
+   these is recorded in ADR 0008.
 
 **Components consume the semantic layer only.** No `*.module.css` may contain a raw `hex`, `rgb()`
 or `hsl()` literal — a stylelint rule bans it (see ADR 0003). This is the fitness function that keeps

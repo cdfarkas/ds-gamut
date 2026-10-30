@@ -17,9 +17,14 @@ import * as BadgeStories from './Badge.stories';
       </p>
       <p>
         Use <code>intent</code> for meaning (<code>primary</code>, <code>neutral</code>,{' '}
-        <code>danger</code>). Colour is never the only signal: the badge text itself must
-        carry the meaning, so it still reads without colour. A badge is not a control — it
-        has no hover, press or focus state; wrap it in a real control when it must act.
+        <code>success</code>, <code>warning</code>, <code>info</code>, <code>danger</code>
+        ). The status intents <code>success</code>, <code>warning</code>,{' '}
+        <code>info</code> and <code>danger</code> draw on the global status tokens{' '}
+        <code>--color-&lt;status&gt;</code> / <code>--color-text-on-&lt;status&gt;</code>{' '}
+        (ADR 0012), shared by any component that carries a status. Colour is never the
+        only signal: the badge text itself must carry the meaning, so it still reads
+        without colour. A badge is not a control — it has no hover, press or focus state;
+        wrap it in a real control when it must act.
       </p>
     </>
   }
@@ -33,11 +38,16 @@ import * as BadgeStories from './Badge.stories';
       </p>
       <p>
         Utilisez <code>intent</code> pour le sens (<code>primary</code>,{' '}
-        <code>neutral</code>, <code>danger</code>). La couleur n'est jamais le seul signal
-        : le texte du badge doit lui-même porter le sens, pour rester lisible sans la
-        couleur. Un badge n'est pas un contrôle — il n'a ni état de survol, ni
-        d'enfoncement, ni de focus ; placez-le dans un vrai contrôle s'il doit déclencher
-        une action.
+        <code>neutral</code>, <code>success</code>, <code>warning</code>,{' '}
+        <code>info</code>, <code>danger</code>). Les intentions de statut{' '}
+        <code>success</code>, <code>warning</code>, <code>info</code> et{' '}
+        <code>danger</code> s'appuient sur les jetons de statut globaux{' '}
+        <code>--color-&lt;status&gt;</code> / <code>--color-text-on-&lt;status&gt;</code>{' '}
+        (ADR 0012), partagés par tout composant qui porte un statut. La couleur n'est
+        jamais le seul signal : le texte du badge doit lui-même porter le sens, pour
+        rester lisible sans la couleur. Un badge n'est pas un contrôle — il n'a ni état de
+        survol, ni d'enfoncement, ni de focus ; placez-le dans un vrai contrôle s'il doit
+        déclencher une action.
       </p>
     </>
   }
