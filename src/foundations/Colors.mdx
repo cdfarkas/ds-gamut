@@ -14,6 +14,8 @@ export const primitives = [
   { name: 'Coral', value: '#FF3D7F', token: '--palette-coral' },
   { name: 'Acid', value: '#D4FF2E', token: '--palette-lime' },
   { name: 'Cyan', value: '#7FE0FF', token: '--palette-cyan' },
+  { name: 'Mint', value: '#3DDC84', token: '--palette-mint' },
+  { name: 'Amber', value: '#FFB627', token: '--palette-amber' },
   { name: 'Ink', value: '#140F1C', token: '--palette-ink' },
   { name: 'Cream', value: '#FBF7EE', token: '--palette-cream' },
 ];
@@ -22,17 +24,39 @@ export const semantics = [
   { name: 'Surface', token: '--color-bg-surface' },
   { name: 'Text', token: '--color-text-primary' },
   { name: 'Accent', token: '--color-accent' },
-  { name: 'Danger', token: '--color-danger' },
   { name: 'Border', token: '--color-border-strong' },
   { name: 'Focus', token: '--color-border-focus' },
 ];
 
-export const Swatch = ({ name, value, token }) => (
+export const statuses = [
+  { name: 'Success', token: '--color-success', textOn: '--color-text-on-success' },
+  { name: 'Warning', token: '--color-warning', textOn: '--color-text-on-warning' },
+  { name: 'Info', token: '--color-info', textOn: '--color-text-on-info' },
+  { name: 'Danger (error)', token: '--color-danger', textOn: '--color-text-on-danger' },
+];
+
+export const Swatch = ({ name, value, token, textOn }) => (
   <li className="omnia-swatch">
-    <div className="omnia-swatch-chip" style={{ background: `var(${token})` }} />
+    <div
+      className="omnia-swatch-chip"
+      style={{
+        background: `var(${token})`,
+        ...(textOn && {
+          color: `var(${textOn})`,
+          display: 'grid',
+          placeItems: 'center',
+          fontWeight: 700,
+          fontSize: '1.25rem',
+          fontFamily: 'var(--font-sans)',
+        }),
+      }}
+    >
+      {textOn && 'Aa'}
+    </div>
     <div className="omnia-swatch-meta">
       <div className="omnia-swatch-name">{name}</div>
       <div className="omnia-swatch-value">{value ?? token}</div>
+      {textOn && <div className="omnia-swatch-value">{textOn}</div>}
     </div>
   </li>
 );
@@ -105,6 +129,36 @@ export const Swatch = ({ name, value, token }) => (
 
 <ul className="omnia-swatches">
   {semantics.map((c) => (
+    <Swatch key={c.token} {...c} />
+  ))}
+</ul>
+
+## <Localized en="Status" fr="Statuts" />
+
+<Localized
+  en={
+    <p>
+      Each status is a pair: a fill and its <code>--color-text-on-&lt;status&gt;</code>{' '}
+      text colour. The pairs recolour live with the <strong>Theme</strong> and{' '}
+      <strong>Skin</strong> toolbars — bright fills with ink text in the neutral skin,
+      deep blocks with parchment text in the pixel skin. Every pair clears WCAG 2.1 AA
+      (4.5:1) in all four modes. <code>danger</code> is the error status (ADR 0012).
+    </p>
+  }
+  fr={
+    <p>
+      Chaque statut est une paire : un fond et sa couleur de texte{' '}
+      <code>--color-text-on-&lt;status&gt;</code>. Les paires se recolorent en direct avec
+      les barres <strong>Theme</strong> et <strong>Skin</strong> — fonds vifs avec texte
+      encre dans l'habillage neutre, blocs profonds avec texte parchemin dans l'habillage
+      pixel. Chaque paire respecte le contraste WCAG 2.1 AA (4,5:1) dans les quatre modes.{' '}
+      <code>danger</code> est le statut d'erreur (ADR 0012).
+    </p>
+  }
+/>
+
+<ul className="omnia-swatches">
+  {statuses.map((c) => (
     <Swatch key={c.token} {...c} />
   ))}
 </ul>
