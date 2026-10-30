@@ -30,6 +30,9 @@ jobs:
       - name: Type-check
         run: pnpm typecheck
 
+      - name: Build library
+        run: pnpm build
+
       - name: Test (unit + interaction + a11y)
         run: pnpm test
 

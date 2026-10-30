@@ -143,5 +143,7 @@ contract in its `.mdx`. Full specification and the per-component contract format
 - **ESLint** (flat config) + **Prettier** for TS/JS and formatting.
 - **stylelint** for CSS, including the no-raw-color rule that enforces the token contract.
 - **Vite** as the builder, **Storybook 10** (`@storybook/react-vite`) as the catalogue and test host.
+- **Packaging**: `pnpm build` emits an ESM library (`dist/index.js` + `tsc` declarations) and one
+  `dist/styles.css`; versions and releases go through Changesets (ADR 0011).
 
 See `docs/adr/` for the decisions behind these choices.
