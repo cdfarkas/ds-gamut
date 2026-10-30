@@ -114,13 +114,14 @@ run publishes. `ci.yml` runs `pnpm build` after lint so the library build cannot
   (OIDC)** from GitHub Actions over stored tokens, and granular write tokens expire. Switching the
   workflow to trusted publishing (`id-token: write`, no `NPM_TOKEN`) is a follow-up worth doing at the
   first release; the gate would then check only `private`.
-- What flips at release time: set `"private": false`, add a `LICENSE` file and a `license` field, add
-  the `NPM_TOKEN` secret (or configure trusted publishing), then run the Release workflow.
+- What flips at release time: set `"private": false`, add the `NPM_TOKEN` secret (or configure
+  trusted publishing), then run the Release workflow. The MIT `LICENSE` file and `license` field are
+  already in place.
 
-## Open decisions blocking the first publish
+## Publish prerequisites
 
-**(a) LICENSE.** A public npm publish needs a `LICENSE` file and a `license` field. Neither is added
-here on purpose: it is a human decision.
+**(a) LICENSE — decided: MIT.** A public npm publish needs a `LICENSE` file and a `license` field;
+both are in place (`LICENSE`, `"license": "MIT"`). The options weighed were:
 
 - **MIT** — shortest, best understood, maximal reuse; no patent grant.
 - **Apache-2.0** — explicit patent grant and patent-retaliation clause; heavier obligations
@@ -128,9 +129,9 @@ here on purpose: it is a human decision.
 - **Proprietary / `UNLICENSED`** — keeps all rights, but defeats the point of a public portfolio
   package: nobody can legally use what they can install.
 
-Recommendation: **MIT**, the norm for portfolio and open design systems.
+Chosen: **MIT**, the norm for portfolio and open design systems (owner's decision).
 
-**(b) Timing.** Publish now (one component, `0.x`) or after Phase 2 lands a real component set.
+**(b) Timing — still open, blocks the first publish.** Publish now (one component, `0.x`) or after Phase 2 lands a real component set.
 
 - For publishing now: it claims the name, and it exercises the whole pipeline (build, version PR,
   publish, install) while it is small and cheap to fix.
