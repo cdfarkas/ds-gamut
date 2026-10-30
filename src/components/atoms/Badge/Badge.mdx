@@ -21,10 +21,12 @@ import * as BadgeStories from './Badge.stories';
         ). The status intents <code>success</code>, <code>warning</code>,{' '}
         <code>info</code> and <code>danger</code> draw on the global status tokens{' '}
         <code>--color-&lt;status&gt;</code> / <code>--color-text-on-&lt;status&gt;</code>{' '}
-        (ADR 0012), shared by any component that carries a status. Colour is never the
-        only signal: the badge text itself must carry the meaning, so it still reads
-        without colour. A badge is not a control — it has no hover, press or focus state;
-        wrap it in a real control when it must act.
+        (ADR 0012), shared by any component that carries a status. Every intent reads its
+        colours from the shared intent map (<code>--omnia-intent-bg</code>/
+        <code>--omnia-intent-fg</code>, ADR 0012). Colour is never the only signal: the
+        badge text itself must carry the meaning, so it still reads without colour. A
+        badge is not a control — it has no hover, press or focus state; wrap it in a real
+        control when it must act.
       </p>
     </>
   }
@@ -43,11 +45,13 @@ import * as BadgeStories from './Badge.stories';
         <code>success</code>, <code>warning</code>, <code>info</code> et{' '}
         <code>danger</code> s'appuient sur les jetons de statut globaux{' '}
         <code>--color-&lt;status&gt;</code> / <code>--color-text-on-&lt;status&gt;</code>{' '}
-        (ADR 0012), partagés par tout composant qui porte un statut. La couleur n'est
-        jamais le seul signal : le texte du badge doit lui-même porter le sens, pour
-        rester lisible sans la couleur. Un badge n'est pas un contrôle — il n'a ni état de
-        survol, ni d'enfoncement, ni de focus ; placez-le dans un vrai contrôle s'il doit
-        déclencher une action.
+        (ADR 0012), partagés par tout composant qui porte un statut. Chaque intention lit
+        ses couleurs dans la table d'intentions partagée (<code>--omnia-intent-bg</code>/
+        <code>--omnia-intent-fg</code>, ADR 0012). La couleur n'est jamais le seul signal
+        : le texte du badge doit lui-même porter le sens, pour rester lisible sans la
+        couleur. Un badge n'est pas un contrôle — il n'a ni état de survol, ni
+        d'enfoncement, ni de focus ; placez-le dans un vrai contrôle s'il doit déclencher
+        une action.
       </p>
     </>
   }

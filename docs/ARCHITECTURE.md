@@ -10,7 +10,7 @@ Atomic Design, strict:
 ```
 src/
   styles/        tokens.css, reset.css, layers.css
-  lib/           i18n.ts (t() + locale global + typed strings)
+  lib/           i18n.ts (t() + locale global + typed strings), intents.ts (shared intent list)
   translations/  en.ts, fr.ts
   components/
     atoms/       smallest building blocks (Button, Input, …)
@@ -64,6 +64,11 @@ All tokens live in one file, `src/styles/tokens.css`, in two tiers:
    (`--radius-sm/md/lg`, `--border-width-regular/thick`, the flat `--shadow-raised`), and type
    (`--font-display` serif, `--font-sans` grotesk). The maximalist base aesthetic that fills
    these is recorded in ADR 0008.
+
+An **intent map** closes the file: each `[data-intent]` sets `--omnia-intent-bg`,
+`--omnia-intent-bg-hover`, `--omnia-intent-bg-active` and `--omnia-intent-fg` from the semantic
+tier, so every intent-coloured component reads its rest/hover/press colours from one place;
+`src/lib/intents.ts` shares the list (ADR 0012).
 
 **Components consume the semantic layer only.** No `*.module.css` may contain a raw `hex`, `rgb()`
 or `hsl()` literal — a stylelint rule bans it (see ADR 0003). This is the fitness function that keeps

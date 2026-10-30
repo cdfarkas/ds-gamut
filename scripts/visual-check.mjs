@@ -57,6 +57,7 @@ const stories = [
   { id: 'atoms-button--primary', name: 'primary' },
   { id: 'atoms-button--neutral', name: 'neutral' },
   { id: 'atoms-button--danger', name: 'danger' },
+  { id: 'atoms-button--intents', name: 'intents' },
   { id: 'atoms-button--sizes', name: 'sizes' },
   { id: 'atoms-button--loading', name: 'loading' },
   { id: 'atoms-button--disabled', name: 'disabled' },

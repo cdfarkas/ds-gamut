@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { intents } from '../../../lib/intents';
 import { Badge } from './Badge';
 import './Badge.overrides.css';
 
@@ -12,7 +13,7 @@ const meta = {
   argTypes: {
     intent: {
       control: 'inline-radio',
-      options: ['primary', 'neutral', 'success', 'warning', 'info', 'danger'],
+      options: [...intents],
     },
   },
   parameters: {
@@ -46,24 +47,11 @@ export const Intents: Story = {
     <div
       style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
     >
-      <Badge {...args} intent="primary">
-        Primary
-      </Badge>
-      <Badge {...args} intent="neutral">
-        Neutral
-      </Badge>
-      <Badge {...args} intent="success">
-        Success
-      </Badge>
-      <Badge {...args} intent="warning">
-        Warning
-      </Badge>
-      <Badge {...args} intent="info">
-        Info
-      </Badge>
-      <Badge {...args} intent="danger">
-        Danger
-      </Badge>
+      {intents.map((intent) => (
+        <Badge {...args} key={intent} intent={intent}>
+          {intent.charAt(0).toUpperCase() + intent.slice(1)}
+        </Badge>
+      ))}
     </div>
   ),
 };

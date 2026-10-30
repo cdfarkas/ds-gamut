@@ -42,6 +42,12 @@
     --palette-cyan: #7fe0ff;
     --palette-mint: #3ddc84;
     --palette-amber: #ffb627;
+    --palette-mint-hover: #2fcf76;
+    --palette-mint-active: #25c06a;
+    --palette-amber-hover: #ffa90f;
+    --palette-amber-active: #f59c00;
+    --palette-cyan-hover: #5fd6ff;
+    --palette-cyan-active: #3fcbff;
 
     /* Pixel-skin accents — deep, saturated retro blocks. */
     --palette-pixel-violet: #5b1fb8;
@@ -50,8 +56,14 @@
     --palette-pixel-blood: #a01e1e;
     --palette-pixel-blood-deep: #7d1515;
     --palette-pixel-forest: #1e6b2e;
+    --palette-pixel-forest-deep: #185a26;
+    --palette-pixel-forest-dark: #134a1f;
     --palette-pixel-ochre: #8a5a00;
+    --palette-pixel-ochre-deep: #774d00;
+    --palette-pixel-ochre-dark: #654100;
     --palette-pixel-navy: #1a4f8a;
+    --palette-pixel-navy-deep: #154275;
+    --palette-pixel-navy-dark: #113661;
     --palette-pixel-night: #140f1c;
     --palette-pixel-night-raised: #281c38;
 
@@ -94,8 +106,14 @@
     --color-danger-hover: var(--palette-red-hover);
     --color-danger-active: var(--palette-red-active);
     --color-success: var(--palette-mint);
+    --color-success-hover: var(--palette-mint-hover);
+    --color-success-active: var(--palette-mint-active);
     --color-warning: var(--palette-amber);
+    --color-warning-hover: var(--palette-amber-hover);
+    --color-warning-active: var(--palette-amber-active);
     --color-info: var(--palette-cyan);
+    --color-info-hover: var(--palette-cyan-hover);
+    --color-info-active: var(--palette-cyan-active);
     --color-border-default: var(--palette-ink-soft);
     --color-border-strong: var(--palette-ink);
     --color-border-focus: var(--palette-violet);
@@ -142,8 +160,14 @@
     --color-danger-hover: var(--palette-red-bright-hover);
     --color-danger-active: var(--palette-red-bright-active);
     --color-success: var(--palette-mint);
+    --color-success-hover: var(--palette-mint-hover);
+    --color-success-active: var(--palette-mint-active);
     --color-warning: var(--palette-amber);
+    --color-warning-hover: var(--palette-amber-hover);
+    --color-warning-active: var(--palette-amber-active);
     --color-info: var(--palette-cyan);
+    --color-info-hover: var(--palette-cyan-hover);
+    --color-info-active: var(--palette-cyan-active);
     --color-border-default: var(--palette-lilac-border);
     --color-border-strong: var(--palette-parchment);
     --color-border-focus: var(--palette-violet-bright);
@@ -167,8 +191,14 @@
     --color-danger-hover: var(--palette-pixel-blood-deep);
     --color-danger-active: var(--palette-pixel-blood-deep);
     --color-success: var(--palette-pixel-forest);
+    --color-success-hover: var(--palette-pixel-forest-deep);
+    --color-success-active: var(--palette-pixel-forest-dark);
     --color-warning: var(--palette-pixel-ochre);
+    --color-warning-hover: var(--palette-pixel-ochre-deep);
+    --color-warning-active: var(--palette-pixel-ochre-dark);
     --color-info: var(--palette-pixel-navy);
+    --color-info-hover: var(--palette-pixel-navy-deep);
+    --color-info-active: var(--palette-pixel-navy-dark);
     --color-border-default: var(--palette-ink);
     --color-border-strong: var(--palette-ink);
     --color-border-focus: var(--palette-pixel-violet-deep);
@@ -184,5 +214,48 @@
     --color-border-default: var(--palette-parchment);
     --color-border-strong: var(--palette-parchment);
     --color-border-focus: var(--palette-violet-bright);
+  }
+
+  /* Intent map — the single source of rest/hover/press colours per data-intent (ADR 0012). */
+  [data-intent='primary'] {
+    --omnia-intent-bg: var(--color-accent);
+    --omnia-intent-bg-hover: var(--color-accent-hover);
+    --omnia-intent-bg-active: var(--color-accent-active);
+    --omnia-intent-fg: var(--color-text-on-accent);
+  }
+
+  [data-intent='neutral'] {
+    --omnia-intent-bg: var(--color-bg-subtle);
+    --omnia-intent-bg-hover: var(--color-bg-disabled);
+    --omnia-intent-bg-active: var(--color-bg-disabled);
+    --omnia-intent-fg: var(--color-text-primary);
+  }
+
+  [data-intent='success'] {
+    --omnia-intent-bg: var(--color-success);
+    --omnia-intent-bg-hover: var(--color-success-hover);
+    --omnia-intent-bg-active: var(--color-success-active);
+    --omnia-intent-fg: var(--color-text-on-success);
+  }
+
+  [data-intent='warning'] {
+    --omnia-intent-bg: var(--color-warning);
+    --omnia-intent-bg-hover: var(--color-warning-hover);
+    --omnia-intent-bg-active: var(--color-warning-active);
+    --omnia-intent-fg: var(--color-text-on-warning);
+  }
+
+  [data-intent='info'] {
+    --omnia-intent-bg: var(--color-info);
+    --omnia-intent-bg-hover: var(--color-info-hover);
+    --omnia-intent-bg-active: var(--color-info-active);
+    --omnia-intent-fg: var(--color-text-on-info);
+  }
+
+  [data-intent='danger'] {
+    --omnia-intent-bg: var(--color-danger);
+    --omnia-intent-bg-hover: var(--color-danger-hover);
+    --omnia-intent-bg-active: var(--color-danger-active);
+    --omnia-intent-fg: var(--color-text-on-danger);
   }
 }
