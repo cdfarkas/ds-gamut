@@ -18,9 +18,12 @@ pass — a real contrast failure is flagged, not hidden.
 
 1. `pnpm build-storybook` — produce `storybook-static/`.
 2. `pnpm visual-check` — `scripts/visual-check.mjs` serves the static build and drives
-   Playwright (the Chromium already installed for the test runner). For every Button
-   story it screenshots the four theme×skin modes, captures the keyboard-focus state,
-   and captures both locales on one representative story. Output and a `manifest.json`
+   Playwright (the Chromium already installed for the test runner). For every story in
+   its `stories` list it screenshots the four theme×skin modes; on Button it also
+   captures hover/press, the keyboard-focus state, and both locales on one
+   representative story. An optional argument filters by story id
+   (`pnpm visual-check badge`); the Button-only shots run when it is absent or contains
+   `button`. Output and a `manifest.json`
    (recording the `data-theme` / `data-skin` actually applied per shot) land in
    `visual-report/` (a local/CI artifact, gitignored and never committed).
 3. The agent **reads** each PNG (the Read tool renders images) and judges it against

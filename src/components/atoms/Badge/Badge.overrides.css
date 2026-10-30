@@ -1,0 +1,9 @@
+/* Consumer override demo (see docs/overrides.md): lives in the public
+   @layer overrides and wins over @layer components without !important. */
+@layer overrides {
+  .omnia-demo-override-badge {
+    --omnia-badge-radius: 999px;
+    --omnia-badge-bg: var(--color-accent-active);
+    --omnia-badge-fg: var(--color-text-on-accent);
+  }
+}

@@ -61,7 +61,14 @@ const stories = [
   { id: 'atoms-button--loading', name: 'loading' },
   { id: 'atoms-button--disabled', name: 'disabled' },
   { id: 'atoms-button--overridden', name: 'overridden' },
+  { id: 'atoms-badge--primary', name: 'badge-primary' },
+  { id: 'atoms-badge--neutral', name: 'badge-neutral' },
+  { id: 'atoms-badge--danger', name: 'badge-danger' },
+  { id: 'atoms-badge--intents', name: 'badge-intents' },
+  { id: 'atoms-badge--overridden', name: 'badge-overridden' },
 ];
+
+const filter = process.argv[2];
 
 const modes = [
   { key: 'light-neutral', theme: 'light', skin: 'default' },
@@ -83,7 +90,7 @@ async function open(id, theme, skin, locale) {
   const globals = `theme:${theme};skin:${skin};locale:${locale}`;
   const url = `http://localhost:${PORT}/iframe.html?id=${id}&viewMode=story&globals=${encodeURIComponent(globals)}`;
   await page.goto(url, { waitUntil: 'networkidle' });
-  await page.waitForSelector('#storybook-root button', { timeout: 20000 });
+  await page.waitForSelector('#storybook-root > *', { timeout: 20000 });
   await page.waitForTimeout(250);
   return page.evaluate(() => ({
     theme: document.documentElement.getAttribute('data-theme'),
@@ -149,19 +156,25 @@ async function shootInteraction(id, name, mode) {
 }
 
 for (const s of stories) {
+  if (filter && !s.id.includes(filter)) continue;
   for (const m of modes) {
     await shoot(s.id, s.name, m, 'en', m.key);
   }
 }
 
-await shootInteraction(stories[0].id, 'primary', modes[0]);
-await shootInteraction(stories[0].id, 'primary', modes[3]);
+if (!filter || filter.includes('button')) {
+  const primary = 'atoms-button--primary';
+  const loading = 'atoms-button--loading';
 
-await shoot(stories[0].id, 'primary', modes[0], 'en', 'focus-light-neutral', true);
-await shoot(stories[0].id, 'primary', modes[3], 'en', 'focus-dark-pixel', true);
+  await shootInteraction(primary, 'primary', modes[0]);
+  await shootInteraction(primary, 'primary', modes[3]);
 
-await shoot(stories[4].id, 'loading', modes[0], 'fr', 'light-neutral__fr');
-await shoot(stories[4].id, 'loading', modes[0], 'en', 'light-neutral__en');
+  await shoot(primary, 'primary', modes[0], 'en', 'focus-light-neutral', true);
+  await shoot(primary, 'primary', modes[3], 'en', 'focus-dark-pixel', true);
+
+  await shoot(loading, 'loading', modes[0], 'fr', 'light-neutral__fr');
+  await shoot(loading, 'loading', modes[0], 'en', 'light-neutral__en');
+}
 
 await writeFile(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
 await browser.close();

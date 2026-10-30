@@ -1,0 +1,77 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Badge } from './Badge';
+import './Badge.overrides.css';
+
+const meta = {
+  title: 'Atoms/Badge',
+  component: Badge,
+  args: {
+    children: 'Badge',
+    intent: 'neutral',
+  },
+  argTypes: {
+    intent: {
+      control: 'inline-radio',
+      options: ['primary', 'neutral', 'danger'],
+    },
+  },
+  parameters: {
+    chromatic: {
+      modes: {
+        'light-neutral': { theme: 'light', skin: 'default' },
+        'dark-neutral': { theme: 'dark', skin: 'default' },
+        'light-pixel': { theme: 'light', skin: 'pixel' },
+        'dark-pixel': { theme: 'dark', skin: 'pixel' },
+      },
+    },
+  },
+} satisfies Meta<typeof Badge>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+/** Controllable surface: every arg is spread, so intent and children are live. */
+export const Playground: Story = {
+  render: (args) => <Badge {...args} />,
+};
+
+export const Primary: Story = { args: { intent: 'primary' } };
+
+export const Neutral: Story = { args: { intent: 'neutral' } };
+
+export const Danger: Story = { args: { intent: 'danger' } };
+
+export const Intents: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+      <Badge {...args} intent="primary">
+        Primary
+      </Badge>
+      <Badge {...args} intent="neutral">
+        Neutral
+      </Badge>
+      <Badge {...args} intent="danger">
+        Danger
+      </Badge>
+    </div>
+  ),
+};
+
+/**
+ * Consumer override through the public contract: a `.omnia-demo-override-badge` class in
+ * `@layer overrides` re-points `--omnia-badge-radius`/`--omnia-badge-bg`/`--omnia-badge-fg` —
+ * no `!important`, no hashed class names. See docs/overrides.md.
+ */
+export const Overridden: Story = {
+  render: (args) => (
+    <Badge {...args} className="omnia-demo-override-badge">
+      Overridden
+    </Badge>
+  ),
+};
+
+export const DarkNeutral: Story = { ...Intents, globals: { theme: 'dark' } };
+
+export const PixelLight: Story = { ...Intents, globals: { skin: 'pixel' } };
+
+export const PixelDark: Story = { ...Intents, globals: { theme: 'dark', skin: 'pixel' } };
