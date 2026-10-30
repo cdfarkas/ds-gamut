@@ -5,6 +5,9 @@
     "declaration-empty-line-before": null,
     "property-no-vendor-prefix": null,
     "font-family-name-quotes": null,
+    "media-feature-name-value-allowed-list": {
+      "/^(min-|max-)?width$/": ["30em", "48em", "64em", "80em"]
+    },
     "selector-pseudo-class-no-unknown": [
       true,
       { "ignorePseudoClasses": ["global", "local"] }

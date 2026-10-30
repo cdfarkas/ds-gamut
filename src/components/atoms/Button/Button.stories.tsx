@@ -73,7 +73,9 @@ export const Intents: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
+    >
       <Button {...args} size="sm">
         Small
       </Button>
@@ -98,7 +100,9 @@ export const Disabled: Story = { args: { disabled: true } };
  */
 export const Overridden: Story = {
   render: (args) => (
-    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
+    >
       <Button {...args} className="omnia-demo-override">
         Overridden
       </Button>

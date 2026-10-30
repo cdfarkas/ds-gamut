@@ -46,6 +46,13 @@ semantic layer. Every Omnia custom property carries the `--omnia-` prefix so it 
 consuming app's own variables (ADR 0013). See `docs/ARCHITECTURE.md`. Semantic token names are a
 stable contract — do not rename them.
 
+## Responsive rule
+
+Mobile-first. Viewport `@media` uses only `30em` / `48em` / `64em` / `80em` in range notation
+(`(width >= 48em)`) — stylelint rejects any other width. Components whose layout follows their own
+width use `@container` with local `rem` thresholds; atoms stay fluid. The base layout works at 320 CSS
+px. No responsive props, no utility classes, no hook until one is needed. See ADR 0014.
+
 ## Test convention
 
 One runner (`@storybook/addon-vitest`, browser mode), two layers:

@@ -96,6 +96,7 @@ async function open(id, theme, skin, locale) {
   return page.evaluate(() => ({
     theme: document.documentElement.getAttribute('data-theme'),
     skin: document.documentElement.getAttribute('data-skin'),
+    scrollWidth: document.documentElement.scrollWidth,
   }));
 }
 
@@ -116,6 +117,8 @@ async function shoot(id, name, mode, locale, suffix, focus = false) {
     focus,
     appliedTheme: applied.theme,
     appliedSkin: applied.skin,
+    viewport: page.viewportSize(),
+    scrollWidth: applied.scrollWidth,
     file,
   });
 }
@@ -175,6 +178,14 @@ if (!filter || filter.includes('button')) {
 
   await shoot(loading, 'loading', modes[0], 'fr', 'light-neutral__fr');
   await shoot(loading, 'loading', modes[0], 'en', 'light-neutral__en');
+}
+
+await page.setViewportSize({ width: 320, height: 568 });
+for (const s of stories) {
+  if (filter && !s.id.includes(filter)) continue;
+  for (const m of modes) {
+    await shoot(s.id, s.name, m, 'en', `${m.key}__w320`);
+  }
 }
 
 await writeFile(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
