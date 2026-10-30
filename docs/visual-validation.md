@@ -19,12 +19,15 @@ pass — a real contrast failure is flagged, not hidden.
 1. `pnpm build-storybook` — produce `storybook-static/`.
 2. `pnpm visual-check` — `scripts/visual-check.mjs` serves the static build and drives
    Playwright (the Chromium already installed for the test runner). For every story in
-   its `stories` list it screenshots the four theme×skin modes; on Button it also
-   captures hover/press, the keyboard-focus state, and both locales on one
-   representative story. An optional argument filters by story id
+   its `stories` list it screenshots the four theme×skin modes at 440 CSS px; on Button
+   it also captures hover/press, the keyboard-focus state, and both locales on one
+   representative story. A narrow pass then shoots every story again in all four modes
+   at 320 × 568 CSS px, the WCAG 1.4.10 reflow width (ADR 0014), as
+   `<story>__<mode>__w320.png`. An optional argument filters by story id
    (`pnpm visual-check badge`); the Button-only shots run when it is absent or contains
    `button`. Output and a `manifest.json`
-   (recording the `data-theme` / `data-skin` actually applied per shot) land in
+   (recording per shot the `data-theme` / `data-skin` actually applied, the viewport and the
+   page `scrollWidth`) land in
    `visual-report/` (a local/CI artifact, gitignored and never committed).
 3. The agent **reads** each PNG (the Read tool renders images) and judges it against
    the checklist below, writing a reasoned PASS / CONCERNS verdict per mode.
@@ -41,6 +44,8 @@ Modes are driven through the Storybook iframe globals query parameter, e.g.
 - Text contrast reads as AA (the automated a11y gate is the hard proof; this is the
   eyes-on cross-check).
 - No overflow or clipping of text or the control.
+- At 320 px (`__w320` shots): no horizontal scroll (`scrollWidth` in the manifest is at
+  most 320), nothing cut at the right edge, and no clipped offset shadow.
 - The focus ring is visible on keyboard focus — in **every** skin, including pixel
   where a clip-path would otherwise clip an outer outline.
 

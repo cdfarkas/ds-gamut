@@ -141,6 +141,21 @@ Styling is **CSS Modules + CSS custom properties + native `@layer`** — no Sass
 tokens → base → components → utilities → overrides) so specificity is predictable and a component
 never has to fight the cascade.
 
+## Responsive
+
+Mobile-first, three mechanisms, chosen by what the layout depends on (ADR 0014):
+
+- **Viewport `@media`** for Dialog and page templates, on one em scale only: `(width >= 30em)` sm,
+  `48em` md, `64em` lg, `80em` xl, written in range notation. A stylelint
+  `media-feature-name-value-allowed-list` rule rejects any other width value in a media query.
+- **`@container`** inside components whose layout follows their own width (FormField, Card, Tabs),
+  with `rem` thresholds local to the component. The container needs a width given by its parent.
+- **Fluid CSS, no breakpoint** for atoms.
+
+The unprefixed style must work at 320 CSS px (WCAG 1.4.10); the visual gate shoots every story at
+that width. No responsive props, no utility classes, and no `useMediaQuery` hook until a component
+needs JavaScript.
+
 ## Overriding components
 
 Consumers restyle components — and their internal sub-parts — through a layered, public API, never by
