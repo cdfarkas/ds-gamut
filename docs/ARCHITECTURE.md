@@ -54,16 +54,22 @@ is ceremony; use dot-notation instead.
 
 All tokens live in one file, `src/styles/tokens.css`, in two tiers:
 
-1. **Primitive palette** — raw values, named by what they *are*: `--palette-cobalt`,
-   `--palette-ink`, `--palette-space-4`, `--palette-radius-md`, `--palette-border-thick`,
-   `--palette-font-sans`. The only place raw colour values exist.
-2. **Semantic aliases** — named by what they *do*, referencing primitives: `--color-bg-surface`,
-   `--color-text-primary`, `--color-border-focus`, `--radius-md`, `--shadow-raised`. The
-   vocabulary spans four families: colour (`--color-*`, including the status pairs
-   `--color-success/warning/info/danger` each with `--color-text-on-<status>`, ADR 0012), shape
-   (`--radius-sm/md/lg`, `--border-width-regular/thick`, the flat `--shadow-raised`), and type
-   (`--font-display` serif, `--font-sans` grotesk). The maximalist base aesthetic that fills
-   these is recorded in ADR 0008.
+1. **Primitive palette** — raw values, named by what they *are*: `--omnia-palette-cobalt`,
+   `--omnia-palette-ink`, `--omnia-palette-space-4`, `--omnia-palette-radius-md`,
+   `--omnia-palette-border-thick`, `--omnia-palette-font-sans`. The only place raw colour values
+   exist.
+2. **Semantic aliases** — named by what they *do*, referencing primitives:
+   `--omnia-color-bg-surface`, `--omnia-color-text-primary`, `--omnia-color-border-focus`,
+   `--omnia-radius-md`, `--omnia-shadow-raised`. The vocabulary spans four families: colour
+   (`--omnia-color-*`, including the status pairs `--omnia-color-success/warning/info/danger` each
+   with `--omnia-color-text-on-<status>`, ADR 0012), shape (`--omnia-radius-sm/md/lg`,
+   `--omnia-border-width-regular/thick`, the flat `--omnia-shadow-raised`), and type
+   (`--omnia-font-display` serif, `--omnia-font-sans` grotesk). The maximalist base aesthetic that
+   fills these is recorded in ADR 0008.
+
+Every Omnia custom property — primitive, semantic, intent and per-component — shares the `--omnia-`
+namespace, so a consuming app's own `--color-primary` or `--radius-sm` never collides with it
+(ADR 0013).
 
 An **intent map** closes the file: each `[data-intent]` sets `--omnia-intent-bg`,
 `--omnia-intent-bg-hover`, `--omnia-intent-bg-active` and `--omnia-intent-fg` from the semantic
@@ -74,9 +80,9 @@ tier, so every intent-coloured component reads its rest/hover/press colours from
 or `hsl()` literal — a stylelint rule bans it (see ADR 0003). This is the fitness function that keeps
 the contract real: a reskin changes tokens, never component CSS.
 
-Themes and skins reassign **only the semantic layer** — they re-point `--color-*` / `--radius-*` /
-`--shadow-*` at different primitives (or, for the pixel skin, at different values). Primitive names
-and semantic names are both stable contracts; do not rename them.
+Themes and skins reassign **only the semantic layer** — they re-point `--omnia-color-*` /
+`--omnia-radius-*` / `--omnia-shadow-*` at different primitives (or, for the pixel skin, at different
+values). Primitive names and semantic names are both stable contracts; do not rename them.
 
 The file is hand-authored now but shaped to be generated later (Style-Dictionary-style), so keep the
 two tiers cleanly separated.
@@ -111,18 +117,18 @@ so forcing them through the token layer would distort it. Colour still comes fro
 
 The offset shadow is a physical affordance, so it responds to interaction — this is the house
 standard, defined once on Button and reused by every future interactive atom (ADR 0009). Rest shows
-the flat `--shadow-raised` (`4px`, the ground reference); hover lifts the control
-`translate(-3px, -3px)` and grows the shadow to `--shadow-raised-hover` (`7px`); the signature press
-slams flat — `translate(--press-offset)` (`4px`) drops the control onto its shadow while the shadow
-collapses to `--shadow-pressed` (`0`).
+the flat `--omnia-shadow-raised` (`4px`, the ground reference); hover lifts the control
+`translate(-3px, -3px)` and grows the shadow to `--omnia-shadow-raised-hover` (`7px`); the signature
+press slams flat — `translate(--omnia-press-offset)` (`4px`) drops the control onto its shadow while
+the shadow collapses to `--omnia-shadow-pressed` (`0`).
 Elevation is shadow thickness (7 > 4 > 0) with the ground fixed: `translate + shadow offset` stays `4`
 in every state. The pixel skin gets the same model through a non-clipped `.frame` wrapper whose
 `::before` carries the offset shadow, because the button's notch `clip-path` would clip a shadow drawn
 on the button itself.
 
-Motion is tokenised and asymmetric: hover and release settle over `--dur-fast` (200ms) with
-`--ease-out` (easeOutCubic), press-in is quicker at `--dur-press` (110ms). It transitions only
-`transform` / `box-shadow` / `background-color` / `border-color`, so neighbours never reflow. Interaction
+Motion is tokenised and asymmetric: hover and release settle over `--omnia-dur-fast` (200ms) with
+`--omnia-ease-out` (easeOutCubic), press-in is quicker at `--omnia-dur-press` (110ms). It transitions
+only `transform` / `box-shadow` / `background-color` / `border-color`, so neighbours never reflow. Interaction
 motion is wrapped in `@media (prefers-reduced-motion: reduce)`, which disables transitions and transforms
 while keeping the colour and shadow state cues, so states stay distinguishable without movement; the
 loading spinner is exempt and keeps turning, since it is essential progress feedback. Every state holds

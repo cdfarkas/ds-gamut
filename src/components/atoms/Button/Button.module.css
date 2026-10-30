@@ -3,24 +3,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--palette-space-2);
-    border: var(--border-width-thick) solid
-      var(--omnia-button-border-color, var(--color-border-strong));
-    border-radius: var(--omnia-button-radius, var(--radius-md));
+    gap: var(--omnia-palette-space-2);
+    border: var(--omnia-border-width-thick) solid
+      var(--omnia-button-border-color, var(--omnia-color-border-strong));
+    border-radius: var(--omnia-button-radius, var(--omnia-radius-md));
     background-color: var(--omnia-button-bg, var(--omnia-intent-bg));
-    box-shadow: var(--omnia-button-shadow, var(--shadow-raised));
+    box-shadow: var(--omnia-button-shadow, var(--omnia-shadow-raised));
     color: var(--omnia-button-fg, var(--omnia-intent-fg));
     font-weight: 600;
     line-height: 1.2;
     transition:
-      transform var(--dur-fast) var(--ease-out),
-      box-shadow var(--dur-fast) var(--ease-out),
-      background-color var(--dur-fast) var(--ease-out),
-      border-color var(--dur-fast) var(--ease-out);
+      transform var(--omnia-dur-fast) var(--omnia-ease-out),
+      box-shadow var(--omnia-dur-fast) var(--omnia-ease-out),
+      background-color var(--omnia-dur-fast) var(--omnia-ease-out),
+      border-color var(--omnia-dur-fast) var(--omnia-ease-out);
   }
 
   .button:where([data-intent='neutral']) {
-    border-color: var(--omnia-button-border-color, var(--color-border-default));
+    border-color: var(--omnia-button-border-color, var(--omnia-color-border-default));
     box-shadow: var(--omnia-button-shadow, none);
   }
 
@@ -30,33 +30,33 @@
   }
 
   .button:focus-visible {
-    outline: 2px solid var(--color-border-focus);
+    outline: 2px solid var(--omnia-color-border-focus);
     outline-offset: 2px;
   }
 
   .sm {
-    padding: var(--omnia-button-padding-y, var(--palette-space-1))
-      var(--omnia-button-padding-x, var(--palette-space-3));
+    padding: var(--omnia-button-padding-y, var(--omnia-palette-space-1))
+      var(--omnia-button-padding-x, var(--omnia-palette-space-3));
     font-size: 0.8125rem;
   }
 
   .md {
-    padding: var(--omnia-button-padding-y, var(--palette-space-2))
-      var(--omnia-button-padding-x, var(--palette-space-4));
+    padding: var(--omnia-button-padding-y, var(--omnia-palette-space-2))
+      var(--omnia-button-padding-x, var(--omnia-palette-space-4));
     font-size: 0.9375rem;
   }
 
   .lg {
-    padding: var(--omnia-button-padding-y, var(--palette-space-3))
-      var(--omnia-button-padding-x, var(--palette-space-5));
+    padding: var(--omnia-button-padding-y, var(--omnia-palette-space-3))
+      var(--omnia-button-padding-x, var(--omnia-palette-space-5));
     font-size: 1.0625rem;
   }
 
   .button:disabled {
     border-color: transparent;
-    background-color: var(--color-bg-disabled);
+    background-color: var(--omnia-color-bg-disabled);
     box-shadow: none;
-    color: var(--color-text-muted);
+    color: var(--omnia-color-text-muted);
   }
 
   /* Loading is essential feedback, so the spinner keeps turning even under
@@ -112,7 +112,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background-color: var(--color-border-strong);
+    background-color: var(--omnia-color-border-strong);
     transform: translate(4px, 4px);
     clip-path: polygon(
       4px 0,
@@ -129,7 +129,7 @@
   /* clip-path clips an outer outline; inset a thick ring with a fill-coloured
      gap so the parchment ring separates from the parchment frame. */
   :global([data-skin='pixel']) .button:focus-visible {
-    outline: var(--border-width-thick) solid currentcolor;
+    outline: var(--omnia-border-width-thick) solid currentcolor;
     outline-offset: -7px;
   }
 
@@ -137,14 +137,14 @@
   .button:hover:not(:disabled) {
     transform: translate(-3px, -3px);
     background-color: var(--omnia-intent-bg-hover);
-    box-shadow: var(--shadow-raised-hover);
+    box-shadow: var(--omnia-shadow-raised-hover);
   }
 
   .button:active:not(:disabled) {
-    transform: translate(var(--press-offset), var(--press-offset));
+    transform: translate(var(--omnia-press-offset), var(--omnia-press-offset));
     background-color: var(--omnia-intent-bg-active);
-    box-shadow: var(--shadow-pressed);
-    transition-duration: var(--dur-press);
+    box-shadow: var(--omnia-shadow-pressed);
+    transition-duration: var(--omnia-dur-press);
   }
 
   .button:where([data-intent='neutral']):hover:not(:disabled) {
@@ -154,7 +154,7 @@
 
   .button:where([data-intent='neutral']):active:not(:disabled) {
     transform: translate(1px, 1px);
-    border-color: var(--color-border-strong);
+    border-color: var(--omnia-color-border-strong);
     box-shadow: var(--omnia-button-shadow, none);
   }
 

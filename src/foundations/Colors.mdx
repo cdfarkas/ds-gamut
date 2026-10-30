@@ -8,32 +8,44 @@ import '../Introduction.css';
 <ThemeSync />
 
 export const primitives = [
-  { name: 'Cobalt', value: '#2419E8', token: '--palette-cobalt' },
-  { name: 'Cobalt bright', value: '#4B3BFF', token: '--palette-cobalt-bright' },
-  { name: 'Violet', value: '#7A3BFF', token: '--palette-violet' },
-  { name: 'Coral', value: '#FF3D7F', token: '--palette-coral' },
-  { name: 'Signal red', value: '#FF3B3B', token: '--palette-red' },
-  { name: 'Acid', value: '#D4FF2E', token: '--palette-lime' },
-  { name: 'Cyan', value: '#7FE0FF', token: '--palette-cyan' },
-  { name: 'Mint', value: '#3DDC84', token: '--palette-mint' },
-  { name: 'Amber', value: '#FFB627', token: '--palette-amber' },
-  { name: 'Ink', value: '#140F1C', token: '--palette-ink' },
-  { name: 'Cream', value: '#FBF7EE', token: '--palette-cream' },
+  { name: 'Cobalt', value: '#2419E8', token: '--omnia-palette-cobalt' },
+  { name: 'Cobalt bright', value: '#4B3BFF', token: '--omnia-palette-cobalt-bright' },
+  { name: 'Violet', value: '#7A3BFF', token: '--omnia-palette-violet' },
+  { name: 'Coral', value: '#FF3D7F', token: '--omnia-palette-coral' },
+  { name: 'Signal red', value: '#FF3B3B', token: '--omnia-palette-red' },
+  { name: 'Acid', value: '#D4FF2E', token: '--omnia-palette-lime' },
+  { name: 'Cyan', value: '#7FE0FF', token: '--omnia-palette-cyan' },
+  { name: 'Mint', value: '#3DDC84', token: '--omnia-palette-mint' },
+  { name: 'Amber', value: '#FFB627', token: '--omnia-palette-amber' },
+  { name: 'Ink', value: '#140F1C', token: '--omnia-palette-ink' },
+  { name: 'Cream', value: '#FBF7EE', token: '--omnia-palette-cream' },
 ];
 
 export const semantics = [
-  { name: 'Surface', token: '--color-bg-surface' },
-  { name: 'Text', token: '--color-text-primary' },
-  { name: 'Accent', token: '--color-accent' },
-  { name: 'Border', token: '--color-border-strong' },
-  { name: 'Focus', token: '--color-border-focus' },
+  { name: 'Surface', token: '--omnia-color-bg-surface' },
+  { name: 'Text', token: '--omnia-color-text-primary' },
+  { name: 'Accent', token: '--omnia-color-accent' },
+  { name: 'Border', token: '--omnia-color-border-strong' },
+  { name: 'Focus', token: '--omnia-color-border-focus' },
 ];
 
 export const statuses = [
-  { name: 'Success', token: '--color-success', textOn: '--color-text-on-success' },
-  { name: 'Warning', token: '--color-warning', textOn: '--color-text-on-warning' },
-  { name: 'Info', token: '--color-info', textOn: '--color-text-on-info' },
-  { name: 'Danger (error)', token: '--color-danger', textOn: '--color-text-on-danger' },
+  {
+    name: 'Success',
+    token: '--omnia-color-success',
+    textOn: '--omnia-color-text-on-success',
+  },
+  {
+    name: 'Warning',
+    token: '--omnia-color-warning',
+    textOn: '--omnia-color-text-on-warning',
+  },
+  { name: 'Info', token: '--omnia-color-info', textOn: '--omnia-color-text-on-info' },
+  {
+    name: 'Danger (error)',
+    token: '--omnia-color-danger',
+    textOn: '--omnia-color-text-on-danger',
+  },
 ];
 
 export const Swatch = ({ name, value, token, textOn }) => (
@@ -48,7 +60,7 @@ export const Swatch = ({ name, value, token, textOn }) => (
           placeItems: 'center',
           fontWeight: 700,
           fontSize: '1.25rem',
-          fontFamily: 'var(--font-sans)',
+          fontFamily: 'var(--omnia-font-sans)',
         }),
       }}
     >
@@ -67,19 +79,19 @@ export const Swatch = ({ name, value, token, textOn }) => (
 <Localized
   en={
     <p>
-      The palette is two tiers. The primitive <code>--palette-*</code> layer holds the raw
-      brand colours and never changes; the semantic <code>--color-*</code> layer aliases
-      them per theme and skin. Components only ever read the semantic layer. The swatches
-      below are read live from <code>src/styles/tokens.css</code>.
+      The palette is two tiers. The primitive <code>--omnia-palette-*</code> layer holds
+      the raw brand colours and never changes; the semantic <code>--omnia-color-*</code>{' '}
+      layer aliases them per theme and skin. Components only ever read the semantic layer.
+      The swatches below are read live from <code>src/styles/tokens.css</code>.
     </p>
   }
   fr={
     <p>
-      La palette a deux niveaux. La couche primitive <code>--palette-*</code> contient les
-      couleurs brutes de la marque et ne change jamais ; la couche sémantique{' '}
-      <code>--color-*</code> les redéfinit selon le thème et l'habillage. Les composants
-      ne lisent que la couche sémantique. Les échantillons ci-dessous sont lus en direct
-      depuis <code>src/styles/tokens.css</code>.
+      La palette a deux niveaux. La couche primitive <code>--omnia-palette-*</code>{' '}
+      contient les couleurs brutes de la marque et ne change jamais ; la couche sémantique{' '}
+      <code>--omnia-color-*</code> les redéfinit selon le thème et l'habillage. Les
+      composants ne lisent que la couche sémantique. Les échantillons ci-dessous sont lus
+      en direct depuis <code>src/styles/tokens.css</code>.
     </p>
   }
 />
@@ -139,21 +151,22 @@ export const Swatch = ({ name, value, token, textOn }) => (
 <Localized
   en={
     <p>
-      Each status is a pair: a fill and its <code>--color-text-on-&lt;status&gt;</code>{' '}
-      text colour. The pairs recolour live with the <strong>Theme</strong> and{' '}
-      <strong>Skin</strong> toolbars — bright fills with ink text in the neutral skin,
-      deep blocks with parchment text in the pixel skin. Every pair clears WCAG 2.1 AA
-      (4.5:1) in all four modes. <code>danger</code> is the error status (ADR 0012).
+      Each status is a pair: a fill and its{' '}
+      <code>--omnia-color-text-on-&lt;status&gt;</code> text colour. The pairs recolour
+      live with the <strong>Theme</strong> and <strong>Skin</strong> toolbars — bright
+      fills with ink text in the neutral skin, deep blocks with parchment text in the
+      pixel skin. Every pair clears WCAG 2.1 AA (4.5:1) in all four modes.{' '}
+      <code>danger</code> is the error status (ADR 0012).
     </p>
   }
   fr={
     <p>
       Chaque statut est une paire : un fond et sa couleur de texte{' '}
-      <code>--color-text-on-&lt;status&gt;</code>. Les paires se recolorent en direct avec
-      les barres <strong>Theme</strong> et <strong>Skin</strong> — fonds vifs avec texte
-      encre dans l'habillage neutre, blocs profonds avec texte parchemin dans l'habillage
-      pixel. Chaque paire respecte le contraste WCAG 2.1 AA (4,5:1) dans les quatre modes.{' '}
-      <code>danger</code> est le statut d'erreur (ADR 0012).
+      <code>--omnia-color-text-on-&lt;status&gt;</code>. Les paires se recolorent en
+      direct avec les barres <strong>Theme</strong> et <strong>Skin</strong> — fonds vifs
+      avec texte encre dans l'habillage neutre, blocs profonds avec texte parchemin dans
+      l'habillage pixel. Chaque paire respecte le contraste WCAG 2.1 AA (4,5:1) dans les
+      quatre modes. <code>danger</code> est le statut d'erreur (ADR 0012).
     </p>
   }
 />

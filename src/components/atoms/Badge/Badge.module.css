@@ -2,10 +2,10 @@
   .badge {
     display: inline-flex;
     align-items: center;
-    padding: var(--palette-space-1) var(--palette-space-2);
-    border: var(--border-width-regular) solid
-      var(--omnia-badge-border-color, var(--color-border-strong));
-    border-radius: var(--omnia-badge-radius, var(--radius-sm));
+    padding: var(--omnia-palette-space-1) var(--omnia-palette-space-2);
+    border: var(--omnia-border-width-regular) solid
+      var(--omnia-badge-border-color, var(--omnia-color-border-strong));
+    border-radius: var(--omnia-badge-radius, var(--omnia-radius-sm));
     background-color: var(--omnia-badge-bg, var(--omnia-intent-bg));
     color: var(--omnia-badge-fg, var(--omnia-intent-fg));
     font-size: 0.75rem;

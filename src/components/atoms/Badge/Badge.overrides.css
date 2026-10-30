@@ -3,7 +3,7 @@
 @layer overrides {
   .omnia-demo-override-badge {
     --omnia-badge-radius: 999px;
-    --omnia-badge-bg: var(--color-accent-active);
-    --omnia-badge-fg: var(--color-text-on-accent);
+    --omnia-badge-bg: var(--omnia-color-accent-active);
+    --omnia-badge-fg: var(--omnia-color-text-on-accent);
   }
 }

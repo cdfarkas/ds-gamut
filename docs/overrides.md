@@ -28,7 +28,7 @@ Utilisez le niveau le moins puissant qui résout votre problème, dans cet ordre
 
 | # | Tier | What you change | Scope |
 |---|------|-----------------|-------|
-| 1 | **Semantic tokens** | `--color-*`, `--radius-*`, `--shadow-*`, … | Global reskin across every component, theme and skin |
+| 1 | **Semantic tokens** | `--omnia-color-*`, `--omnia-radius-*`, `--omnia-shadow-*`, … | Global reskin across every component, theme and skin |
 | 2 | **Component variables** | `--omnia-<name>-*` (e.g. `--omnia-button-bg`) | One component type, the props it marks overridable |
 | 3 | **`data-*` contract + `@layer overrides`** | Any CSS property on a part you select by `[data-scope][data-part]` (or your own `className`) | Precise, targeted — including internal sub-parts |
 | 4 | **`style` prop (escape hatch)** | Inline styles on the root `<button>` | One instance, last resort |
@@ -39,7 +39,7 @@ Re-point the semantic token on a scope (`:root`, a theme/skin selector, or any c
 component that reads it updates together, in both themes and both skins. This is how you rebrand.
 
 ```css
-:root { --color-accent: #0a7; }
+:root { --omnia-color-accent: #0a7; }
 ```
 
 Intent colours come from the intent map in `tokens.css` (ADR 0012): `--omnia-intent-bg`,
@@ -63,7 +63,7 @@ considers overridable. Each reads **with a fallback** to the semantic token, so 
 holds when you set nothing:
 
 ```css
-background: var(--omnia-button-bg, var(--color-accent));
+background: var(--omnia-button-bg, var(--omnia-color-accent));
 ```
 
 Set them on the element or any ancestor (custom properties inherit):

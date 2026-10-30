@@ -8,30 +8,30 @@
 
 @layer base {
   :root {
-    --font-family-base: var(--font-sans);
+    --omnia-font-family-base: var(--omnia-font-sans);
   }
 
   :root[data-skin='pixel'] {
-    --font-family-base: 'ds-pixel', 'Courier New', monospace;
+    --omnia-font-family-base: 'ds-pixel', 'Courier New', monospace;
 
     image-rendering: pixelated;
   }
 
   body {
-    font-family: var(--font-family-base);
-    background: var(--color-bg-surface);
-    color: var(--color-text-primary);
+    font-family: var(--omnia-font-family-base);
+    background: var(--omnia-color-bg-surface);
+    color: var(--omnia-color-text-primary);
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-display);
+    font-family: var(--omnia-font-display);
     font-weight: 600;
   }
 
   :root[data-skin='pixel'] :is(h1, h2, h3, h4) {
-    font-family: var(--font-family-base);
+    font-family: var(--omnia-font-family-base);
   }
 }
