@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 104 104" role="img" aria-label="gamut">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 104 104" role="img" aria-label="Omnia">
   <style>
     :root { --fg: #140f1c; --bg: #fbf7ee; }
     @media (prefers-color-scheme: dark) { :root { --fg: #fbf7ee; --bg: #140f1c; } }

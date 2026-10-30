@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "gamut-storybook",
+      "name": "omnia-storybook",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["storybook", "--no-open"],
       "port": 6006

@@ -28,11 +28,11 @@ export const semantics = [
 ];
 
 export const Swatch = ({ name, value, token }) => (
-  <li className="gamut-swatch">
-    <div className="gamut-swatch-chip" style={{ background: `var(${token})` }} />
-    <div className="gamut-swatch-meta">
-      <div className="gamut-swatch-name">{name}</div>
-      <div className="gamut-swatch-value">{value ?? token}</div>
+  <li className="omnia-swatch">
+    <div className="omnia-swatch-chip" style={{ background: `var(${token})` }} />
+    <div className="omnia-swatch-meta">
+      <div className="omnia-swatch-name">{name}</div>
+      <div className="omnia-swatch-value">{value ?? token}</div>
     </div>
   </li>
 );
@@ -76,7 +76,7 @@ export const Swatch = ({ name, value, token }) => (
   }
 />
 
-<ul className="gamut-swatches">
+<ul className="omnia-swatches">
   {primitives.map((c) => (
     <Swatch key={c.token} {...c} />
   ))}
@@ -103,7 +103,7 @@ export const Swatch = ({ name, value, token }) => (
   }
 />
 
-<ul className="gamut-swatches">
+<ul className="omnia-swatches">
   {semantics.map((c) => (
     <Swatch key={c.token} {...c} />
   ))}

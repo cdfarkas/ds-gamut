@@ -1,6 +1,6 @@
 # Architecture
 
-How gamut is laid out and why. Rules here are binding; the summaries in `CLAUDE.md` point at
+How Omnia is laid out and why. Rules here are binding; the summaries in `CLAUDE.md` point at
 this file for the detail.
 
 ## Folder layering
@@ -132,7 +132,7 @@ never has to fight the cascade.
 
 Consumers restyle components — and their internal sub-parts — through a layered, public API, never by
 touching the hashed CSS-Module class names, which are private and change every build. The tiers, from
-most-sanctioned to escape hatch: semantic tokens → per-component `--gamut-<name>-*` variables → a
+most-sanctioned to escape hatch: semantic tokens → per-component `--omnia-<name>-*` variables → a
 stable `data-scope`/`data-part` attribute contract selected from `@layer overrides` (the last layer,
 so consumer rules win without `!important`) → the `style` prop. Every component documents its own
 contract in its `.mdx`. Full specification and the per-component contract format: `docs/overrides.md`

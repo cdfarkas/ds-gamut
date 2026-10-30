@@ -1,4 +1,4 @@
-.gamut-hero {
+.omnia-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,12 +7,12 @@
   text-align: center;
 }
 
-.gamut-hero svg {
+.omnia-hero svg {
   width: min(360px, 80vw);
   height: auto;
 }
 
-.gamut-tagline {
+.omnia-tagline {
   max-width: 44ch;
   margin: 0;
   font-family: var(--font-display);
@@ -21,14 +21,14 @@
   color: var(--palette-ink);
 }
 
-.gamut-logo-frames {
+.omnia-logo-frames {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--palette-space-3);
   margin: var(--palette-space-4) 0;
 }
 
-.gamut-logo-frame {
+.omnia-logo-frame {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,20 +37,20 @@
   border-radius: var(--radius-md);
 }
 
-.gamut-logo-frame svg {
+.omnia-logo-frame svg {
   width: min(240px, 70%);
   height: auto;
 }
 
-.gamut-logo-frame-light {
+.omnia-logo-frame-light {
   background: var(--palette-cream);
 }
 
-.gamut-logo-frame-dark {
+.omnia-logo-frame-dark {
   background: var(--palette-night);
 }
 
-.gamut-swatches {
+.omnia-swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: var(--palette-space-3);
@@ -59,34 +59,34 @@
   list-style: none;
 }
 
-.gamut-swatch {
+.omnia-swatch {
   overflow: hidden;
   border: var(--border-width-thick) solid var(--palette-ink);
   border-radius: var(--radius-md);
   box-shadow: 4px 4px 0 var(--palette-ink);
 }
 
-.gamut-swatch-chip {
+.omnia-swatch-chip {
   height: 64px;
 }
 
-.gamut-swatch-meta {
+.omnia-swatch-meta {
   padding: var(--palette-space-2) var(--palette-space-3);
   font-family: var(--font-sans);
   background: var(--palette-cream);
 }
 
-.gamut-swatch-name {
+.omnia-swatch-name {
   font-weight: 700;
   color: var(--palette-ink);
 }
 
-.gamut-swatch-value {
+.omnia-swatch-value {
   font-size: 0.8rem;
   color: var(--palette-ink-soft);
 }
 
-.gamut-type-specimen {
+.omnia-type-specimen {
   margin: var(--palette-space-3) 0;
   padding: var(--palette-space-4);
   border: var(--border-width-regular) solid var(--palette-ink-soft);
@@ -94,7 +94,7 @@
   background: var(--palette-cream-deep);
 }
 
-.gamut-type-display {
+.omnia-type-display {
   margin: 0;
   font-family: var(--font-display);
   font-size: 3rem;
@@ -103,14 +103,14 @@
   color: var(--palette-ink);
 }
 
-.gamut-type-sans {
+.omnia-type-sans {
   margin: var(--palette-space-2) 0 0;
   font-family: var(--font-sans);
   font-size: 1.125rem;
   color: var(--palette-ink);
 }
 
-.gamut-type-label {
+.omnia-type-label {
   display: block;
   margin-bottom: var(--palette-space-2);
   font-family: var(--font-sans);
@@ -120,7 +120,7 @@
   color: var(--palette-ink-soft);
 }
 
-.gamut-nav {
+.omnia-nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: var(--palette-space-3);
@@ -129,7 +129,7 @@
   list-style: none;
 }
 
-.gamut-nav a {
+.omnia-nav a {
   display: flex;
   flex-direction: column;
   gap: var(--palette-space-1);
@@ -144,34 +144,34 @@
   text-decoration: none;
 }
 
-.gamut-nav a strong {
+.omnia-nav a strong {
   font-family: var(--font-display);
   font-size: 1.25rem;
 }
 
-.gamut-icon-frame svg {
+.omnia-icon-frame svg {
   width: min(96px, 40%);
 }
 
-.gamut-clearspace {
+.omnia-clearspace {
   max-width: 420px;
   margin: var(--palette-space-4) 0;
   padding: var(--palette-space-5) calc(var(--palette-space-5) * 3);
 }
 
-.gamut-clearspace svg {
+.omnia-clearspace svg {
   width: 100%;
   height: auto;
 }
 
-.gamut-usage {
+.omnia-usage {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--palette-space-3);
   margin: var(--palette-space-4) 0;
 }
 
-.gamut-usage-item {
+.omnia-usage-item {
   padding: var(--palette-space-4);
   border: var(--border-width-thick) solid var(--palette-ink);
   border-radius: var(--radius-md);
@@ -180,12 +180,12 @@
   color: var(--palette-ink);
 }
 
-.gamut-usage-item ul {
+.omnia-usage-item ul {
   margin: var(--palette-space-2) 0 0;
   padding-left: var(--palette-space-4);
 }
 
-.gamut-usage-tag {
+.omnia-usage-tag {
   display: inline-block;
   padding: var(--palette-space-1) var(--palette-space-3);
   border-radius: var(--radius-sm);
@@ -194,17 +194,17 @@
   text-transform: uppercase;
 }
 
-.gamut-usage-do .gamut-usage-tag {
+.omnia-usage-do .omnia-usage-tag {
   background: var(--palette-cobalt);
   color: var(--palette-cream);
 }
 
-.gamut-usage-dont .gamut-usage-tag {
+.omnia-usage-dont .omnia-usage-tag {
   background: var(--palette-coral);
   color: var(--palette-ink);
 }
 
-.gamut-icon-row {
+.omnia-icon-row {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -217,33 +217,33 @@
   list-style: none;
 }
 
-.gamut-icon-cell {
+.omnia-icon-cell {
   display: flex;
   flex-direction: column;
   gap: var(--palette-space-2);
   align-items: center;
 }
 
-.gamut-icon-cell img {
+.omnia-icon-cell img {
   display: block;
 }
 
-.gamut-icon-meta {
+.omnia-icon-meta {
   font-family: var(--font-sans);
   text-align: center;
 }
 
-.gamut-icon-name {
+.omnia-icon-name {
   font-weight: 700;
   color: var(--palette-ink);
 }
 
-.gamut-icon-size {
+.omnia-icon-size {
   font-size: 0.8rem;
   color: var(--palette-ink-soft);
 }
 
-.gamut-downloads {
+.omnia-downloads {
   display: flex;
   flex-wrap: wrap;
   gap: var(--palette-space-3);
@@ -252,7 +252,7 @@
   list-style: none;
 }
 
-.gamut-downloads a {
+.omnia-downloads a {
   display: inline-block;
   padding: var(--palette-space-2) var(--palette-space-4);
   border: var(--border-width-thick) solid var(--palette-ink);
@@ -265,13 +265,13 @@
   text-decoration: none;
 }
 
-.gamut-scale {
+.omnia-scale {
   margin: var(--palette-space-4) 0;
   padding: 0;
   list-style: none;
 }
 
-.gamut-scale-row {
+.omnia-scale-row {
   display: flex;
   gap: var(--palette-space-4);
   align-items: baseline;
@@ -279,7 +279,7 @@
   border-bottom: var(--border-width-regular) solid var(--palette-ink-soft);
 }
 
-.gamut-scale-meta {
+.omnia-scale-meta {
   flex: 0 0 9rem;
   font-family: var(--font-sans);
   font-size: 0.8rem;
@@ -288,34 +288,34 @@
   color: var(--palette-ink-soft);
 }
 
-.gamut-scale-display {
+.omnia-scale-display {
   font-family: var(--font-display);
   font-weight: 600;
   line-height: 1.05;
   color: var(--palette-ink);
 }
 
-.gamut-scale-sans {
+.omnia-scale-sans {
   font-family: var(--font-sans);
   color: var(--palette-ink);
 }
 
-.gamut-scale-xl {
+.omnia-scale-xl {
   font-size: 3rem;
 }
 
-.gamut-scale-lg {
+.omnia-scale-lg {
   font-size: 1.5rem;
 }
 
-.gamut-scale-md {
+.omnia-scale-md {
   font-size: 1.125rem;
 }
 
-.gamut-scale-base {
+.omnia-scale-base {
   font-size: 1rem;
 }
 
-.gamut-scale-sm {
+.omnia-scale-sm {
   font-size: 0.8rem;
 }
