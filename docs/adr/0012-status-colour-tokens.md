@@ -19,7 +19,8 @@ Naming survey of how major design systems name their status colours:
 - **Polaris**: `success`, `caution`, `info`, `critical` — https://polaris.shopify.com/design/colors/palettes-and-roles
 - **Spectrum**: `positive`, `notice`, `informative`, `negative` — https://spectrum.adobe.com/page/color-system
 
-`danger` is already a stable name (ADR 0003) shared with Atlassian and Primer, and is kept.
+`danger` is already a stable name (ADR 0003) shared with Atlassian and Primer, and is kept. Coral, the
+danger colour until now, read as pink next to the new status colours.
 
 ## Decision
 
@@ -41,6 +42,11 @@ Button stays on its action intents (primary, neutral, danger) — owner decision
 Polaris and Spectrum keep buttons to action intents plus one destructive variant (Carbon button usage:
 https://carbondesignsystem.com/components/button/usage), while MUI allows status buttons and Atlassian
 allows a warning button (https://developer.atlassian.com/platform/forge/ui-kit-2/button).
+
+Owner decision 2026-10-30: the danger/error colour moves from coral to signal red in light and dark
+neutral. New primitives `--palette-red*` replace coral behind `--color-danger`; the name is unchanged and
+ink text is kept. Ink contrast: light 5.33:1 rest, 5.10:1 hover, 4.71:1 active; dark 5.76:1 rest, 5.44:1
+hover, 5.33:1 active. Pixel (blood red) is unchanged. This amends the coral-danger detail of ADR 0008.
 
 ## Consequences
 

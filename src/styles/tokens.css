@@ -30,6 +30,12 @@
     --palette-coral-bright: #ff5c92;
     --palette-coral-bright-hover: #ff4382;
     --palette-coral-bright-active: #ff2e74;
+    --palette-red: #ff3b3b;
+    --palette-red-hover: #ff2e2e;
+    --palette-red-active: #f52a2a;
+    --palette-red-bright: #ff4d4d;
+    --palette-red-bright-hover: #ff4040;
+    --palette-red-bright-active: #ff3b3b;
     --palette-violet: #7a3bff;
     --palette-violet-bright: #9a6bff;
     --palette-lime: #d4ff2e;
@@ -84,9 +90,9 @@
     --color-accent: var(--palette-cobalt);
     --color-accent-hover: var(--palette-cobalt-hover);
     --color-accent-active: var(--palette-cobalt-active);
-    --color-danger: var(--palette-coral);
-    --color-danger-hover: var(--palette-coral-hover);
-    --color-danger-active: var(--palette-coral-active);
+    --color-danger: var(--palette-red);
+    --color-danger-hover: var(--palette-red-hover);
+    --color-danger-active: var(--palette-red-active);
     --color-success: var(--palette-mint);
     --color-warning: var(--palette-amber);
     --color-info: var(--palette-cyan);
@@ -132,9 +138,9 @@
     --color-accent: var(--palette-cobalt-bright);
     --color-accent-hover: var(--palette-cobalt-bright-hover);
     --color-accent-active: var(--palette-cobalt-bright-active);
-    --color-danger: var(--palette-coral-bright);
-    --color-danger-hover: var(--palette-coral-bright-hover);
-    --color-danger-active: var(--palette-coral-bright-active);
+    --color-danger: var(--palette-red-bright);
+    --color-danger-hover: var(--palette-red-bright-hover);
+    --color-danger-active: var(--palette-red-bright-active);
     --color-success: var(--palette-mint);
     --color-warning: var(--palette-amber);
     --color-info: var(--palette-cyan);
