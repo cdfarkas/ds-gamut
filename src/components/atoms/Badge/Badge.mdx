@@ -1,0 +1,138 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { Localized } from '../../../lib/Localized';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+<Localized
+  en={
+    <>
+      <p>
+        The <strong>Badge</strong> atom is a short, non-interactive status label. It
+        consumes semantic <code>var(--…)</code> tokens only, so it reskins across the
+        light/dark theme axis and the neutral/pixel skin axis without any change to its
+        own CSS.
+      </p>
+      <p>
+        Use <code>intent</code> for meaning (<code>primary</code>, <code>neutral</code>,{' '}
+        <code>danger</code>). Colour is never the only signal: the badge text itself must
+        carry the meaning, so it still reads without colour. A badge is not a control — it
+        has no hover, press or focus state; wrap it in a real control when it must act.
+      </p>
+    </>
+  }
+  fr={
+    <>
+      <p>
+        Le composant <strong>Badge</strong> est une étiquette de statut courte et non
+        interactive. Il ne consomme que des jetons sémantiques <code>var(--…)</code> : il
+        change donc d'apparence selon l'axe de thème clair/sombre et l'axe d'habillage
+        neutre/pixel, sans modifier son propre CSS.
+      </p>
+      <p>
+        Utilisez <code>intent</code> pour le sens (<code>primary</code>,{' '}
+        <code>neutral</code>, <code>danger</code>). La couleur n'est jamais le seul signal
+        : le texte du badge doit lui-même porter le sens, pour rester lisible sans la
+        couleur. Un badge n'est pas un contrôle — il n'a ni état de survol, ni
+        d'enfoncement, ni de focus ; placez-le dans un vrai contrôle s'il doit déclencher
+        une action.
+      </p>
+    </>
+  }
+/>
+
+<Canvas of={BadgeStories.Primary} />
+
+### <Localized en="Props" fr="Propriétés" />
+
+<Controls />
+
+### <Localized en="Intents" fr="Intentions" />
+
+<Canvas of={BadgeStories.Intents} />
+
+<Localized
+  en={
+    <>
+      <h3>Overriding</h3>
+      <p>
+        Badge follows the system override contract (see <code>docs/overrides.md</code>).
+        Restyle it through this public surface — never through the hashed CSS-Module class
+        names.
+      </p>
+      <ul>
+        <li>
+          <strong>Component variables</strong>: <code>--omnia-badge-bg</code>,{' '}
+          <code>--omnia-badge-fg</code>, <code>--omnia-badge-radius</code>,{' '}
+          <code>--omnia-badge-border-color</code>. Each falls back to its semantic token.
+        </li>
+        <li>
+          <strong>
+            <code>data-scope</code>
+          </strong>
+          : <code>badge</code>.
+        </li>
+        <li>
+          <strong>
+            <code>data-part</code>
+          </strong>
+          : <code>root</code> (the label, where your <code>className</code> merges).
+        </li>
+        <li>
+          <strong>State attributes</strong> on <code>data-part="root"</code>:{' '}
+          <code>data-intent</code>.
+        </li>
+      </ul>
+      <p>
+        The <code>Overridden</code> story below re-points{' '}
+        <code>--omnia-badge-radius</code>/<code>--omnia-badge-bg</code>/
+        <code>--omnia-badge-fg</code> from <code>@layer overrides</code>, with no{' '}
+        <code>!important</code>.
+      </p>
+    </>
+  }
+  fr={
+    <>
+      <h3>Personnalisation</h3>
+      <p>
+        Badge suit le contrat de personnalisation du système (voir{' '}
+        <code>docs/overrides.md</code>). Restylez-le via cette surface publique — jamais
+        via les noms de classes CSS-Module hachés.
+      </p>
+      <ul>
+        <li>
+          <strong>Variables de composant</strong> : <code>--omnia-badge-bg</code>,{' '}
+          <code>--omnia-badge-fg</code>, <code>--omnia-badge-radius</code>,{' '}
+          <code>--omnia-badge-border-color</code>. Chacune se rabat sur son jeton
+          sémantique.
+        </li>
+        <li>
+          <strong>
+            <code>data-scope</code>
+          </strong>{' '}
+          : <code>badge</code>.
+        </li>
+        <li>
+          <strong>
+            <code>data-part</code>
+          </strong>{' '}
+          : <code>root</code> (l'étiquette, où votre <code>className</code> fusionne).
+        </li>
+        <li>
+          <strong>Attributs d'état</strong> sur <code>data-part="root"</code> :{' '}
+          <code>data-intent</code>.
+        </li>
+      </ul>
+      <p>
+        L'histoire <code>Overridden</code> ci-dessous redirige{' '}
+        <code>--omnia-badge-radius</code>/<code>--omnia-badge-bg</code>/
+        <code>--omnia-badge-fg</code> depuis <code>@layer overrides</code>, sans{' '}
+        <code>!important</code>.
+      </p>
+    </>
+  }
+/>
+
+<Canvas of={BadgeStories.Overridden} />

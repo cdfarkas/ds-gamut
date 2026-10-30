@@ -65,12 +65,13 @@ We publish Omnia as an **ESM-only library built by Vite 8 library mode, with dec
 "./package.json": "./package.json"
 ```
 
-The public surface is `Button` (+ `ButtonProps`, `ButtonIntent`, `ButtonSize`), `locales`,
-`setLocale`, `getLocale` and the `Locale` type. `t`, `TranslationKey` and the Storybook docs helpers
-stay internal. ESM-only is a choice, not a constraint we hit: every React 19 toolchain (Vite, Next,
-Remix, modern webpack, Node 22's `require(esm)`) consumes ESM, and a CJS build would double the
-output and the test surface for consumers we do not expect. `"sideEffects": ["*.css"]` lets bundlers
-tree-shake the JS while keeping the stylesheet.
+The public surface is `Button` (+ `ButtonProps`, `ButtonIntent`, `ButtonSize`), `Badge` (+
+`BadgeProps`, `BadgeIntent`), `locales`, `setLocale`, `getLocale` and the `Locale` type. `t`,
+`TranslationKey` and the Storybook docs helpers stay internal. ESM-only is a choice, not a
+constraint we hit: every React 19 toolchain (Vite, Next, Remix, modern webpack, Node 22's
+`require(esm)`) consumes ESM, and a CJS build would double the output and the test surface for
+consumers we do not expect. `"sideEffects": ["*.css"]` lets bundlers tree-shake the JS while keeping
+the stylesheet.
 
 **CSS and tokens.** `dist/styles.css` is one file: the layer-order statement, the reset, the tokens,
 the skins and every component's module CSS. A consumer imports it once, before any of its own

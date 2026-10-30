@@ -77,6 +77,10 @@ written argument, (2) verifiable evidence (a failing/passing test or a benchmark
 human decision, and (4) a PR that supersedes the ADR. **No silent deviation**: if a rule blocks you,
 flag it, pick a sane default, and note it for human review. See `docs/governance.md`.
 
+**Naming study first.** Before any new component is created, an online survey records how major
+design systems name it and its variants (with source URLs) in `docs/naming/<component>.md`; the
+owner picks the name before any code is written. See `docs/naming/badge.md`.
+
 ## Acceptance gates
 
 Work is done only when all five are green, the last before any human review:
