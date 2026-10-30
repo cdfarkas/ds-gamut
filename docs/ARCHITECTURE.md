@@ -107,7 +107,7 @@ not in `tokens.css`:
 
 - the pixel `@font-face` declaration,
 - `image-rendering: pixelated` on relevant surfaces,
-- the pixel skin's notched offset shadow geometry (a non-clipped frame `::before`, offset in raw px),
+- the pixel skin's notched offset shadow geometry (a `drop-shadow` filter on the non-clipped frame),
 - notched / stepped borders.
 
 This is a **documented, deliberate** carve-out: these are structural style rules, not design tokens,
@@ -122,9 +122,9 @@ the flat `--omnia-shadow-raised` (`4px`, the ground reference); hover lifts the 
 press slams flat — `translate(--omnia-press-offset)` (`4px`) drops the control onto its shadow while
 the shadow collapses to `--omnia-shadow-pressed` (`0`).
 Elevation is shadow thickness (7 > 4 > 0) with the ground fixed: `translate + shadow offset` stays `4`
-in every state. The pixel skin gets the same model through a non-clipped `.frame` wrapper whose
-`::before` carries the offset shadow, because the button's notch `clip-path` would clip a shadow drawn
-on the button itself.
+in every state. The pixel skin gets the same model through a `drop-shadow` filter on the non-clipped `.frame`
+wrapper, fed the same shadow tokens, because the button's notch `clip-path` would clip a shadow drawn
+on the button itself (a `::before` there left axe unable to read the label background, ADR 0009).
 
 Motion is tokenised and asymmetric: hover and release settle over `--omnia-dur-fast` (200ms) with
 `--omnia-ease-out` (easeOutCubic), press-in is quicker at `--omnia-dur-press` (110ms). It transitions

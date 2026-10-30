@@ -19,6 +19,7 @@ export default defineConfig({
         test: {
           name: 'storybook',
           browser: makeBrowser(),
+          setupFiles: ['./.storybook/vitest.setup.ts'],
         },
       },
       {

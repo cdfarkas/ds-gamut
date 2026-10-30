@@ -46,6 +46,15 @@ same `theme` / `skin` / `locale` setup the Storybook preview applies.
 
 - **Floor: WCAG 2.1 AA** — the EU legal baseline (EN 301 549 v3.2.1, European Accessibility Act).
 - The a11y addon runs with **`a11y.test: 'error'`**: a 2.1 AA violation fails the run.
+- An axe **incomplete** ("needs review") result fails the run too: `.storybook/vitest.setup.ts`
+  reads the a11y report addon-vitest attaches to each story test and throws, naming the rule, the
+  nodes and the theme/skin. Fix the markup or styles so axe can decide; never disable the rule.
+- axe does not check **SC 1.4.11 non-text contrast**, so `src/styles/contrast.test.ts` resolves the
+  semantic tokens (via `getComputedStyle`) in all four theme×skin modes and asserts boundaries and
+  indicators (`border-strong`, `border-default`, `border-focus`, `danger-border`) reach 3:1 on
+  `bg-surface`, and `text-muted` (placeholder) reaches 4.5:1 on `bg-surface`, `bg-subtle` and
+  `bg-disabled`. It renders no component, but unlike other `*.test.ts` it reads the DOM's computed
+  CSS. A component that draws a boundary or indicator with a new token adds its pair there.
 - Enforced across **every theme and every skin — pixel included**. The pixel palette is chosen to
   meet the 4.5:1 contrast ratio so it passes the same gate as the neutral skin; it is not exempt.
 - axe computes contrast **from the CSS**, so the result is deterministic across Windows local and

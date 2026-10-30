@@ -67,6 +67,14 @@ const stories = [
   { id: 'atoms-badge--danger', name: 'badge-danger' },
   { id: 'atoms-badge--intents', name: 'badge-intents' },
   { id: 'atoms-badge--overridden', name: 'badge-overridden' },
+  { id: 'atoms-input--playground', name: 'input-playground' },
+  { id: 'atoms-input--sizes', name: 'input-sizes' },
+  { id: 'atoms-input--with-adornments', name: 'input-with-adornments' },
+  { id: 'atoms-input--invalid', name: 'input-invalid' },
+  { id: 'atoms-input--disabled', name: 'input-disabled' },
+  { id: 'atoms-input--read-only', name: 'input-read-only' },
+  { id: 'atoms-input--states', name: 'input-states' },
+  { id: 'atoms-input--overridden', name: 'input-overridden' },
 ];
 
 const filter = process.argv[2];
@@ -108,7 +116,7 @@ async function shoot(id, name, mode, locale, suffix, focus = false) {
   }
   await page.waitForTimeout(150);
   const file = `${name}__${suffix}.png`;
-  await page.screenshot({ path: join(outDir, file) });
+  await page.screenshot({ path: join(outDir, file), fullPage: true });
   manifest.push({
     story: name,
     storyId: id,
@@ -178,6 +186,19 @@ if (!filter || filter.includes('button')) {
 
   await shoot(loading, 'loading', modes[0], 'fr', 'light-neutral__fr');
   await shoot(loading, 'loading', modes[0], 'en', 'light-neutral__en');
+}
+
+if (!filter || filter.includes('input')) {
+  for (const m of modes) {
+    await shoot(
+      'atoms-input--with-adornments',
+      'input-with-adornments',
+      m,
+      'en',
+      `focus-${m.key}`,
+      true,
+    );
+  }
 }
 
 await page.setViewportSize({ width: 320, height: 568 });

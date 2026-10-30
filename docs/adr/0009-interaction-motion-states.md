@@ -76,3 +76,16 @@ colour.
   ADR.
 - Future interactive atoms (Input, Switch, links) inherit this standard by consuming the same tokens
   instead of inventing their own motion.
+
+## Amendment — 2026-10-30
+
+The pixel offset shadow is now a `filter: drop-shadow(...)` on `.frame`, not a `::before`. axe could
+not resolve the label's background behind the pseudo element and returned `color-contrast` as
+incomplete, which the strict incomplete gate (ADR 0006 amendment) rejects. A filter on the
+non-clipped frame follows the button's notched shape, so the look is unchanged.
+
+The drop-shadow moves with the button, so its offset takes the shadow tokens instead of staying
+static: `--omnia-shadow-raised` at rest, `--omnia-shadow-raised-hover` on hover,
+`--omnia-shadow-pressed` on press, transitioned with the button's own duration and easing. The
+ground stays fixed (`translate + offset = 4`). Under `prefers-reduced-motion: reduce` the button does
+not move and the shadow stays at rest, as before.

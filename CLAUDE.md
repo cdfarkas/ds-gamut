@@ -67,7 +67,9 @@ See `docs/testing.md` for the full contract.
 
 WCAG **2.1 AA** is the floor (EU legal baseline, EN 301 549 — European Accessibility Act). The a11y
 addon runs with `a11y.test: 'error'` across **every theme and skin, pixel included** — the pixel
-palette is chosen to meet 4.5:1 contrast. WCAG 2.2 rules run as `'warn'`. See ADR 0006.
+palette is chosen to meet 4.5:1 contrast. An axe *incomplete* result fails like a violation, and
+`src/styles/contrast.test.ts` asserts SC 1.4.11 (3:1) on boundary/indicator tokens in all four modes.
+WCAG 2.2 rules run as `'warn'`. See ADR 0006.
 
 ## Bilingual rule
 
