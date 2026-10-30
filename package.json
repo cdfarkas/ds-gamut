@@ -38,6 +38,7 @@
     "test": "vitest run",
     "lint": "eslint . && prettier --check . && stylelint \"src/**/*.css\"",
     "lint:fix": "eslint . --fix && prettier --write . && stylelint \"src/**/*.css\" --fix",
+    "typecheck": "tsc --noEmit",
     "visual-check": "node scripts/visual-check.mjs",
     "build": "vite build -c vite.lib.config.ts && tsc -p tsconfig.lib.json",
     "changeset": "changeset",
