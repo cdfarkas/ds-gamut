@@ -4,6 +4,8 @@ import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import { composeStories } from '@storybook/react-vite';
 import { fn, userEvent } from 'storybook/test';
+import { intents } from '../../../lib/intents';
+import { Button } from './Button';
 import * as stories from './Button.stories';
 
 const { Loading, Disabled, Playground } = composeStories(stories);
@@ -26,6 +28,13 @@ async function mount(ui: ReactElement) {
   await act(async () => {
     root.render(ui);
   });
+}
+
+function background(el: Element | null) {
+  if (!el) return '';
+  // The background-color transition would otherwise report the previous intent's colour.
+  el.getAnimations().forEach((animation) => animation.finish());
+  return getComputedStyle(el).backgroundColor;
 }
 
 describe('Button edge cases', () => {
@@ -53,13 +62,27 @@ describe('Button edge cases', () => {
     expect(onClick).not.toHaveBeenCalled();
   });
 
-  test('intent is live: changing it swaps the variant class', async () => {
+  test('intent is live: changing it swaps the intent colour', async () => {
     await mount(<Playground intent="primary" />);
-    const primary = container.querySelector('button')?.className;
+    const primary = background(container.querySelector('button'));
     await mount(<Playground intent="danger" />);
-    const danger = container.querySelector('button')?.className;
+    const button = container.querySelector('button');
+    expect(button?.getAttribute('data-intent')).toBe('danger');
     expect(primary).toBeTruthy();
-    expect(primary).not.toBe(danger);
+    expect(background(button)).not.toBe(primary);
+  });
+});
+
+describe('Button intents', () => {
+  test('each intent reflects data-intent and gets a distinct colour from the intent map', async () => {
+    const colours = new Set<string>();
+    for (const intent of intents) {
+      await mount(<Button intent={intent}>{intent}</Button>);
+      const button = container.querySelector('button');
+      expect(button?.getAttribute('data-intent')).toBe(intent);
+      colours.add(background(button));
+    }
+    expect(colours.size).toBe(intents.length);
   });
 });
 

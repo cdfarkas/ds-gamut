@@ -3,6 +3,7 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import { composeStories } from '@storybook/react-vite';
+import { intents } from '../../../lib/intents';
 import { Badge } from './Badge';
 import * as stories from './Badge.stories';
 
@@ -28,6 +29,9 @@ async function mount(ui: ReactElement) {
   });
 }
 
+const background = (el: Element | null) =>
+  el ? getComputedStyle(el).backgroundColor : '';
+
 describe('Badge edge cases', () => {
   test('defaults to the neutral intent', async () => {
     await mount(<Badge>New</Badge>);
@@ -50,13 +54,25 @@ describe('Badge edge cases', () => {
     expect(badge?.id).toBe('status-badge');
   });
 
-  test('intent is live: changing it swaps the variant class', async () => {
+  test('intent is live: changing it swaps the intent colour', async () => {
     await mount(<Playground intent="primary" />);
-    const primary = container.querySelector('span')?.className;
+    const primary = background(container.querySelector('span'));
     await mount(<Playground intent="danger" />);
-    const danger = container.querySelector('span')?.className;
+    const badge = container.querySelector('span');
+    expect(badge?.getAttribute('data-intent')).toBe('danger');
     expect(primary).toBeTruthy();
-    expect(primary).not.toBe(danger);
+    expect(background(badge)).not.toBe(primary);
+  });
+
+  test('every intent reflects data-intent and gets a distinct colour from the intent map', async () => {
+    const colours = new Set<string>();
+    for (const intent of intents) {
+      await mount(<Badge intent={intent}>{intent}</Badge>);
+      const badge = container.querySelector('span');
+      expect(badge?.getAttribute('data-intent')).toBe(intent);
+      colours.add(background(badge));
+    }
+    expect(colours.size).toBe(intents.length);
   });
 });
 

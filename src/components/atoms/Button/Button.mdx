@@ -18,9 +18,19 @@ import * as ButtonStories from './Button.stories';
       </p>
       <p>
         Use <code>intent</code> for meaning (<code>primary</code>, <code>neutral</code>,{' '}
-        <code>danger</code>), <code>size</code> for scale, and <code>loading</code> to
-        show a busy state — a loading button is disabled and exposes{' '}
-        <code>aria-busy</code> plus a screen-reader-only status.
+        <code>success</code>, <code>warning</code>, <code>info</code>, <code>danger</code>
+        ), <code>size</code> for scale, and <code>loading</code> to show a busy state — a
+        loading button is disabled and exposes <code>aria-busy</code> plus a
+        screen-reader-only status.
+      </p>
+      <p>
+        The status intents <code>success</code>, <code>warning</code>, <code>info</code>{' '}
+        and <code>danger</code> use the global status tokens{' '}
+        <code>--color-&lt;status&gt;</code> with their <code>-hover</code>/
+        <code>-active</code> shades and <code>--color-text-on-&lt;status&gt;</code> (ADR
+        0012). Every intent reads its rest, hover and press colours from the shared intent
+        map (<code>--omnia-intent-bg</code>, <code>--omnia-intent-bg-hover</code>,{' '}
+        <code>--omnia-intent-bg-active</code>, <code>--omnia-intent-fg</code>).
       </p>
       <p>
         On hover the button lifts and its offset shadow grows; on press it collapses onto
@@ -41,9 +51,20 @@ import * as ButtonStories from './Button.stories';
       </p>
       <p>
         Utilisez <code>intent</code> pour le sens (<code>primary</code>,{' '}
-        <code>neutral</code>, <code>danger</code>), <code>size</code> pour la taille, et{' '}
+        <code>neutral</code>, <code>success</code>, <code>warning</code>,{' '}
+        <code>info</code>, <code>danger</code>), <code>size</code> pour la taille, et{' '}
         <code>loading</code> pour l'état occupé — un bouton en chargement est désactivé et
         expose <code>aria-busy</code> ainsi qu'un statut réservé aux lecteurs d'écran.
+      </p>
+      <p>
+        Les intentions de statut <code>success</code>, <code>warning</code>,{' '}
+        <code>info</code> et <code>danger</code> utilisent les jetons de statut globaux{' '}
+        <code>--color-&lt;status&gt;</code> avec leurs nuances <code>-hover</code>/
+        <code>-active</code> et <code>--color-text-on-&lt;status&gt;</code> (ADR 0012).
+        Chaque intention lit ses couleurs de repos, de survol et d'enfoncement dans la
+        table d'intentions partagée (<code>--omnia-intent-bg</code>,{' '}
+        <code>--omnia-intent-bg-hover</code>, <code>--omnia-intent-bg-active</code>,{' '}
+        <code>--omnia-intent-fg</code>).
       </p>
       <p>
         Au survol, le bouton se soulève et son ombre portée grandit ; à l'enfoncement, il
@@ -62,6 +83,8 @@ import * as ButtonStories from './Button.stories';
 <Controls />
 
 ### <Localized en="Intents" fr="Intentions" />
+
+<Canvas of={ButtonStories.Intents} />
 
 <Canvas of={ButtonStories.Neutral} />
 

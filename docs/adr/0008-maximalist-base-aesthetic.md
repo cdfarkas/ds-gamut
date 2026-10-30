@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Proposed — the danger colour (coral) is amended by ADR 0012 (signal red).
 
 ## Context
 

@@ -42,6 +42,20 @@ component that reads it updates together, in both themes and both skins. This is
 :root { --color-accent: #0a7; }
 ```
 
+Intent colours come from the intent map in `tokens.css` (ADR 0012): `--omnia-intent-bg`,
+`--omnia-intent-bg-hover`, `--omnia-intent-bg-active` and `--omnia-intent-fg`, keyed on
+`data-intent`. Re-point them per intent to restyle every intent-coloured component, hover and press
+included — this lifts the ADR 0010 caveat that hover colours only follow the semantic tokens.
+
+```css
+@layer overrides {
+  [data-intent='success'] {
+    --omnia-intent-bg: #0a7;
+    --omnia-intent-bg-hover: #096;
+  }
+}
+```
+
 ### 2. Component variables — one component, documented props
 
 Each component exposes a small, namespaced set of `--omnia-<name>-*` variables for the props it

@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { t } from '../../../lib/i18n';
+import type { Intent } from '../../../lib/intents';
 import styles from './Button.module.css';
 
-export type ButtonIntent = 'primary' | 'neutral' | 'danger';
+export type ButtonIntent = Intent;
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,12 +12,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   children: ReactNode;
 }
-
-const intentClass: Record<ButtonIntent, string> = {
-  primary: styles.primary,
-  neutral: styles.neutral,
-  danger: styles.danger,
-};
 
 const sizeClass: Record<ButtonSize, string> = {
   sm: styles.sm,
@@ -35,9 +30,7 @@ export function Button({
   children,
   ...rest
 }: ButtonProps) {
-  const classes = [styles.button, intentClass[intent], sizeClass[size], className]
-    .filter(Boolean)
-    .join(' ');
+  const classes = [styles.button, sizeClass[size], className].filter(Boolean).join(' ');
 
   const isDisabled = disabled || loading;
 

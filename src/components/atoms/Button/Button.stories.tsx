@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, userEvent } from 'storybook/test';
+import { intents } from '../../../lib/intents';
 import { Button } from './Button';
 import './Button.overrides.css';
 
@@ -15,7 +16,7 @@ const meta = {
   argTypes: {
     intent: {
       control: 'inline-radio',
-      options: ['primary', 'neutral', 'danger'],
+      options: [...intents],
     },
     size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
     loading: { control: 'boolean' },
@@ -56,6 +57,20 @@ export const Neutral: Story = { args: { intent: 'neutral' } };
 
 export const Danger: Story = { args: { intent: 'danger' } };
 
+export const Intents: Story = {
+  render: (args) => (
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
+    >
+      {intents.map((intent) => (
+        <Button {...args} key={intent} intent={intent}>
+          {intent.charAt(0).toUpperCase() + intent.slice(1)}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
@@ -94,8 +109,8 @@ export const Overridden: Story = {
   ),
 };
 
-export const DarkNeutral: Story = { globals: { theme: 'dark' } };
+export const DarkNeutral: Story = { ...Intents, globals: { theme: 'dark' } };
 
-export const PixelLight: Story = { globals: { skin: 'pixel' } };
+export const PixelLight: Story = { ...Intents, globals: { skin: 'pixel' } };
 
-export const PixelDark: Story = { globals: { theme: 'dark', skin: 'pixel' } };
+export const PixelDark: Story = { ...Intents, globals: { theme: 'dark', skin: 'pixel' } };
