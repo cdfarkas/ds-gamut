@@ -105,25 +105,11 @@
   }
 
   /* The notch clip-path clips any shadow on the button itself, so the offset
-     shadow lives on the non-clipped frame behind it (see docs/adr/0009). */
+     shadow is a drop-shadow on the non-clipped frame (see docs/adr/0009). */
   :global([data-skin='pixel'])
-    .frame:has(> .button:not([data-intent='neutral'], :disabled))::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-color: var(--omnia-color-border-strong);
-    transform: translate(4px, 4px);
-    clip-path: polygon(
-      4px 0,
-      calc(100% - 4px) 0,
-      100% 4px,
-      100% calc(100% - 4px),
-      calc(100% - 4px) 100%,
-      4px 100%,
-      0 calc(100% - 4px),
-      0 4px
-    );
+    .frame:has(> .button:not([data-intent='neutral'], :disabled)) {
+    filter: drop-shadow(var(--omnia-shadow-raised));
+    transition: filter var(--omnia-dur-fast) var(--omnia-ease-out);
   }
 
   /* clip-path clips an outer outline; inset a thick ring with a fill-coloured
@@ -156,6 +142,21 @@
     transform: translate(1px, 1px);
     border-color: var(--omnia-color-border-strong);
     box-shadow: var(--omnia-button-shadow, none);
+  }
+
+  /* The pixel drop-shadow moves with the button, so its offset compensates the
+     lift/press to keep the ground fixed; without motion it stays at rest. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global([data-skin='pixel'])
+      .frame:has(> .button:not([data-intent='neutral']):hover:not(:disabled)) {
+      filter: drop-shadow(var(--omnia-shadow-raised-hover));
+    }
+
+    :global([data-skin='pixel'])
+      .frame:has(> .button:not([data-intent='neutral']):active:not(:disabled)) {
+      filter: drop-shadow(var(--omnia-shadow-pressed));
+      transition-duration: var(--omnia-dur-press);
+    }
   }
 
   /* Reduced motion: no transitions or movement; colour/shadow state cues stay. */
