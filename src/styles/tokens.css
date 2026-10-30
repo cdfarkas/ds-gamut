@@ -1,261 +1,261 @@
 @layer tokens {
   /* Tier 1 — primitive palette. Raw values live here and nowhere else. */
   :root {
-    --palette-white: #fff;
-    --palette-black: #000;
+    --omnia-palette-white: #fff;
+    --omnia-palette-black: #000;
 
     /* Maximalist neutrals — warm cream paper and near-black ink. */
-    --palette-cream: #fbf7ee;
-    --palette-cream-deep: #f2e9d6;
-    --palette-cream-sunk: #e7dbc2;
-    --palette-ink: #140f1c;
-    --palette-ink-soft: #4a4458;
-    --palette-parchment: #f4ecd8;
-    --palette-night: #1a1026;
-    --palette-night-raised: #241a2e;
-    --palette-night-sunk: #2e2340;
-    --palette-lilac-muted: #b9b2c8;
-    --palette-lilac-border: #6e6482;
+    --omnia-palette-cream: #fbf7ee;
+    --omnia-palette-cream-deep: #f2e9d6;
+    --omnia-palette-cream-sunk: #e7dbc2;
+    --omnia-palette-ink: #140f1c;
+    --omnia-palette-ink-soft: #4a4458;
+    --omnia-palette-parchment: #f4ecd8;
+    --omnia-palette-night: #1a1026;
+    --omnia-palette-night-raised: #241a2e;
+    --omnia-palette-night-sunk: #2e2340;
+    --omnia-palette-lilac-muted: #b9b2c8;
+    --omnia-palette-lilac-border: #6e6482;
 
     /* Hero accents — clashing electric cobalt / coral / violet. */
-    --palette-cobalt: #2419e8;
-    --palette-cobalt-hover: #1c12b8;
-    --palette-cobalt-active: #150d8c;
-    --palette-cobalt-bright: #4b3bff;
-    --palette-cobalt-bright-hover: #3a28d6;
-    --palette-cobalt-bright-active: #2a1bb0;
-    --palette-coral: #ff3d7f;
-    --palette-coral-hover: #ff2e74;
-    --palette-coral-active: #ff1f6b;
-    --palette-coral-bright: #ff5c92;
-    --palette-coral-bright-hover: #ff4382;
-    --palette-coral-bright-active: #ff2e74;
-    --palette-red: #ff3b3b;
-    --palette-red-hover: #ff2e2e;
-    --palette-red-active: #f52a2a;
-    --palette-red-bright: #ff4d4d;
-    --palette-red-bright-hover: #ff4040;
-    --palette-red-bright-active: #ff3b3b;
-    --palette-violet: #7a3bff;
-    --palette-violet-bright: #9a6bff;
-    --palette-lime: #d4ff2e;
-    --palette-cyan: #7fe0ff;
-    --palette-mint: #3ddc84;
-    --palette-amber: #ffb627;
-    --palette-mint-hover: #2fcf76;
-    --palette-mint-active: #25c06a;
-    --palette-amber-hover: #ffa90f;
-    --palette-amber-active: #f59c00;
-    --palette-cyan-hover: #5fd6ff;
-    --palette-cyan-active: #3fcbff;
+    --omnia-palette-cobalt: #2419e8;
+    --omnia-palette-cobalt-hover: #1c12b8;
+    --omnia-palette-cobalt-active: #150d8c;
+    --omnia-palette-cobalt-bright: #4b3bff;
+    --omnia-palette-cobalt-bright-hover: #3a28d6;
+    --omnia-palette-cobalt-bright-active: #2a1bb0;
+    --omnia-palette-coral: #ff3d7f;
+    --omnia-palette-coral-hover: #ff2e74;
+    --omnia-palette-coral-active: #ff1f6b;
+    --omnia-palette-coral-bright: #ff5c92;
+    --omnia-palette-coral-bright-hover: #ff4382;
+    --omnia-palette-coral-bright-active: #ff2e74;
+    --omnia-palette-red: #ff3b3b;
+    --omnia-palette-red-hover: #ff2e2e;
+    --omnia-palette-red-active: #f52a2a;
+    --omnia-palette-red-bright: #ff4d4d;
+    --omnia-palette-red-bright-hover: #ff4040;
+    --omnia-palette-red-bright-active: #ff3b3b;
+    --omnia-palette-violet: #7a3bff;
+    --omnia-palette-violet-bright: #9a6bff;
+    --omnia-palette-lime: #d4ff2e;
+    --omnia-palette-cyan: #7fe0ff;
+    --omnia-palette-mint: #3ddc84;
+    --omnia-palette-amber: #ffb627;
+    --omnia-palette-mint-hover: #2fcf76;
+    --omnia-palette-mint-active: #25c06a;
+    --omnia-palette-amber-hover: #ffa90f;
+    --omnia-palette-amber-active: #f59c00;
+    --omnia-palette-cyan-hover: #5fd6ff;
+    --omnia-palette-cyan-active: #3fcbff;
 
     /* Pixel-skin accents — deep, saturated retro blocks. */
-    --palette-pixel-violet: #5b1fb8;
-    --palette-pixel-violet-deep: #45138f;
-    --palette-pixel-violet-dark: #330b6b;
-    --palette-pixel-blood: #a01e1e;
-    --palette-pixel-blood-deep: #7d1515;
-    --palette-pixel-forest: #1e6b2e;
-    --palette-pixel-forest-deep: #185a26;
-    --palette-pixel-forest-dark: #134a1f;
-    --palette-pixel-ochre: #8a5a00;
-    --palette-pixel-ochre-deep: #774d00;
-    --palette-pixel-ochre-dark: #654100;
-    --palette-pixel-navy: #1a4f8a;
-    --palette-pixel-navy-deep: #154275;
-    --palette-pixel-navy-dark: #113661;
-    --palette-pixel-night: #140f1c;
-    --palette-pixel-night-raised: #281c38;
+    --omnia-palette-pixel-violet: #5b1fb8;
+    --omnia-palette-pixel-violet-deep: #45138f;
+    --omnia-palette-pixel-violet-dark: #330b6b;
+    --omnia-palette-pixel-blood: #a01e1e;
+    --omnia-palette-pixel-blood-deep: #7d1515;
+    --omnia-palette-pixel-forest: #1e6b2e;
+    --omnia-palette-pixel-forest-deep: #185a26;
+    --omnia-palette-pixel-forest-dark: #134a1f;
+    --omnia-palette-pixel-ochre: #8a5a00;
+    --omnia-palette-pixel-ochre-deep: #774d00;
+    --omnia-palette-pixel-ochre-dark: #654100;
+    --omnia-palette-pixel-navy: #1a4f8a;
+    --omnia-palette-pixel-navy-deep: #154275;
+    --omnia-palette-pixel-navy-dark: #113661;
+    --omnia-palette-pixel-night: #140f1c;
+    --omnia-palette-pixel-night-raised: #281c38;
 
-    --palette-space-1: 0.25rem;
-    --palette-space-2: 0.5rem;
-    --palette-space-3: 0.75rem;
-    --palette-space-4: 1rem;
-    --palette-space-5: 1.25rem;
+    --omnia-palette-space-1: 0.25rem;
+    --omnia-palette-space-2: 0.5rem;
+    --omnia-palette-space-3: 0.75rem;
+    --omnia-palette-space-4: 1rem;
+    --omnia-palette-space-5: 1.25rem;
 
-    --palette-radius-none: 0;
-    --palette-radius-sm: 0.375rem;
-    --palette-radius-md: 0.625rem;
-    --palette-radius-lg: 0.875rem;
+    --omnia-palette-radius-none: 0;
+    --omnia-palette-radius-sm: 0.375rem;
+    --omnia-palette-radius-md: 0.625rem;
+    --omnia-palette-radius-lg: 0.875rem;
 
-    --palette-border-thin: 1px;
-    --palette-border-thick: 3px;
+    --omnia-palette-border-thin: 1px;
+    --omnia-palette-border-thick: 3px;
 
     /* Type primitives — expressive serif display + grotesk sans. */
-    --palette-font-display:
+    --omnia-palette-font-display:
       'Fraunces Variable', 'Fraunces', georgia, 'Times New Roman', serif;
-    --palette-font-sans:
+    --omnia-palette-font-sans:
       'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, 'Segoe UI',
       roboto, sans-serif;
 
     /* Tier 2 — semantic aliases. Themes and skins reassign only this layer. */
-    --color-bg-surface: var(--palette-cream);
-    --color-bg-subtle: var(--palette-cream-deep);
-    --color-bg-disabled: var(--palette-cream-sunk);
-    --color-text-primary: var(--palette-ink);
-    --color-text-muted: var(--palette-ink-soft);
-    --color-text-on-accent: var(--palette-cream);
-    --color-text-on-danger: var(--palette-ink);
-    --color-text-on-success: var(--palette-ink);
-    --color-text-on-warning: var(--palette-ink);
-    --color-text-on-info: var(--palette-ink);
-    --color-accent: var(--palette-cobalt);
-    --color-accent-hover: var(--palette-cobalt-hover);
-    --color-accent-active: var(--palette-cobalt-active);
-    --color-danger: var(--palette-red);
-    --color-danger-hover: var(--palette-red-hover);
-    --color-danger-active: var(--palette-red-active);
-    --color-success: var(--palette-mint);
-    --color-success-hover: var(--palette-mint-hover);
-    --color-success-active: var(--palette-mint-active);
-    --color-warning: var(--palette-amber);
-    --color-warning-hover: var(--palette-amber-hover);
-    --color-warning-active: var(--palette-amber-active);
-    --color-info: var(--palette-cyan);
-    --color-info-hover: var(--palette-cyan-hover);
-    --color-info-active: var(--palette-cyan-active);
-    --color-border-default: var(--palette-ink-soft);
-    --color-border-strong: var(--palette-ink);
-    --color-border-focus: var(--palette-violet);
+    --omnia-color-bg-surface: var(--omnia-palette-cream);
+    --omnia-color-bg-subtle: var(--omnia-palette-cream-deep);
+    --omnia-color-bg-disabled: var(--omnia-palette-cream-sunk);
+    --omnia-color-text-primary: var(--omnia-palette-ink);
+    --omnia-color-text-muted: var(--omnia-palette-ink-soft);
+    --omnia-color-text-on-accent: var(--omnia-palette-cream);
+    --omnia-color-text-on-danger: var(--omnia-palette-ink);
+    --omnia-color-text-on-success: var(--omnia-palette-ink);
+    --omnia-color-text-on-warning: var(--omnia-palette-ink);
+    --omnia-color-text-on-info: var(--omnia-palette-ink);
+    --omnia-color-accent: var(--omnia-palette-cobalt);
+    --omnia-color-accent-hover: var(--omnia-palette-cobalt-hover);
+    --omnia-color-accent-active: var(--omnia-palette-cobalt-active);
+    --omnia-color-danger: var(--omnia-palette-red);
+    --omnia-color-danger-hover: var(--omnia-palette-red-hover);
+    --omnia-color-danger-active: var(--omnia-palette-red-active);
+    --omnia-color-success: var(--omnia-palette-mint);
+    --omnia-color-success-hover: var(--omnia-palette-mint-hover);
+    --omnia-color-success-active: var(--omnia-palette-mint-active);
+    --omnia-color-warning: var(--omnia-palette-amber);
+    --omnia-color-warning-hover: var(--omnia-palette-amber-hover);
+    --omnia-color-warning-active: var(--omnia-palette-amber-active);
+    --omnia-color-info: var(--omnia-palette-cyan);
+    --omnia-color-info-hover: var(--omnia-palette-cyan-hover);
+    --omnia-color-info-active: var(--omnia-palette-cyan-active);
+    --omnia-color-border-default: var(--omnia-palette-ink-soft);
+    --omnia-color-border-strong: var(--omnia-palette-ink);
+    --omnia-color-border-focus: var(--omnia-palette-violet);
 
-    --font-display: var(--palette-font-display);
-    --font-sans: var(--palette-font-sans);
+    --omnia-font-display: var(--omnia-palette-font-display);
+    --omnia-font-sans: var(--omnia-palette-font-sans);
 
-    --radius-sm: var(--palette-radius-sm);
-    --radius-md: var(--palette-radius-md);
-    --radius-lg: var(--palette-radius-lg);
+    --omnia-radius-sm: var(--omnia-palette-radius-sm);
+    --omnia-radius-md: var(--omnia-palette-radius-md);
+    --omnia-radius-lg: var(--omnia-palette-radius-lg);
 
-    --border-width-regular: var(--palette-border-thin);
-    --border-width-thick: var(--palette-border-thick);
+    --omnia-border-width-regular: var(--omnia-palette-border-thin);
+    --omnia-border-width-thick: var(--omnia-palette-border-thick);
 
     /* Flat, blur-free offset shadow — recolours per theme via border-strong. */
-    --shadow-raised: 4px 4px 0 var(--color-border-strong);
-    --shadow-focus: 0 0 0 3px
-      color-mix(in srgb, var(--color-border-focus) 55%, transparent);
+    --omnia-shadow-raised: 4px 4px 0 var(--omnia-color-border-strong);
+    --omnia-shadow-focus: 0 0 0 3px
+      color-mix(in srgb, var(--omnia-color-border-focus) 55%, transparent);
 
     /* Motion — smooth settle, quick press-in; the house interaction standard (ADR 0009). */
-    --dur-fast: 200ms;
-    --dur-press: 110ms;
-    --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
-    --press-offset: 4px;
-    --shadow-raised-hover: 7px 7px 0 var(--color-border-strong);
-    --shadow-pressed: 0 0 0 var(--color-border-strong);
+    --omnia-dur-fast: 200ms;
+    --omnia-dur-press: 110ms;
+    --omnia-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --omnia-press-offset: 4px;
+    --omnia-shadow-raised-hover: 7px 7px 0 var(--omnia-color-border-strong);
+    --omnia-shadow-pressed: 0 0 0 var(--omnia-color-border-strong);
   }
 
   :root[data-theme='dark'] {
-    --color-bg-surface: var(--palette-night);
-    --color-bg-subtle: var(--palette-night-raised);
-    --color-bg-disabled: var(--palette-night-sunk);
-    --color-text-primary: var(--palette-cream);
-    --color-text-muted: var(--palette-lilac-muted);
-    --color-text-on-accent: var(--palette-cream);
-    --color-text-on-danger: var(--palette-ink);
-    --color-text-on-success: var(--palette-ink);
-    --color-text-on-warning: var(--palette-ink);
-    --color-text-on-info: var(--palette-ink);
-    --color-accent: var(--palette-cobalt-bright);
-    --color-accent-hover: var(--palette-cobalt-bright-hover);
-    --color-accent-active: var(--palette-cobalt-bright-active);
-    --color-danger: var(--palette-red-bright);
-    --color-danger-hover: var(--palette-red-bright-hover);
-    --color-danger-active: var(--palette-red-bright-active);
-    --color-success: var(--palette-mint);
-    --color-success-hover: var(--palette-mint-hover);
-    --color-success-active: var(--palette-mint-active);
-    --color-warning: var(--palette-amber);
-    --color-warning-hover: var(--palette-amber-hover);
-    --color-warning-active: var(--palette-amber-active);
-    --color-info: var(--palette-cyan);
-    --color-info-hover: var(--palette-cyan-hover);
-    --color-info-active: var(--palette-cyan-active);
-    --color-border-default: var(--palette-lilac-border);
-    --color-border-strong: var(--palette-parchment);
-    --color-border-focus: var(--palette-violet-bright);
+    --omnia-color-bg-surface: var(--omnia-palette-night);
+    --omnia-color-bg-subtle: var(--omnia-palette-night-raised);
+    --omnia-color-bg-disabled: var(--omnia-palette-night-sunk);
+    --omnia-color-text-primary: var(--omnia-palette-cream);
+    --omnia-color-text-muted: var(--omnia-palette-lilac-muted);
+    --omnia-color-text-on-accent: var(--omnia-palette-cream);
+    --omnia-color-text-on-danger: var(--omnia-palette-ink);
+    --omnia-color-text-on-success: var(--omnia-palette-ink);
+    --omnia-color-text-on-warning: var(--omnia-palette-ink);
+    --omnia-color-text-on-info: var(--omnia-palette-ink);
+    --omnia-color-accent: var(--omnia-palette-cobalt-bright);
+    --omnia-color-accent-hover: var(--omnia-palette-cobalt-bright-hover);
+    --omnia-color-accent-active: var(--omnia-palette-cobalt-bright-active);
+    --omnia-color-danger: var(--omnia-palette-red-bright);
+    --omnia-color-danger-hover: var(--omnia-palette-red-bright-hover);
+    --omnia-color-danger-active: var(--omnia-palette-red-bright-active);
+    --omnia-color-success: var(--omnia-palette-mint);
+    --omnia-color-success-hover: var(--omnia-palette-mint-hover);
+    --omnia-color-success-active: var(--omnia-palette-mint-active);
+    --omnia-color-warning: var(--omnia-palette-amber);
+    --omnia-color-warning-hover: var(--omnia-palette-amber-hover);
+    --omnia-color-warning-active: var(--omnia-palette-amber-active);
+    --omnia-color-info: var(--omnia-palette-cyan);
+    --omnia-color-info-hover: var(--omnia-palette-cyan-hover);
+    --omnia-color-info-active: var(--omnia-palette-cyan-active);
+    --omnia-color-border-default: var(--omnia-palette-lilac-border);
+    --omnia-color-border-strong: var(--omnia-palette-parchment);
+    --omnia-color-border-focus: var(--omnia-palette-violet-bright);
   }
 
   :root[data-skin='pixel'] {
-    --color-bg-surface: var(--palette-cream);
-    --color-bg-subtle: var(--palette-cream-deep);
-    --color-bg-disabled: var(--palette-cream-sunk);
-    --color-text-primary: var(--palette-ink);
-    --color-text-muted: var(--palette-ink);
-    --color-text-on-accent: var(--palette-parchment);
-    --color-text-on-danger: var(--palette-parchment);
-    --color-text-on-success: var(--palette-parchment);
-    --color-text-on-warning: var(--palette-parchment);
-    --color-text-on-info: var(--palette-parchment);
-    --color-accent: var(--palette-pixel-violet);
-    --color-accent-hover: var(--palette-pixel-violet-deep);
-    --color-accent-active: var(--palette-pixel-violet-dark);
-    --color-danger: var(--palette-pixel-blood);
-    --color-danger-hover: var(--palette-pixel-blood-deep);
-    --color-danger-active: var(--palette-pixel-blood-deep);
-    --color-success: var(--palette-pixel-forest);
-    --color-success-hover: var(--palette-pixel-forest-deep);
-    --color-success-active: var(--palette-pixel-forest-dark);
-    --color-warning: var(--palette-pixel-ochre);
-    --color-warning-hover: var(--palette-pixel-ochre-deep);
-    --color-warning-active: var(--palette-pixel-ochre-dark);
-    --color-info: var(--palette-pixel-navy);
-    --color-info-hover: var(--palette-pixel-navy-deep);
-    --color-info-active: var(--palette-pixel-navy-dark);
-    --color-border-default: var(--palette-ink);
-    --color-border-strong: var(--palette-ink);
-    --color-border-focus: var(--palette-pixel-violet-deep);
+    --omnia-color-bg-surface: var(--omnia-palette-cream);
+    --omnia-color-bg-subtle: var(--omnia-palette-cream-deep);
+    --omnia-color-bg-disabled: var(--omnia-palette-cream-sunk);
+    --omnia-color-text-primary: var(--omnia-palette-ink);
+    --omnia-color-text-muted: var(--omnia-palette-ink);
+    --omnia-color-text-on-accent: var(--omnia-palette-parchment);
+    --omnia-color-text-on-danger: var(--omnia-palette-parchment);
+    --omnia-color-text-on-success: var(--omnia-palette-parchment);
+    --omnia-color-text-on-warning: var(--omnia-palette-parchment);
+    --omnia-color-text-on-info: var(--omnia-palette-parchment);
+    --omnia-color-accent: var(--omnia-palette-pixel-violet);
+    --omnia-color-accent-hover: var(--omnia-palette-pixel-violet-deep);
+    --omnia-color-accent-active: var(--omnia-palette-pixel-violet-dark);
+    --omnia-color-danger: var(--omnia-palette-pixel-blood);
+    --omnia-color-danger-hover: var(--omnia-palette-pixel-blood-deep);
+    --omnia-color-danger-active: var(--omnia-palette-pixel-blood-deep);
+    --omnia-color-success: var(--omnia-palette-pixel-forest);
+    --omnia-color-success-hover: var(--omnia-palette-pixel-forest-deep);
+    --omnia-color-success-active: var(--omnia-palette-pixel-forest-dark);
+    --omnia-color-warning: var(--omnia-palette-pixel-ochre);
+    --omnia-color-warning-hover: var(--omnia-palette-pixel-ochre-deep);
+    --omnia-color-warning-active: var(--omnia-palette-pixel-ochre-dark);
+    --omnia-color-info: var(--omnia-palette-pixel-navy);
+    --omnia-color-info-hover: var(--omnia-palette-pixel-navy-deep);
+    --omnia-color-info-active: var(--omnia-palette-pixel-navy-dark);
+    --omnia-color-border-default: var(--omnia-palette-ink);
+    --omnia-color-border-strong: var(--omnia-palette-ink);
+    --omnia-color-border-focus: var(--omnia-palette-pixel-violet-deep);
   }
 
   :root[data-theme='dark'][data-skin='pixel'] {
-    --color-bg-surface: var(--palette-pixel-night);
-    --color-bg-subtle: var(--palette-pixel-night-raised);
-    --color-bg-disabled: var(--palette-pixel-night-raised);
-    --color-text-primary: var(--palette-parchment);
-    --color-text-muted: var(--palette-parchment);
-    --color-accent: var(--palette-pixel-violet);
-    --color-border-default: var(--palette-parchment);
-    --color-border-strong: var(--palette-parchment);
-    --color-border-focus: var(--palette-violet-bright);
+    --omnia-color-bg-surface: var(--omnia-palette-pixel-night);
+    --omnia-color-bg-subtle: var(--omnia-palette-pixel-night-raised);
+    --omnia-color-bg-disabled: var(--omnia-palette-pixel-night-raised);
+    --omnia-color-text-primary: var(--omnia-palette-parchment);
+    --omnia-color-text-muted: var(--omnia-palette-parchment);
+    --omnia-color-accent: var(--omnia-palette-pixel-violet);
+    --omnia-color-border-default: var(--omnia-palette-parchment);
+    --omnia-color-border-strong: var(--omnia-palette-parchment);
+    --omnia-color-border-focus: var(--omnia-palette-violet-bright);
   }
 
   /* Intent map — the single source of rest/hover/press colours per data-intent (ADR 0012). */
   [data-intent='primary'] {
-    --omnia-intent-bg: var(--color-accent);
-    --omnia-intent-bg-hover: var(--color-accent-hover);
-    --omnia-intent-bg-active: var(--color-accent-active);
-    --omnia-intent-fg: var(--color-text-on-accent);
+    --omnia-intent-bg: var(--omnia-color-accent);
+    --omnia-intent-bg-hover: var(--omnia-color-accent-hover);
+    --omnia-intent-bg-active: var(--omnia-color-accent-active);
+    --omnia-intent-fg: var(--omnia-color-text-on-accent);
   }
 
   [data-intent='neutral'] {
-    --omnia-intent-bg: var(--color-bg-subtle);
-    --omnia-intent-bg-hover: var(--color-bg-disabled);
-    --omnia-intent-bg-active: var(--color-bg-disabled);
-    --omnia-intent-fg: var(--color-text-primary);
+    --omnia-intent-bg: var(--omnia-color-bg-subtle);
+    --omnia-intent-bg-hover: var(--omnia-color-bg-disabled);
+    --omnia-intent-bg-active: var(--omnia-color-bg-disabled);
+    --omnia-intent-fg: var(--omnia-color-text-primary);
   }
 
   [data-intent='success'] {
-    --omnia-intent-bg: var(--color-success);
-    --omnia-intent-bg-hover: var(--color-success-hover);
-    --omnia-intent-bg-active: var(--color-success-active);
-    --omnia-intent-fg: var(--color-text-on-success);
+    --omnia-intent-bg: var(--omnia-color-success);
+    --omnia-intent-bg-hover: var(--omnia-color-success-hover);
+    --omnia-intent-bg-active: var(--omnia-color-success-active);
+    --omnia-intent-fg: var(--omnia-color-text-on-success);
   }
 
   [data-intent='warning'] {
-    --omnia-intent-bg: var(--color-warning);
-    --omnia-intent-bg-hover: var(--color-warning-hover);
-    --omnia-intent-bg-active: var(--color-warning-active);
-    --omnia-intent-fg: var(--color-text-on-warning);
+    --omnia-intent-bg: var(--omnia-color-warning);
+    --omnia-intent-bg-hover: var(--omnia-color-warning-hover);
+    --omnia-intent-bg-active: var(--omnia-color-warning-active);
+    --omnia-intent-fg: var(--omnia-color-text-on-warning);
   }
 
   [data-intent='info'] {
-    --omnia-intent-bg: var(--color-info);
-    --omnia-intent-bg-hover: var(--color-info-hover);
-    --omnia-intent-bg-active: var(--color-info-active);
-    --omnia-intent-fg: var(--color-text-on-info);
+    --omnia-intent-bg: var(--omnia-color-info);
+    --omnia-intent-bg-hover: var(--omnia-color-info-hover);
+    --omnia-intent-bg-active: var(--omnia-color-info-active);
+    --omnia-intent-fg: var(--omnia-color-text-on-info);
   }
 
   [data-intent='danger'] {
-    --omnia-intent-bg: var(--color-danger);
-    --omnia-intent-bg-hover: var(--color-danger-hover);
-    --omnia-intent-bg-active: var(--color-danger-active);
-    --omnia-intent-fg: var(--color-text-on-danger);
+    --omnia-intent-bg: var(--omnia-color-danger);
+    --omnia-intent-bg-hover: var(--omnia-color-danger-hover);
+    --omnia-intent-bg-active: var(--omnia-color-danger-active);
+    --omnia-intent-fg: var(--omnia-color-text-on-danger);
   }
 }

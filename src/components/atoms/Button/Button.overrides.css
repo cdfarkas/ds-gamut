@@ -3,7 +3,7 @@
 @layer overrides {
   .omnia-demo-override {
     --omnia-button-radius: 999px;
-    --omnia-button-bg: var(--color-accent-active);
+    --omnia-button-bg: var(--omnia-color-accent-active);
   }
 
   .omnia-demo-override [data-scope='button'][data-part='spinner'] {

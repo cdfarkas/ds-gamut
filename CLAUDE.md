@@ -40,9 +40,11 @@ stories, tests, fixtures) — be lazy about the solution, never about the change
 
 Components consume **semantic `var(--…)` tokens only**. No raw `hex`, `rgb()` or `hsl()` literal may
 appear in any `*.module.css`. A stylelint rule enforces this — it is a build gate, not a convention.
-Tokens live in one two-tier `src/styles/tokens.css` (primitive `--palette-*` + semantic
-`--color-*` / `--radius-*` / `--shadow-*`); themes and skins reassign only the semantic layer.
-See `docs/ARCHITECTURE.md`. Semantic token names are a stable contract — do not rename them.
+Tokens live in one two-tier `src/styles/tokens.css` (primitive `--omnia-palette-*` + semantic
+`--omnia-color-*` / `--omnia-radius-*` / `--omnia-shadow-*`); themes and skins reassign only the
+semantic layer. Every Omnia custom property carries the `--omnia-` prefix so it never collides with a
+consuming app's own variables (ADR 0013). See `docs/ARCHITECTURE.md`. Semantic token names are a
+stable contract — do not rename them.
 
 ## Test convention
 

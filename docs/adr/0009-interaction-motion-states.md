@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Proposed — token names superseded in part by ADR 0013 (`--omnia-` prefix).
 
 ## Context
 

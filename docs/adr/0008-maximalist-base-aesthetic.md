@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed — the danger colour (coral) is amended by ADR 0012 (signal red).
+Proposed — the danger colour (coral) is amended by ADR 0012 (signal red); token names are superseded in part by ADR 0013 (`--omnia-` prefix).
 
 ## Context
 
