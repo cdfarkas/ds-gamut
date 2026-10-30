@@ -1,4 +1,15 @@
-# Omnia
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./src/assets/brand/logo-dark.svg" />
+    <img src="./src/assets/brand/logo.svg" alt="Omnia" width="360" />
+  </picture>
+</p>
+
+<h1 align="center">Omnia</h1>
+
+<p align="center">
+  A themeable, bilingual React 19 design system — light &amp; dark, neutral &amp; pixel-art.
+</p>
 
 A portfolio-grade design system built on **Storybook 10** and strict **Atomic Design**. The name is
 Latin *omnia* ("all things", the neuter plural of *omnis*) — one token contract spanning the whole gamut: light and dark, neutral and pixel.
@@ -19,9 +30,6 @@ work, accessibility gated at the EU legal floor (WCAG 2.1 AA), and tests that li
 stories they cover.
 
 ## How to run
-
-> Scaffolding is not in place yet (Phase 0 is documentation only). The commands below are the
-> intended interface; they will work once Phase 1 lands the toolchain.
 
 ```sh
 pnpm install            # Node 22, pnpm
