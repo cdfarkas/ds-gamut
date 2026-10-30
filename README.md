@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./src/assets/brand/logo-dark.svg" />
-    <img src="./src/assets/brand/logo.svg" alt="Omnia" width="360" />
-  </picture>
+  <img src="./src/assets/brand/logo-readme.svg" alt="Omnia" width="380" />
 </p>
 
 <h1 align="center">Omnia</h1>
