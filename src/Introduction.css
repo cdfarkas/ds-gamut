@@ -228,6 +228,19 @@
   display: block;
 }
 
+.omnia-icon-cell-adaptive img {
+  box-sizing: content-box;
+  padding: var(--palette-space-2);
+  border-radius: var(--radius-md);
+  background: var(--palette-cream-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .omnia-icon-cell-adaptive img {
+    background: var(--palette-ink);
+  }
+}
+
 .omnia-icon-meta {
   font-family: var(--font-sans);
   text-align: center;
@@ -243,12 +256,19 @@
   color: var(--palette-ink-soft);
 }
 
-.omnia-downloads {
+/* doubled class beats Storybook's .sbdocs-content ul docs reset (0,1,1) */
+.omnia-downloads.omnia-downloads {
   display: flex;
   flex-wrap: wrap;
   gap: var(--palette-space-3);
   margin: var(--palette-space-4) 0;
   padding: 0;
+  list-style: none;
+}
+
+.omnia-downloads.omnia-downloads li {
+  /* reset Storybook's docs li margin that offsets the flex cards */
+  margin: 0;
   list-style: none;
 }
 

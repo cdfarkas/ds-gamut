@@ -12,7 +12,8 @@ import '../Introduction.css';
       The small-surface marks derive from the logo icon — the gamut triangle with its
       three primary vertices. They are served from <code>/brand</code> (mapped from{' '}
       <code>src/assets/brand</code> via <code>staticDirs</code>) and shown here at their
-      real pixel sizes.
+      real pixel sizes. The <code>favicon.svg</code> swatch sits on a tile that follows
+      the system theme.
     </p>
   }
   fr={
@@ -20,13 +21,14 @@ import '../Introduction.css';
       Les symboles pour petites surfaces dérivent de l'icône du logo — le triangle gamut
       et ses trois sommets primaires. Ils sont servis depuis <code>/brand</code> (mappé
       depuis <code>src/assets/brand</code> via <code>staticDirs</code>) et affichés ici à
-      leur taille réelle en pixels.
+      leur taille réelle en pixels. La vignette du <code>favicon.svg</code> repose sur une
+      tuile qui suit le thème du système.
     </p>
   }
 />
 
 <ul className="omnia-icon-row">
-  <li className="omnia-icon-cell">
+  <li className="omnia-icon-cell omnia-icon-cell-adaptive">
     <img src="/brand/favicon.svg" width="32" height="32" alt="favicon.svg" />
     <div className="omnia-icon-meta">
       <div className="omnia-icon-name">favicon.svg</div>
