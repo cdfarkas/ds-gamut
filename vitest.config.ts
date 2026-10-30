@@ -7,7 +7,7 @@ const makeBrowser = () => ({
   enabled: true,
   provider: playwright(),
   headless: true,
-  instances: [{ browser: 'chromium' }],
+  instances: [{ browser: 'chromium' as const }],
 });
 
 export default defineConfig({

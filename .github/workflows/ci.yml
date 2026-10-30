@@ -27,6 +27,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Type-check
+        run: pnpm typecheck
+
       - name: Test (unit + interaction + a11y)
         run: pnpm test
 

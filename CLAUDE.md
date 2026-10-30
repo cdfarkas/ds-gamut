@@ -79,9 +79,10 @@ flag it, pick a sane default, and note it for human review. See `docs/governance
 
 ## Acceptance gates
 
-Work is done only when all four are green, the last before any human review:
+Work is done only when all five are green, the last before any human review:
 
 - `pnpm lint` (ESLint + Prettier + stylelint, including the no-raw-color rule)
+- `pnpm typecheck` (`tsc --noEmit` — full TypeScript type-check)
 - `pnpm test` (unit + interaction + a11y)
 - `pnpm build-storybook`
 - **agent visual validation** — `pnpm visual-check` screenshots every state in all four
