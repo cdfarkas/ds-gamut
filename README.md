@@ -28,6 +28,7 @@ pnpm install            # Node 22, pnpm
 pnpm storybook          # run Storybook locally
 pnpm test               # unit + interaction + a11y (one runner)
 pnpm build-storybook    # static build
+pnpm build              # library build (dist/: ESM + types + styles.css)
 pnpm lint               # ESLint + Prettier + stylelint (incl. no-raw-color)
 ```
 
