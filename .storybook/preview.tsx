@@ -1,6 +1,6 @@
 import type { Preview, Decorator } from '@storybook/react-vite';
-import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { setLocale, type Locale } from '../src/lib/i18n';
+import { OmniaThemeProvider, type Theme, type Skin } from '../src/lib/OmniaThemeProvider';
 
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/space-grotesk';
@@ -13,13 +13,14 @@ const prefersDark =
   typeof window !== 'undefined' &&
   window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 
-const withSkin: Decorator = (Story, context) => {
-  document.documentElement.setAttribute(
-    'data-skin',
-    String(context.globals.skin ?? 'default'),
-  );
-  return <Story />;
-};
+const withTheme: Decorator = (Story, context) => (
+  <OmniaThemeProvider
+    theme={(context.globals.theme ?? 'light') as Theme}
+    skin={(context.globals.skin ?? 'default') as Skin}
+  >
+    <Story />
+  </OmniaThemeProvider>
+);
 
 const withLocale: Decorator = (Story, context) => {
   setLocale((context.globals.locale ?? 'en') as Locale);
@@ -51,6 +52,19 @@ const preview: Preview = {
     },
   },
   globalTypes: {
+    theme: {
+      description: 'Colour theme',
+      defaultValue: prefersDark ? 'dark' : 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'contrast',
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
     skin: {
       description: 'Visual skin',
       defaultValue: 'default',
@@ -78,15 +92,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [
-    withThemeByDataAttribute({
-      themes: { light: 'light', dark: 'dark' },
-      defaultTheme: prefersDark ? 'dark' : 'light',
-      attributeName: 'data-theme',
-    }),
-    withSkin,
-    withLocale,
-  ],
+  decorators: [withTheme, withLocale],
   tags: ['autodocs'],
 };
 

@@ -87,18 +87,30 @@ values). Primitive names and semantic names are both stable contracts; do not re
 The file is hand-authored now but shaped to be generated later (Style-Dictionary-style), so keep the
 two tiers cleanly separated.
 
-## Theming — two independent axes
+## Theming — one provider, two independent axes
 
-Two orthogonal axes live on the **same preview root** element:
+Two orthogonal axes — **`theme` (light / dark)** and **`skin` (default / pixel)** — both resolve
+against the semantic token layer on the **document root**. One exported component drives them:
+`OmniaThemeProvider` sets `data-theme` and `data-skin` on `<html>` and exposes the active pair
+through `useTheme()` (ADR 0017). It is the single theming mechanism for the library, Storybook and
+the docs.
 
-- **`theme` (light / dark)** → `@storybook/addon-themes` `withThemeByDataAttribute`, writing
-  `data-theme="light|dark"`. Defaults to the viewer's `prefers-color-scheme`; the toolbar overrides.
-- **`skin` (default / pixel)** → a **bespoke `globalTypes` decorator** writing `data-skin`.
+A consumer wraps their app once:
 
-Why two mechanisms: addon-themes exposes a single `theme` global, so a second axis cannot be another
-addon-themes theme. A custom `globalTypes` global for `skin` is the correct way around that limit —
-not a workaround to replace later. CSS selectors combine the two (`[data-theme][data-skin]`) to
-resolve the semantic layer.
+```tsx
+import { OmniaThemeProvider, useTheme } from '@cdfarkas/omnia';
+import '@cdfarkas/omnia/styles.css';
+
+<OmniaThemeProvider theme="dark" skin="pixel">
+  <App />
+</OmniaThemeProvider>;
+```
+
+Storybook drives the same provider from one decorator reading the `theme` and `skin` toolbar
+globals; the `theme` global defaults to the viewer's `prefers-color-scheme`. CSS selectors combine
+the two axes (`:root[data-theme][data-skin]`) to resolve the semantic layer. Theming is
+document-wide — one active theme per document; nested, differently-themed subtrees are not supported
+(ADR 0017).
 
 ### Structural carve-out for the pixel skin
 

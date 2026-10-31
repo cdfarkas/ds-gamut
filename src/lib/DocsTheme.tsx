@@ -1,21 +1,18 @@
-import { useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { useGlobal } from './Localized';
+import { OmniaThemeProvider } from './OmniaThemeProvider';
 
 /**
- * Mirror the live `theme`/`skin` toolbar globals onto <html> from a story-less Docs page.
- * Page-level MDX never triggers the theme decorator, so semantic token swatches would
- * otherwise freeze at the default theme; this keeps them reactive to the toolbars.
+ * Apply the live `theme`/`skin` toolbar globals from a story-less Docs/MDX page, where the story
+ * decorator never runs. Routes through OmniaThemeProvider so docs and stories share one mechanism.
  */
-export function ThemeSync(): null {
+export function ThemeSync(): ReactNode {
   const theme = useGlobal('theme');
   const skin = useGlobal('skin');
-
-  useEffect(() => {
-    if (typeof theme === 'string' && theme)
-      document.documentElement.setAttribute('data-theme', theme);
-    if (typeof skin === 'string' && skin)
-      document.documentElement.setAttribute('data-skin', skin);
-  }, [theme, skin]);
-
-  return null;
+  return (
+    <OmniaThemeProvider
+      theme={theme === 'dark' ? 'dark' : 'light'}
+      skin={skin === 'pixel' ? 'pixel' : 'default'}
+    />
+  );
 }
