@@ -1,0 +1,14 @@
+/* Consumer override demo (see docs/overrides.md): lives in the public
+   @layer overrides and wins over @layer components without !important. */
+@layer overrides {
+  .omnia-demo-override-checkbox {
+    --omnia-checkbox-radius: 999px;
+    --omnia-checkbox-bg: var(--omnia-color-bg-subtle);
+    --omnia-checkbox-border-color: var(--omnia-color-border-focus);
+    --omnia-checkbox-checked-bg: var(--omnia-color-border-focus);
+  }
+
+  .omnia-demo-override-checkbox [data-scope='checkbox'][data-part='label'] {
+    font-weight: 700;
+  }
+}

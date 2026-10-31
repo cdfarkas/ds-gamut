@@ -75,6 +75,16 @@ const stories = [
   { id: 'atoms-input--read-only', name: 'input-read-only' },
   { id: 'atoms-input--states', name: 'input-states' },
   { id: 'atoms-input--overridden', name: 'input-overridden' },
+  { id: 'atoms-checkbox--playground', name: 'checkbox-playground' },
+  { id: 'atoms-checkbox--checked', name: 'checkbox-checked' },
+  { id: 'atoms-checkbox--indeterminate', name: 'checkbox-indeterminate' },
+  { id: 'atoms-checkbox--sizes', name: 'checkbox-sizes' },
+  { id: 'atoms-checkbox--invalid', name: 'checkbox-invalid' },
+  { id: 'atoms-checkbox--disabled', name: 'checkbox-disabled' },
+  { id: 'atoms-checkbox--without-visible-label', name: 'checkbox-without-visible-label' },
+  { id: 'atoms-checkbox--long-label', name: 'checkbox-long-label' },
+  { id: 'atoms-checkbox--states', name: 'checkbox-states' },
+  { id: 'atoms-checkbox--overridden', name: 'checkbox-overridden' },
 ];
 
 const filter = process.argv[2];
@@ -193,6 +203,19 @@ if (!filter || filter.includes('input')) {
     await shoot(
       'atoms-input--with-adornments',
       'input-with-adornments',
+      m,
+      'en',
+      `focus-${m.key}`,
+      true,
+    );
+  }
+}
+
+if (!filter || filter.includes('checkbox')) {
+  for (const m of modes) {
+    await shoot(
+      'atoms-checkbox--checked',
+      'checkbox-checked',
       m,
       'en',
       `focus-${m.key}`,
