@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "omnia-storybook",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["storybook", "--no-open"],
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "storybook", "--no-open"],
       "port": 6006
     }
   ]
