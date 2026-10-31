@@ -29,6 +29,8 @@ const pairs = [
   { fg: 'border-default', bg: 'bg-surface', min: 3 },
   { fg: 'border-focus', bg: 'bg-surface', min: 3 },
   { fg: 'danger-border', bg: 'bg-surface', min: 3 },
+  { fg: 'text-on-accent', bg: 'accent', min: 3 },
+  { fg: 'text-on-accent', bg: 'accent-hover', min: 3 },
   { fg: 'text-muted', bg: 'bg-surface', min: 4.5 },
   { fg: 'text-muted', bg: 'bg-subtle', min: 4.5 },
   { fg: 'text-muted', bg: 'bg-disabled', min: 4.5 },

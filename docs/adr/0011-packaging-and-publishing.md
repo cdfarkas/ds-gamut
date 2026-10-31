@@ -66,7 +66,7 @@ We publish Omnia as an **ESM-only library built by Vite 8 library mode, with dec
 ```
 
 The public surface is `Button` (+ `ButtonProps`, `ButtonIntent`, `ButtonSize`), `Badge` (+
-`BadgeProps`, `BadgeIntent`), `Input` (+ `InputProps`, `InputSize`, `InputType`), `locales`, `setLocale`, `getLocale` and the `Locale` type. `t`,
+`BadgeProps`, `BadgeIntent`), `Input` (+ `InputProps`, `InputSize`, `InputType`), `Checkbox` (+ `CheckboxProps`, `CheckboxSize`), `locales`, `setLocale`, `getLocale` and the `Locale` type. `t`,
 `TranslationKey` and the Storybook docs helpers stay internal. ESM-only is a choice, not a
 constraint we hit: every React 19 toolchain (Vite, Next, Remix, modern webpack, Node 22's
 `require(esm)`) consumes ESM, and a CJS build would double the output and the test surface for

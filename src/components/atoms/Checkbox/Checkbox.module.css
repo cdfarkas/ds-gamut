@@ -1,0 +1,120 @@
+@layer components {
+  .root {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--omnia-palette-space-2);
+    max-inline-size: 100%;
+    color: var(--omnia-checkbox-fg, var(--omnia-color-text-primary));
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .input {
+    display: grid;
+    flex: none;
+    place-content: center;
+    inline-size: 1.25em;
+    block-size: 1.25em;
+    margin: calc((1lh - 1.25em) / 2) 0 0;
+    border: var(--omnia-border-width-thick) solid
+      var(--omnia-checkbox-border-color, var(--omnia-color-border-strong));
+    border-radius: var(--omnia-checkbox-radius, var(--omnia-radius-sm));
+    background-color: var(--omnia-checkbox-bg, var(--omnia-color-bg-surface));
+    cursor: inherit;
+    appearance: none;
+    transition:
+      transform var(--omnia-dur-fast) var(--omnia-ease-out),
+      background-color var(--omnia-dur-fast) var(--omnia-ease-out),
+      border-color var(--omnia-dur-fast) var(--omnia-ease-out);
+  }
+
+  .input::before {
+    content: '';
+    inline-size: 0.65em;
+    block-size: 0.65em;
+    background-color: var(--omnia-checkbox-mark-color, var(--omnia-color-text-on-accent));
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+    transform: scale(0);
+    transition: transform var(--omnia-dur-fast) var(--omnia-ease-out);
+  }
+
+  .input:is(:checked, :indeterminate) {
+    background-color: var(--omnia-checkbox-checked-bg, var(--omnia-color-accent));
+  }
+
+  .input:is(:checked, :indeterminate)::before {
+    transform: scale(1);
+  }
+
+  .input:indeterminate::before {
+    clip-path: inset(38% 0);
+  }
+
+  .label {
+    min-inline-size: 0;
+  }
+
+  .sm {
+    font-size: 0.875rem;
+  }
+
+  .md {
+    font-size: 1rem;
+  }
+
+  .lg {
+    font-size: 1.125rem;
+  }
+
+  .input:disabled {
+    border-style: dashed;
+    border-color: var(--omnia-color-border-default);
+    background-color: var(--omnia-color-bg-disabled);
+  }
+
+  .input:disabled::before {
+    background-color: var(--omnia-color-text-muted);
+  }
+
+  .root:has(.input:disabled) {
+    color: var(--omnia-color-text-muted);
+    cursor: not-allowed;
+  }
+
+  :global([data-skin='pixel']) .input {
+    border-radius: 0;
+  }
+
+  .input:focus-visible {
+    outline: 2px solid var(--omnia-color-border-focus);
+    outline-offset: 2px;
+  }
+
+  .root:where(:hover) .input:where(:not(:disabled)) {
+    transform: translate(-1px, -1px);
+  }
+
+  .root:where(:active) .input:where(:not(:disabled)) {
+    transform: translate(1px, 1px);
+    transition-duration: var(--omnia-dur-press);
+  }
+
+  .root[data-invalid] .input:where(:not(:disabled)) {
+    border-color: var(--omnia-color-danger-border);
+  }
+
+  .root:where(:hover) .input:is(:checked, :indeterminate):where(:not(:disabled)) {
+    background-color: var(--omnia-color-accent-hover);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .input,
+    .input::before {
+      transition: none;
+    }
+
+    .root:where(:hover, :active) .input:where(:not(:disabled)) {
+      transform: none;
+    }
+  }
+}
