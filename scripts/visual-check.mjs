@@ -85,6 +85,15 @@ const stories = [
   { id: 'atoms-checkbox--long-label', name: 'checkbox-long-label' },
   { id: 'atoms-checkbox--states', name: 'checkbox-states' },
   { id: 'atoms-checkbox--overridden', name: 'checkbox-overridden' },
+  { id: 'atoms-switch--playground', name: 'switch-playground' },
+  { id: 'atoms-switch--checked', name: 'switch-checked' },
+  { id: 'atoms-switch--sizes', name: 'switch-sizes' },
+  { id: 'atoms-switch--invalid', name: 'switch-invalid' },
+  { id: 'atoms-switch--disabled', name: 'switch-disabled' },
+  { id: 'atoms-switch--without-visible-label', name: 'switch-without-visible-label' },
+  { id: 'atoms-switch--long-label', name: 'switch-long-label' },
+  { id: 'atoms-switch--states', name: 'switch-states' },
+  { id: 'atoms-switch--overridden', name: 'switch-overridden' },
 ];
 
 const filter = process.argv[2];
@@ -216,6 +225,19 @@ if (!filter || filter.includes('checkbox')) {
     await shoot(
       'atoms-checkbox--checked',
       'checkbox-checked',
+      m,
+      'en',
+      `focus-${m.key}`,
+      true,
+    );
+  }
+}
+
+if (!filter || filter.includes('switch')) {
+  for (const m of modes) {
+    await shoot(
+      'atoms-switch--checked',
+      'switch-checked',
       m,
       'en',
       `focus-${m.key}`,
