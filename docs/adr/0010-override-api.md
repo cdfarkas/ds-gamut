@@ -2,7 +2,8 @@
 
 ## Status
 
-Proposed — token names superseded in part by ADR 0013 (`--omnia-` prefix).
+Proposed — token names superseded in part by ADR 0013 (`--omnia-` prefix); prop names superseded in
+part by ADR 0015 (`size` is now `variantSize`, `loading` is now `pending`; the `data-*` names stay).
 
 ## Context
 

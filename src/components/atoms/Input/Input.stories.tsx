@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, userEvent } from 'storybook/test';
+import { expect, fn, userEvent } from 'storybook/test';
 import { Input, type InputProps } from './Input';
 import './Input.overrides.css';
 
@@ -34,11 +34,13 @@ const meta = {
   component: Input,
   args: {
     type: 'email',
-    size: 'md',
+    variantSize: 'md',
     placeholder: 'name@example.com',
+    onChange: fn(),
+    onBlur: fn(),
   },
   argTypes: {
-    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+    variantSize: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
     type: {
       control: 'inline-radio',
       options: ['text', 'email', 'url', 'tel', 'password'],
@@ -46,6 +48,9 @@ const meta = {
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
     readOnly: { control: 'boolean' },
+    startAdornment: { control: false },
+    endAdornment: { control: false },
+    ref: { control: false },
   },
   render: (args) => <Field label="Email" {...args} />,
   parameters: {
@@ -84,9 +89,9 @@ export const Playground: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: 'grid', gap: '1rem' }}>
-      <Field label="Small" {...args} size="sm" />
-      <Field label="Medium" {...args} size="md" />
-      <Field label="Large" {...args} size="lg" />
+      <Field label="Small" {...args} variantSize="sm" />
+      <Field label="Medium" {...args} variantSize="md" />
+      <Field label="Large" {...args} variantSize="lg" />
     </div>
   ),
 };

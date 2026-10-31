@@ -18,9 +18,9 @@ import * as InputStories from './Input.stories';
         <code>aria-label</code>. A placeholder is never a label.
       </p>
       <p>
-        Use <code>size</code> for scale (<code>sm</code>, <code>md</code>, <code>lg</code>
-        , the same scale as Button) and <code>type</code> for the text-like kinds (
-        <code>text</code>, <code>email</code>, <code>url</code>, <code>tel</code>,{' '}
+        Use <code>variantSize</code> for scale (<code>sm</code>, <code>md</code>,{' '}
+        <code>lg</code>, the same scale as Button) and <code>type</code> for the text-like
+        kinds (<code>text</code>, <code>email</code>, <code>url</code>, <code>tel</code>,{' '}
         <code>password</code>). <code>invalid</code> sets <code>aria-invalid</code> and a
         danger border; colour is never the only signal, so pair it with an error message
         in text. An input has no <code>intent</code>: invalid is its own state.
@@ -29,9 +29,10 @@ import * as InputStories from './Input.stories';
         <code>className</code> and <code>style</code> land on the root wrapper, the
         visible box. Every other prop, <code>ref</code> included, lands on the native{' '}
         <code>&lt;input&gt;</code>, so <code>id</code>, <code>name</code>,{' '}
-        <code>autoComplete</code> and <code>aria-*</code> work as on a plain input.
-        Adornments are decorative unless you give them meaning: mark an icon{' '}
-        <code>aria-hidden</code>, and keep the unit or prefix in the label too.
+        <code>autoComplete</code>, <code>aria-*</code> and even the native{' '}
+        <code>size</code> work as on a plain input (ADR 0015). Adornments are decorative
+        unless you give them meaning: mark an icon <code>aria-hidden</code>, and keep the
+        unit or prefix in the label too.
       </p>
       <p>
         On hover and focus the field lifts and its offset shadow grows (ADR 0009); focus
@@ -54,8 +55,8 @@ import * as InputStories from './Input.stories';
         (placeholder) n'est jamais un libellé.
       </p>
       <p>
-        Utilisez <code>size</code> pour la taille (<code>sm</code>, <code>md</code>,{' '}
-        <code>lg</code>, la même échelle que Button) et <code>type</code> pour les types
+        Utilisez <code>variantSize</code> pour la taille (<code>sm</code>, <code>md</code>
+        , <code>lg</code>, la même échelle que Button) et <code>type</code> pour les types
         textuels (<code>text</code>, <code>email</code>, <code>url</code>,{' '}
         <code>tel</code>, <code>password</code>). <code>invalid</code> pose{' '}
         <code>aria-invalid</code> et une bordure de danger ; la couleur n'est jamais le
@@ -66,10 +67,10 @@ import * as InputStories from './Input.stories';
         <code>className</code> et <code>style</code> vont sur le conteneur racine, la
         boîte visible. Toutes les autres propriétés, <code>ref</code> compris, vont sur l'
         <code>&lt;input&gt;</code> natif : <code>id</code>, <code>name</code>,{' '}
-        <code>autoComplete</code> et <code>aria-*</code> fonctionnent comme sur un champ
-        ordinaire. Les ornements sont décoratifs sauf si vous leur donnez un sens :
-        marquez une icône <code>aria-hidden</code>, et reprenez l'unité ou le préfixe dans
-        le libellé.
+        <code>autoComplete</code>, <code>aria-*</code> et même le <code>size</code> natif
+        fonctionnent comme sur un champ ordinaire (ADR 0015). Les ornements sont
+        décoratifs sauf si vous leur donnez un sens : marquez une icône{' '}
+        <code>aria-hidden</code>, et reprenez l'unité ou le préfixe dans le libellé.
       </p>
       <p>
         Au survol et au focus, le champ se soulève et son ombre portée grandit (ADR 0009)

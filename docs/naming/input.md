@@ -226,6 +226,8 @@ molecule, which gets its own plan when its turn comes. Props: `size` (`sm | md |
 password`. Multi-line becomes a separate `Textarea` atom; number and search get their own components
 if they are needed.
 
+ADR 0015 (2026-10-31) renamed `size` to `variantSize`; the native `size` now reaches the `<input>`.
+
 ## Sources
 
 All opened 2026-10-30.

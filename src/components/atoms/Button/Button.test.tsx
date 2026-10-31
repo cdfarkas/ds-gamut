@@ -38,7 +38,7 @@ function background(el: Element | null) {
 }
 
 describe('Button edge cases', () => {
-  test('loading button is busy and disabled', async () => {
+  test('pending button is busy and disabled', async () => {
     await mount(<Loading />);
     const button = container.querySelector('button');
     expect(button?.disabled).toBe(true);
@@ -46,7 +46,7 @@ describe('Button edge cases', () => {
     expect(button?.textContent).toContain('Loading');
   });
 
-  test('loading spinner has a running spin animation', async () => {
+  test('pending spinner has a running spin animation', async () => {
     await mount(<Loading />);
     const spinner = container.querySelector('[aria-hidden="true"]');
     const anim = spinner ? getComputedStyle(spinner).animationName : 'none';
@@ -87,8 +87,8 @@ describe('Button intents', () => {
 });
 
 describe('Button override contract', () => {
-  test('exposes data-scope/data-part on each part and reflects intent/size', async () => {
-    await mount(<Playground intent="danger" size="lg" />);
+  test('exposes data-scope/data-part on each part and reflects intent/variantSize', async () => {
+    await mount(<Playground intent="danger" variantSize="lg" />);
     const root = container.querySelector('[data-scope="button"][data-part="root"]');
     const button = container.querySelector('[data-scope="button"][data-part="button"]');
     const label = container.querySelector('[data-scope="button"][data-part="label"]');
@@ -99,7 +99,7 @@ describe('Button override contract', () => {
     expect(button?.getAttribute('data-size')).toBe('lg');
   });
 
-  test('loading reflects data-loading/data-disabled and exposes the spinner part', async () => {
+  test('pending reflects data-loading/data-disabled and exposes the spinner part', async () => {
     await mount(<Loading />);
     const button = container.querySelector('[data-part="button"]');
     const spinner = container.querySelector('[data-scope="button"][data-part="spinner"]');

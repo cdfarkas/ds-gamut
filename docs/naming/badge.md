@@ -100,6 +100,8 @@ Option A, chosen by the owner on 2026-10-30: `Badge` stays the status label; the
 overlays become one future `Indicator` component (no count = dot). `Indicator` gets its own plan when
 its turn comes.
 
+ADR 0015 (2026-10-31) checked the props against native names: `intent` is not native and stays.
+
 ## Sources
 
 All opened 2026-10-30.

@@ -10,7 +10,7 @@ const meta = {
   args: {
     children: 'Button',
     intent: 'primary',
-    size: 'md',
+    variantSize: 'md',
     onClick: fn(),
   },
   argTypes: {
@@ -18,8 +18,8 @@ const meta = {
       control: 'inline-radio',
       options: [...intents],
     },
-    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
-    loading: { control: 'boolean' },
+    variantSize: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+    pending: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
   parameters: {
@@ -37,7 +37,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Controllable surface: every arg is spread, so intent/size/loading/disabled are live. */
+/** Controllable surface: every arg is spread, so intent/variantSize/pending/disabled are live. */
 export const Playground: Story = {
   render: (args) => <Button {...args} />,
 };
@@ -76,20 +76,20 @@ export const Sizes: Story = {
     <div
       style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}
     >
-      <Button {...args} size="sm">
+      <Button {...args} variantSize="sm">
         Small
       </Button>
-      <Button {...args} size="md">
+      <Button {...args} variantSize="md">
         Medium
       </Button>
-      <Button {...args} size="lg">
+      <Button {...args} variantSize="lg">
         Large
       </Button>
     </div>
   ),
 };
 
-export const Loading: Story = { args: { loading: true } };
+export const Loading: Story = { args: { pending: true } };
 
 export const Disabled: Story = { args: { disabled: true } };
 
@@ -106,7 +106,7 @@ export const Overridden: Story = {
       <Button {...args} className="omnia-demo-override">
         Overridden
       </Button>
-      <Button {...args} className="omnia-demo-override" loading>
+      <Button {...args} className="omnia-demo-override" pending>
         Overridden
       </Button>
     </div>

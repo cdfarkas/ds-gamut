@@ -33,10 +33,17 @@ const part = (name: string) =>
   container.querySelector(`[data-scope="input"][data-part="${name}"]`);
 
 describe('Input edge cases', () => {
-  test('defaults to the md size and the text type', async () => {
+  test('defaults to the md variantSize and the text type', async () => {
     await mount(<Input aria-label="Name" />);
     expect(part('root')?.getAttribute('data-size')).toBe('md');
     expect(part('input')?.getAttribute('type')).toBe('text');
+  });
+
+  test('native size and prefix reach the input, variantSize stays on the root', async () => {
+    await mount(<Input aria-label="Code" variantSize="lg" size={6} prefix="schema:" />);
+    expect(part('root')?.getAttribute('data-size')).toBe('lg');
+    expect((part('input') as HTMLInputElement | null)?.size).toBe(6);
+    expect(part('input')?.getAttribute('prefix')).toBe('schema:');
   });
 
   test('invalid sets aria-invalid on the input and data-invalid on the root', async () => {
