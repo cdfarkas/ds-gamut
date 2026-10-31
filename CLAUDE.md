@@ -46,6 +46,14 @@ semantic layer. Every Omnia custom property carries the `--omnia-` prefix so it 
 consuming app's own variables (ADR 0013). See `docs/ARCHITECTURE.md`. Semantic token names are a
 stable contract — do not rename them.
 
+## Prop naming rule (enforced)
+
+A prop whose name is native on any HTML element keeps the native type and reaches the native element
+(a narrower subset is fine: `Input.type`). A visual variant axis with a native name is `variant<Axis>`
+(`variantSize`); any other custom prop with a native name gets a non-native one (`pending`). `data-*`
+names do not change. `src/native-prop-names.check.ts` checks every component exported from
+`src/index.ts` under `pnpm typecheck` — a build gate, not a convention (ADR 0015).
+
 ## Responsive rule
 
 Mobile-first. Viewport `@media` uses only `30em` / `48em` / `64em` / `80em` in range notation
@@ -90,7 +98,8 @@ flag it, pick a sane default, and note it for human review. See `docs/governance
 
 **Naming study first.** Before any new component is created, an online survey records how major
 design systems name it and its variants (with source URLs) in `docs/naming/<component>.md`; the
-owner picks the name before any code is written. See `docs/naming/badge.md`.
+owner picks the name before any code is written. The study also checks every proposed prop name
+against the prop naming rule above. See `docs/naming/badge.md`.
 
 ## Acceptance gates
 

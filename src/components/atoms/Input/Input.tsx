@@ -4,11 +4,8 @@ import styles from './Input.module.css';
 export type InputSize = 'sm' | 'md' | 'lg';
 export type InputType = 'text' | 'email' | 'url' | 'tel' | 'password';
 
-export interface InputProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'prefix' | 'type'
-> {
-  size?: InputSize;
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  variantSize?: InputSize;
   type?: InputType;
   /** Sets `aria-invalid="true"` on the `<input>` and the danger border on the root. */
   invalid?: boolean;
@@ -31,7 +28,7 @@ const sizeClass: Record<InputSize, string> = {
  * `ref` included, lands on the native `<input>`.
  */
 export function Input({
-  size = 'md',
+  variantSize = 'md',
   type = 'text',
   invalid = false,
   disabled = false,
@@ -43,7 +40,9 @@ export function Input({
   ref,
   ...rest
 }: InputProps) {
-  const classes = [styles.root, sizeClass[size], className].filter(Boolean).join(' ');
+  const classes = [styles.root, sizeClass[variantSize], className]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <span
@@ -51,7 +50,7 @@ export function Input({
       style={style}
       data-scope="input"
       data-part="root"
-      data-size={size}
+      data-size={variantSize}
       data-invalid={invalid || undefined}
       data-disabled={disabled || undefined}
       data-readonly={readOnly || undefined}

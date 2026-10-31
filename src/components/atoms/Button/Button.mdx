@@ -19,9 +19,11 @@ import * as ButtonStories from './Button.stories';
       <p>
         Use <code>intent</code> for meaning (<code>primary</code>, <code>neutral</code>,{' '}
         <code>success</code>, <code>warning</code>, <code>info</code>, <code>danger</code>
-        ), <code>size</code> for scale, and <code>loading</code> to show a busy state — a
-        loading button is disabled and exposes <code>aria-busy</code> plus a
-        screen-reader-only status.
+        ), <code>variantSize</code> for scale, and <code>pending</code> to show a busy
+        state — a pending button is disabled and exposes <code>aria-busy</code> plus a
+        screen-reader-only status. Native <code>&lt;button&gt;</code> attributes pass
+        through unchanged; a prop never reuses a native name with another meaning (ADR
+        0015).
       </p>
       <p>
         The status intents <code>success</code>, <code>warning</code>, <code>info</code>{' '}
@@ -52,9 +54,11 @@ import * as ButtonStories from './Button.stories';
       <p>
         Utilisez <code>intent</code> pour le sens (<code>primary</code>,{' '}
         <code>neutral</code>, <code>success</code>, <code>warning</code>,{' '}
-        <code>info</code>, <code>danger</code>), <code>size</code> pour la taille, et{' '}
-        <code>loading</code> pour l'état occupé — un bouton en chargement est désactivé et
-        expose <code>aria-busy</code> ainsi qu'un statut réservé aux lecteurs d'écran.
+        <code>info</code>, <code>danger</code>), <code>variantSize</code> pour la taille,
+        et <code>pending</code> pour l'état occupé — un bouton en chargement est désactivé
+        et expose <code>aria-busy</code> ainsi qu'un statut réservé aux lecteurs d'écran.
+        Les attributs natifs de <code>&lt;button&gt;</code> passent tels quels ; une
+        propriété ne reprend jamais un nom natif avec un autre sens (ADR 0015).
       </p>
       <p>
         Les intentions de statut <code>success</code>, <code>warning</code>,{' '}
@@ -129,8 +133,8 @@ import * as ButtonStories from './Button.stories';
         <li>
           <strong>State attributes</strong> on <code>data-part="button"</code>:{' '}
           <code>data-intent</code>, <code>data-size</code>, <code>data-loading</code>{' '}
-          (present when loading), <code>data-disabled</code> (present when disabled or
-          loading).
+          (present when <code>pending</code>), <code>data-disabled</code> (present when
+          disabled or pending).
         </li>
       </ul>
       <p>
@@ -173,8 +177,8 @@ import * as ButtonStories from './Button.stories';
         <li>
           <strong>Attributs d'état</strong> sur <code>data-part="button"</code> :{' '}
           <code>data-intent</code>, <code>data-size</code>, <code>data-loading</code>{' '}
-          (présent en chargement), <code>data-disabled</code> (présent si désactivé ou en
-          chargement).
+          (présent si <code>pending</code>), <code>data-disabled</code> (présent si
+          désactivé ou en chargement).
         </li>
       </ul>
       <p>

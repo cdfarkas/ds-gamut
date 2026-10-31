@@ -8,8 +8,9 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   intent?: ButtonIntent;
-  size?: ButtonSize;
-  loading?: boolean;
+  variantSize?: ButtonSize;
+  /** Busy state: disabled, with `aria-busy`. Not the native `loading` of `<img>`. */
+  pending?: boolean;
   children: ReactNode;
 }
 
@@ -22,17 +23,19 @@ const sizeClass: Record<ButtonSize, string> = {
 /** Primary interactive atom. Consumes semantic tokens only; themes/skins reskin it. */
 export function Button({
   intent = 'primary',
-  size = 'md',
-  loading = false,
+  variantSize = 'md',
+  pending = false,
   disabled = false,
   type = 'button',
   className,
   children,
   ...rest
 }: ButtonProps) {
-  const classes = [styles.button, sizeClass[size], className].filter(Boolean).join(' ');
+  const classes = [styles.button, sizeClass[variantSize], className]
+    .filter(Boolean)
+    .join(' ');
 
-  const isDisabled = disabled || loading;
+  const isDisabled = disabled || pending;
 
   return (
     <span className={styles.frame} data-scope="button" data-part="root">
@@ -40,16 +43,16 @@ export function Button({
         type={type}
         className={classes}
         disabled={isDisabled}
-        aria-busy={loading || undefined}
+        aria-busy={pending || undefined}
         data-scope="button"
         data-part="button"
         data-intent={intent}
-        data-size={size}
-        data-loading={loading || undefined}
+        data-size={variantSize}
+        data-loading={pending || undefined}
         data-disabled={isDisabled || undefined}
         {...rest}
       >
-        {loading ? (
+        {pending ? (
           <>
             <span
               className={styles.spinner}

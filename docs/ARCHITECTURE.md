@@ -166,10 +166,22 @@ so consumer rules win without `!important`) → the `style` prop. Every componen
 contract in its `.mdx`. Full specification and the per-component contract format: `docs/overrides.md`
 (ADR 0010).
 
+## Prop names
+
+A prop whose name is native on any HTML element keeps the native type and reaches the native element;
+a narrower subset of values is allowed (`Input.type`). A visual variant axis with a native name is
+prefixed `variant<Axis>` (`variantSize`, reflected as `data-size`), any other custom prop with a
+native name gets a non-native word (`pending`, reflected as `data-loading`). The `data-*` contract
+keeps its names (ADR 0015).
+
 ## Tooling
 
 - **ESLint** (flat config) + **Prettier** for TS/JS and formatting.
 - **stylelint** for CSS, including the no-raw-color rule that enforces the token contract.
+- **`tsc --noEmit`** (`pnpm typecheck`), which also runs `src/native-prop-names.check.ts`: every
+  component exported from `src/index.ts` is checked against React's HTML prop types, so a prop that
+  reuses a native name with another type fails the build. The file is not imported by the library
+  entry, so it never ships, and vitest does not collect it.
 - **Vite** as the builder, **Storybook 10** (`@storybook/react-vite`) as the catalogue and test host.
 - **Packaging**: `pnpm build` emits an ESM library (`dist/index.js` + `tsc` declarations) and one
   `dist/styles.css`; versions and releases go through Changesets (ADR 0011).

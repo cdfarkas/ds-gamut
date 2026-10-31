@@ -2,7 +2,8 @@
 
 ## Status
 
-Proposed — token names superseded in part by ADR 0013 (`--omnia-` prefix).
+Proposed — token names superseded in part by ADR 0013 (`--omnia-` prefix); prop names superseded in
+part by ADR 0015 (`loading` is now `pending`).
 
 ## Context
 

@@ -78,7 +78,9 @@ Every component renders a stable attribute contract:
 
 - `data-scope="<name>"` on **every** part, so a compound selector can match one part precisely.
 - `data-part="…"` naming each part.
-- State/variant hooks reflecting props (`data-intent`, `data-size`, `data-loading`, …).
+- State/variant hooks reflecting props (`data-intent`, `data-size`, `data-loading`, …). Their names
+  are stable and need not match the prop: `variantSize` reflects as `data-size`, `pending` as
+  `data-loading` (ADR 0015).
 
 Put your rule in `@layer overrides` and it wins over `@layer components` with no `!important`. You
 may also pass a `className` — it merges onto the component's main element — and style that class in
@@ -132,7 +134,7 @@ private class name:
 ```
 
 ```tsx
-<Button className="cta" loading>Checkout</Button>
+<Button className="cta" pending>Checkout</Button>
 ```
 
 The `.cta` class merges onto the button, so `--omnia-button-radius` is read by the button's own
@@ -156,5 +158,5 @@ Example (Button):
   `--omnia-button-padding-y`.
 - **`data-scope`**: `button`.
 - **`data-part`**: `root` (wrapper), `button` (the control + consumer `className`), `spinner`, `label`.
-- **State attributes** (on `data-part="button"`): `data-intent`, `data-size`, `data-loading`
-  (present when loading), `data-disabled` (present when disabled or loading).
+- **State attributes** (on `data-part="button"`): `data-intent`, `data-size` (from `variantSize`),
+  `data-loading` (present when `pending`), `data-disabled` (present when disabled or pending).
