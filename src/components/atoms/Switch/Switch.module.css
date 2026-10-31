@@ -1,0 +1,124 @@
+@layer components {
+  .root {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: var(--omnia-palette-space-2);
+    max-inline-size: 100%;
+    color: var(--omnia-switch-fg, var(--omnia-color-text-primary));
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .track {
+    display: flex;
+    flex: none;
+    align-items: center;
+    inline-size: 2.5em;
+    block-size: 1.375em;
+    margin: calc((1lh - 1.375em) / 2) 0 0;
+    padding-inline: 0.125em;
+    border: var(--omnia-border-width-thick) solid
+      var(--omnia-switch-border-color, var(--omnia-color-border-strong));
+    border-radius: var(--omnia-switch-radius, var(--omnia-radius-lg));
+    background-color: var(--omnia-switch-bg, var(--omnia-color-bg-surface));
+    cursor: inherit;
+    appearance: none;
+    transition:
+      transform var(--omnia-dur-fast) var(--omnia-ease-out),
+      background-color var(--omnia-dur-fast) var(--omnia-ease-out),
+      border-color var(--omnia-dur-fast) var(--omnia-ease-out);
+  }
+
+  /* The thumb travels the track width minus its height: 2.5em - 1.375em. */
+  .track::before {
+    content: '';
+    block-size: calc(1.375em - 2 * var(--omnia-border-width-thick) - 0.25em);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--omnia-switch-thumb-color, var(--omnia-color-border-strong));
+    transition:
+      translate var(--omnia-dur-fast) var(--omnia-ease-out),
+      background-color var(--omnia-dur-fast) var(--omnia-ease-out);
+  }
+
+  .track:checked {
+    background-color: var(--omnia-switch-checked-bg, var(--omnia-color-accent));
+  }
+
+  .track:checked::before {
+    translate: 1.125em 0;
+    background-color: var(
+      --omnia-switch-checked-thumb-color,
+      var(--omnia-color-text-on-accent)
+    );
+  }
+
+  .label {
+    min-inline-size: 0;
+  }
+
+  .sm {
+    font-size: 0.875rem;
+  }
+
+  .md {
+    font-size: 1rem;
+  }
+
+  .lg {
+    font-size: 1.125rem;
+  }
+
+  .track:disabled {
+    border-style: dashed;
+    border-color: var(--omnia-color-border-default);
+    background-color: var(--omnia-color-bg-disabled);
+  }
+
+  .track:disabled::before {
+    background-color: var(--omnia-color-text-muted);
+  }
+
+  .root:has(.track:disabled) {
+    color: var(--omnia-color-text-muted);
+    cursor: not-allowed;
+  }
+
+  :global([data-skin='pixel']) .track,
+  :global([data-skin='pixel']) .track::before {
+    border-radius: 0;
+  }
+
+  .track:focus-visible {
+    outline: 2px solid var(--omnia-color-border-focus);
+    outline-offset: 2px;
+  }
+
+  .root:where(:hover) .track:where(:not(:disabled)) {
+    transform: translate(-1px, -1px);
+  }
+
+  .root:where(:active) .track:where(:not(:disabled)) {
+    transform: translate(1px, 1px);
+    transition-duration: var(--omnia-dur-press);
+  }
+
+  .root[data-invalid] .track:where(:not(:disabled)) {
+    border-color: var(--omnia-color-danger-border);
+  }
+
+  .root:where(:hover) .track:checked:where(:not(:disabled)) {
+    background-color: var(--omnia-color-accent-hover);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track,
+    .track::before {
+      transition: none;
+    }
+
+    .root:where(:hover, :active) .track:where(:not(:disabled)) {
+      transform: none;
+    }
+  }
+}
